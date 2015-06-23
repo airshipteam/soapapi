@@ -1,0 +1,11 @@
+{
+	"name": "airshipWebservices/soapapi",
+	"autoload": {
+	    "psr-4" : {
+	        "airshipwebservices\\soapapi\\" : "src"
+	    }
+	},
+	"require": {
+		"phpunit/phpunit": "4.7.*"
+	}
+}
