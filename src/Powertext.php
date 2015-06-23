@@ -1,4 +1,4 @@
-<?php namespace airshipwebservices\soapapi
+<?php namespace airshipwebservices\soapapi;
 
 class Powertext {
 
