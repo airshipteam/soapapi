@@ -1,5 +1,5 @@
 {
-	"name": "airshipWebservices/soapapi",
+	"name": "airshipwebservices/soapapi",
 	"autoload": {
 	    "psr-4" : {
 	        "airshipwebservices\\soapapi\\" : "src"
