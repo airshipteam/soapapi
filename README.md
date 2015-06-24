@@ -127,3 +127,9 @@ $result = $this->_airshipContact->getContactEmail($contactemail);
 ```
 $result = $this->_airshipContact->lookupContactByLastname($unitid, $lastname);
 ```
+
+**Lookup Contact By UDF**
+
+```
+$result = $this->_airshipContact->lookupContactByUDF($udfid, $udfvalue);
+```
