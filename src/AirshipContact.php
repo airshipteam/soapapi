@@ -4,30 +4,7 @@
 
 	class AirshipContact extends Airship{
 		
-		public $contact_id;       // Numeric
-		public $title;            // Mr,Mrs,Ms,Dr,Miss,Prof
-		public $gender;           // M,F
-		public $firstname;        // Alphanumeric (Max Length 30)
-		public $lastname;         // Alphanumeric (Max Length 30)
-		public $buildingname;     // Alphanumeric (Max Length 30)
-		public $buildingnumstreet;// Alphanumeric (Max Length 30)
-		public $locality;         // Alphanumeric (Max Length 30)
-		public $city;             // Alphanumeric (Max Length 20)
-		public $postcode;         // Alphanumeric (Max Length 10)
-		public $county;           // Alphanumeric (Max Length 30)
-		public $country;          // Alphanumeric (Max Length 30)
-		public $membershipnumber; // Alphanumeric (Max Length 255)
-		public $membershiptype;   // Alphanumeric (Max Length 255)
-		public $mobilenumber;     // Numeric (Max Length 15)
-		public $landnumber;       // Numeric (Max Length 15)
-		public $email;            // Alphanumeric (Max Length 50)
-		public $dob;              // YYYY-dd-mm
-		public $allowsms;         // Y,N
-		public $allowcall;        // Y,N
-		public $allowemail;       // Y,N
-		public $allowsnailmail;   // Y,N
-		
-		public $sourceid;         // Numeric
+		public $contact;          // Array
 		public $groups;           // Array
 		public $udfs;             // Array
 
@@ -37,6 +14,7 @@
 			{
 				$this->wsdl = 'Contact.wsdl';
 				$this->_errorHandler = new ErrorHandler();
+				$this->_successHandler = new SuccessHandler();
 			}
 		
 
@@ -69,36 +47,31 @@
 
 			//$this->mobilenumber = $this->formatMobileNumber($this->mobilenumber);
 
-			//powertext doesn't like empty properties to be sent
+			//Airship doesn't like empty properties to be sent
 			$contact = array();
 			foreach ($possibleFields as $field) {
-				
-				if (isset($this->{$field})) {
-					
-					$contact[$field] = $this->{$field};
+				if (isset($this->$contact[$field])) {
+					$contact[$field] = $this->$contact[$field];
 				}
 			}
 
 			try {
-				// Check connection to API
-				$error = $this->checkWSDL($this->server.$this->wsdl);
 
-				echo '<pre>';
-				print_r($error);
-				echo '</pre>';die();
-				
+				// Check connection to Airship API
+				if(!$this->checkWSDL($this->server.$this->wsdl)){
+				    return $this->_errorHandler->return_error('server.connection_error');
+				}
 
 	    		$this->soap_client = new SoapClient($this->server . $wsdl, array("exceptions" => 1));
-	    		$this->result = $this->soap_client->createContact($this->username, $this->password, $contact, $this->groups, $this->udfs);
-				if($this->result >=1){
-					//all good so return the contactid
-					return $this->result;
+	    		$this->response = $this->soap_client->createContact($this->username, $this->password, $contact, $this->groups, $this->udfs);
+				if($this->response >=1){
+					return $this->_successHandler->return_success($this->response);
 				}else {
-		    		return false;
+				    return $this->_errorHandler->return_error('server.create_error');
 				}
 	    	}
-	    	catch(\SoapFault $e) { 
-	    		return $e->getMessage(); // return powertext error
+	    	catch(\SoapFault $e) {
+				return $this->_errorHandler->return_error('airship.soap_fault', $e->getMessage());
 	    	}
 
 		}

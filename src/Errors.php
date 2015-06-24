@@ -11,6 +11,26 @@ $this->errors =  array(
 
 	/*
 	|--------------------------------------------------------------------------
+	| Airship SOAP errors
+	|--------------------------------------------------------------------------
+	|
+	| Fallback error
+ 	|
+	*/
+
+
+	'airship' => array(
+
+		'soap_fault' => array(
+			'error_num' => 1,
+			'error_msg' => 'SOAP Fault'
+			)
+
+	),
+
+
+	/*
+	|--------------------------------------------------------------------------
 	| Default
 	|--------------------------------------------------------------------------
 	|
@@ -40,8 +60,27 @@ $this->errors =  array(
 	'server' => array(
 
 		'connection_error' => array(
-			'error_num' => 1,
+			'error_num' => 2,
 			'error_msg' => 'Could not connect to Airship Server'
+			)
+
+	),
+
+
+	/*
+	|--------------------------------------------------------------------------
+	| Contact API
+	|--------------------------------------------------------------------------
+	|
+	| Errors that can be returned when trying to access the Airship Contact API
+ 	|
+	*/
+
+	'contact' => array(
+
+		'create_error' => array(
+			'error_num' => 50,
+			'error_msg' => 'There was a problem creating your contact'
 			)
 
 	)
