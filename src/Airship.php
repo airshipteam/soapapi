@@ -27,7 +27,7 @@
 		 * @param  Sring
 		 */
 
-		protected function authenticate($server, $username,  $password)
+		public function authenticate($server, $username,  $password)
 		{
 			$this->server = $server;
 			$this->username = $username;
