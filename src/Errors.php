@@ -1,6 +1,6 @@
 <?php
 
-$this->errors =  array(
+return  array(
 
 	/*
 	|--------------------------------------------------------------------------
@@ -23,7 +23,8 @@ $this->errors =  array(
 
 		'default' => array(
 			'error_num' => 0,
-			'error_msg' => 'An error has occured'
+			'error_msg' => 'An error has occured',
+			'error_customer' => 'An error has occured'
 			)
 
 	),
@@ -43,7 +44,8 @@ $this->errors =  array(
 
 		'soap_fault' => array(
 			'error_num' => 1,
-			'error_msg' => 'SOAP Fault'
+			'error_msg' => 'SOAP Fault',
+			'error_customer' => 'An error has occured'
 			)
 
 	),
@@ -62,7 +64,8 @@ $this->errors =  array(
 
 		'connection_error' => array(
 			'error_num' => 50,
-			'error_msg' => 'Could not connect to Airship Server'
+			'error_msg' => 'Could not connect to Airship Server',
+			'error_customer' => 'An error has occured'
 			)
 
 	),
@@ -81,7 +84,8 @@ $this->errors =  array(
 
 		'create_error' => array(
 			'error_num' => 100,
-			'error_msg' => 'There was a problem creating your contact'
+			'error_msg' => 'There was a problem creating your contact',
+			'error_customer' => 'An error has occured'
 			)
 
 	)

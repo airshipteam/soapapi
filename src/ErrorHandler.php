@@ -5,7 +5,7 @@
 
 		public function __construct()
 		{
-			include 'Errors.php'; // Include list of errors
+			$this->errors = include 'Errors.php';
 		}		
 
 		/**
