@@ -86,7 +86,20 @@ return array(
 			'error_num' => 100,
 			'error_msg' => 'There was a problem creating your contact',
 			'error_customer' => 'An error has occured'
+			),
+
+		'create_error' => array(
+			'error_num' => 101,
+			'error_msg' => 'There was a problem updating your contact',
+			'error_customer' => 'An error has occured'
+			),
+
+		'create_error' => array(
+			'error_num' => 102,
+			'error_msg' => 'There was a problem getting your contact',
+			'error_customer' => 'An error has occured'
 			)
+
 
 	)
 
