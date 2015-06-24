@@ -25,7 +25,7 @@
 			if(isset($this->errors[$error[0]][$error[1]])){
 				$return->error_number =  $this->errors[$error[0]][$error[1]]['error_num'];
 				$return->error_message = $this->errors[$error[0]][$error[1]]['error_msg'];
-				$return->error_customer = $this->errors[$error[0]][$error[1]]['error_msg'];
+				$return->error_customer = $this->errors[$error[0]][$error[1]]['error_customer'];
 				if($soapfault !== false){// return a SOAP fault if we have one.
 					$return->soap_fault = $soapfault;
 					if($this->createCustomerSOAPerror($soapfault)){ // check to see if soap fault is customer facing
