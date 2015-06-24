@@ -2,7 +2,7 @@
 A wrapper for Airship's SOAP API built for easy integration with Laravel 5
 ---
 
-The package supports use with the Laravel Framework (V5)
+The package supports use with the [Laravel framework][2] (v5) 
 
 ----
 ###Setup:
@@ -42,7 +42,7 @@ Run the command `composer update`.
 
 ###Usage:
 
-If you do not already have them, your Airship API keys can be optained by contacting support@airship.co.uk.
+If you do not already have them, your Aiship API keys can be optained from contacting support@airship.co.uk.
 
 At the top of your controller, include this plugin using the `use` keyword
 
@@ -65,11 +65,11 @@ $airshipContact->authenticate($this->airship_server, $this->airship_username, $t
 Create a new contact
 
 ```
-  $airshipContact->contact['title'] = 'Mr';
-	$airshipContact->contact['firstname']  = 'Peter';
-	$airshipContact->contact['lastname']  = 'Tecks';
-	$airshipContact->contact['email']     = 'peter@tecks.com';
-	$airshipContact->groups[] = 1234;
-	$airshipContact->udfs[] =  array("udfnameid"=>79, "data"=>"Test Co", "type"=>"Text");
-	$airshipContact->create();
+$airshipContact->contact['title'] = 'Mr';
+$airshipContact->contact['firstname']  = 'Peter';
+$airshipContact->contact['lastname']  = 'Tecks';
+$airshipContact->contact['email']     = 'peter@tecks.com';
+$airshipContact->groups[] = 1234;
+$airshipContact->udfs[] =  array("udfnameid"=>79, "data"=>"Test Co", "type"=>"Text");
+$airshipContact->create();
 ```
