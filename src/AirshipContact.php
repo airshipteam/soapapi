@@ -35,7 +35,7 @@
 
 		public function __construct()
 			{
-				$wsdl = 'Contact.wsdl';
+				$this->wsdl = 'Contact.wsdl';
 			}
 		
 
@@ -79,7 +79,7 @@
 			}
 
 			try {
-				$this->checkWSDL($this->server.$wsdl);
+				$this->checkWSDL($this->server.$this->wsdl);
 	    		$this->soap_client = new SoapClient($this->server . $wsdl, array("exceptions" => 1));
 	    		$this->result = $this->soap_client->createContact($this->username, $this->password, $contact, $this->groups, $this->udfs);
 				if($this->result >=1){
