@@ -64,7 +64,7 @@ $airshipContact   = new AirshipContact();
 $airshipContact->authenticate($airship_server, $airship_username, $airship_password);
 ```
 
-Create a new contact
+**Create or update a contact**
 
 ```
 $airshipContact->contact['title']           = 'Mr';
@@ -109,3 +109,10 @@ stdClass Object
 `error_number => 1` signifies a fault returned by Airship's server and the `soap_fault` parameter details this fault; the `soap_fault` parameter is only returned with `error_number => 1`
 
 the `error_customer` is a customer friendly error message. 
+
+**Get**
+
+```
+$result = $this->_airshipContact->get();
+```
+
