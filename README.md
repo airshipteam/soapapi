@@ -110,7 +110,7 @@ stdClass Object
 
 the `error_customer` is a customer friendly error message. 
 
-**Get**
+**Get Contact**
 
 ```
 $result = $this->_airshipContact->get();
