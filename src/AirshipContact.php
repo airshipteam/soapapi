@@ -30,6 +30,13 @@
 		public $sourceid;         // Numeric
 		public $groups;           // Array
 		public $udfs;             // Array
+
+		public $wsdl;             // Alphanumeric
+
+		public function __construct()
+			{
+				$wsdl = 'Contact.wsdl';
+			}
 		
 
 		public function create()
@@ -72,8 +79,8 @@
 			}
 
 			try {
-				$this->checkWSDL();
-	    		$this->soap_client = new SoapClient($this->server . 'Contact.wsdl', array("exceptions" => 1));
+				$this->checkWSDL($this->server.$wsdl);
+	    		$this->soap_client = new SoapClient($this->server . $wsdl, array("exceptions" => 1));
 	    		$this->result = $this->soap_client->createContact($this->username, $this->password, $contact, $this->groups, $this->udfs);
 				if($this->result >=1){
 					//all good so return the contactid
