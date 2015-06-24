@@ -4,9 +4,9 @@
 
 	class AirshipContact extends Airship{
 		
-		public $contact;          // Array
-		public $groups;           // Array
-		public $udfs;             // Array
+		public $contact = array();          // Array
+		public $groups  = array();           // Array
+		public $udfs    = array();             // Array
 
 		public $wsdl;             // Alphanumeric
 
