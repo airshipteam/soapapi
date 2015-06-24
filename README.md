@@ -61,7 +61,7 @@ $airship_server   = 'https://secure.powertext.co.uk/SOAP/V2/';
 $airship_username = 'XXXXXXXXXX';
 $airship_password = 'XXXXXXXXXX';
 $airshipContact   = new AirshipContact();
-$airshipContact->authenticate($this->airship_server, $this->airship_username, $this->airship_password);
+$airshipContact->authenticate($airship_server, $airship_username, $airship_password);
 ```
 
 Create a new contact
