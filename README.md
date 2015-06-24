@@ -139,3 +139,16 @@ $result = $this->_airshipContact->lookupContactByUDF($udfid, $udfvalue);
 ```
 $result = $this->_airshipContact->unsubscribeContact($contacts);
 ```
+```
+
+**Unsubscribe Contact Group**
+
+```
+$result = $this->_airshipContact->unsubscribeContactGroup($contactid, $groupid);
+```
+
+**Get UDF Value**
+
+```
+$result = $this->_airshipContact->getUDFValue(contactid, udfid);
+```
