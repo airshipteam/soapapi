@@ -80,7 +80,7 @@ $airshipContact->groups[]                   = 1234;
 $airshipContact->udfs[]                     = array("udfnameid"=>79, 
                                                     "data"=>"Test Co", 
                                                     "type"=>"Text");
-$result = $airshipContact->create();
+$result = $airshipContact->createContact();
 ```
 
 The above would return:
@@ -113,6 +113,6 @@ the `error_customer` is a customer friendly error message.
 **Get Contact**
 
 ```
-$result = $this->_airshipContact->get($contactid);
+$result = $this->_airshipContact->getContact($contactid);
 ```
 
