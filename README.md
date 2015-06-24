@@ -115,9 +115,15 @@ the `error_customer` is a customer friendly error message.
 ```
 $result = $this->_airshipContact->getContact($contactid);
 ```
+
 **Get Contact Email**
 
 ```
 $result = $this->_airshipContact->getContactEmail($contactemail);
 ```
 
+**Lookup Contact By Last Name**
+
+```
+$result = $this->_airshipContact->lookupContactByLastname($unitid, $lastname);
+```
