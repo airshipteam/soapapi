@@ -1,6 +1,6 @@
 <?php namespace airshipwebservices\soapapi;
 
-class Powertext {
+class Airship {
 
 	public $server;
 	public $username;
@@ -13,10 +13,18 @@ class Powertext {
 	protected $soap_client;
 
 
-	public function __construct()
-	{
-		ini_set("soap.wsdl_cache_enabled", "0");
+	public function __construct($server, $username, $password)
+		{
+			ini_set("soap.wsdl_cache_enabled", "0");
 
+			$this->server = $server;
+			$this->username = $username;
+			$this->password = $password;
+		}
+
+	protected function handleSoapErrors()
+	{
+		
 		
 	}
 
