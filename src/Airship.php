@@ -9,9 +9,7 @@
 		public $result;//some object that's being returned or false if there is an error
 		public $error;//holder for the error message
 
-
 		protected $soap_client;
-
 
 		public function __construct()
 			{
@@ -29,6 +27,18 @@
 		{
 			
 			
+		}
+
+		protected function checkWSDL()
+		{
+			$handle = curl_init($url);
+			curl_setopt($handle,  CURLOPT_RETURNTRANSFER, TRUE);
+
+			$response = curl_exec($handle);
+			$httpCode = curl_getinfo($handle, CURLINFO_HTTP_CODE);
+			echo $httpCode;die();
+
+			curl_close($handle);
 		}
 
 	    
