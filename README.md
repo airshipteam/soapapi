@@ -65,14 +65,45 @@ $airshipContact->authenticate($this->airship_server, $this->airship_username, $t
 Create a new contact
 
 ```
-$airshipContact->contact['title']      = 'Mr';
-$airshipContact->contact['firstname']  = 'Peter';
-$airshipContact->contact['lastname']   = 'Tecks';
-$airshipContact->contact['email']      = 'peter@tecks.com';
+$airshipContact->contact['title']           = 'Mr';
+$airshipContact->contact['gender']          = 'M';
+$airshipContact->contact['firstname']       = 'Peter';
+$airshipContact->contact['lastname']        = 'Tecks';
+$airshipContact->contact['email']           = 'peter@tecks.com';
+$airshipContact->contact['mobilenumber']    = '07706000000';
+$airshipContact->contact['allowsms']        = 'Y';
+$airshipContact->contact['allowemail']      = 'Y';
 
-$airshipContact->groups[]              = 1234;
-$airshipContact->udfs[]                = array("udfnameid"=>79, 
-                                               "data"=>"Test Co", 
-                                               "type"=>"Text");
+$airshipContact->groups[]                   = 1234;
+$airshipContact->udfs[]                     = array("udfnameid"=>79, 
+                                                    "data"=>"Test Co", 
+                                                    "type"=>"Text");
 $result = $airshipContact->create();
 ```
+
+The above would return:
+
+```
+stdClass Object
+(
+    [status] => true
+    [response] => 11136842
+)
+```
+
+An error response returns:
+
+```
+stdClass Object
+(
+    [status] => false
+    [error_number] => 1
+    [error_message] => SOAP Fault
+    [error_customer] => Email address is invalid
+    [soap_fault] => Email address is invalid
+)
+```
+
+`error_number => 1` signifies a fault returned by Airship's server and the `soap_fault` parameter details this fault; the `soap_fault` parameter is only returned with `error_number => 1`
+
+the `error_customer` is a customer friendly error message. 
