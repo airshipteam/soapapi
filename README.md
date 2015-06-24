@@ -149,11 +149,11 @@ $result = $this->_airshipContact->unsubscribeContactGroup($contactid, $groupid);
 **Get UDF Value**
 
 ```
-$result = $this->_airshipContact->getUDFValue(contactid, udfid);
+$result = $this->_airshipContact->getUDFValue($contactid, $udfid);
 ```
 
 **Set UDF Value**
 
 ```
-$result = $this->_airshipContact->setUDFValue(contactid, udfid);
+$result = $this->_airshipContact->setUDFValue($contactid, $udfid, $udfvalue, $sourceid);
 ```
