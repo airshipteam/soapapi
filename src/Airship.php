@@ -13,7 +13,7 @@
 		protected $soap_client;
 
 
-		public function __construct($server, $username, $password)
+		public function __construct()
 			{
 				ini_set("soap.wsdl_cache_enabled", "0");
 			}
