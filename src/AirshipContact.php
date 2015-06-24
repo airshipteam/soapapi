@@ -154,7 +154,7 @@
 				}
 
 	    		$this->soap_client = new SoapClient($this->server . $this->wsdl, array("exceptions" => 1));
-	    		$this->response = $this->soap_client->createContact($this->username, $this->password, $contact, $this->groups, $this->udfs);
+	    		$this->response = $this->soap_client->updateContact($this->username, $this->password, $contact, $this->groups, $this->udfs);
 				if($this->response >=1){ // success
 					return $this->_successHandler->return_success($this->response);
 				}else { // error
