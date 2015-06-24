@@ -67,7 +67,7 @@
 			curl_close($handle);
 			if($httpCode != 200){
 			    $this->error_code = 'Could not connect to Airship Server';
-			    return $this->_errorHandle->return_error('server.connection_error');
+			    return $this->_errorHandler->return_error('server.connection_error');
 			}
 			return true;
 		}
