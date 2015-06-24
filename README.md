@@ -2,7 +2,7 @@
 A wrapper for Airship's SOAP API built for easy integration with Laravel 5
 ---
 
-The package supports use with the [Laravel framework][2] (v5) 
+The package supports use with the Laravel Framework (V5)
 
 ----
 ###Setup:
@@ -42,7 +42,7 @@ Run the command `composer update`.
 
 ###Usage:
 
-If you do not already have them, your Aiship API keys can be optained from contacting support@airship.co.uk.
+If you do not already have them, your Airship API keys can be optained by contacting support@airship.co.uk.
 
 At the top of your controller, include this plugin using the `use` keyword
 
