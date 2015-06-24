@@ -62,7 +62,7 @@
 				    return $this->_errorHandler->return_error('server.connection_error');
 				}
 
-	    		$this->soap_client = new SoapClient($this->server . $wsdl, array("exceptions" => 1));
+	    		$this->soap_client = new SoapClient($this->server . $this->wsdl, array("exceptions" => 1));
 	    		$this->response = $this->soap_client->createContact($this->username, $this->password, $contact, $this->groups, $this->udfs);
 				if($this->response >=1){
 					return $this->_successHandler->return_success($this->response);
