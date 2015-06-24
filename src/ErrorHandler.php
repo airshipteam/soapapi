@@ -35,9 +35,9 @@
 					}
 				}
 			}else{ // no error message, so return a default
-				$return->error_number =  $this->errors[$error['default']][$error['default']]['error_num'];
-				$return->error_message = $this->errors[$error['default']][$error['default']]['error_msg'];
-				$return->error_customer = $this->errors[$error['default']][$error['default']]['error_customer'];
+				$return->error_number =  $this->errors['default']['default']['error_num'];
+				$return->error_message = $this->errors['default']['default']['error_msg'];
+				$return->error_customer = $this->errors['default']['default']['error_customer'];
 			}
 			return $return;
 

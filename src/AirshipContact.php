@@ -191,7 +191,7 @@
 
 	    		$this->soap_client = new SoapClient($this->server . $this->wsdl, array("exceptions" => 1));
 	    		$this->response = $this->soap_client->getContact($this->username, $this->password, $contactid);
-				if(isset($this->result->contactData->contactid)){ // success
+				if(isset($this->response->contactData->contactid)){ // success
 					return $this->_successHandler->return_success($this->response);
 				}else { // error
 				    return $this->_errorHandler->return_error('contact.get_error');
@@ -226,7 +226,7 @@
 
 	    		$this->soap_client = new SoapClient($this->server . $this->wsdl, array("exceptions" => 1));
 	    		$this->response = $this->soap_client->getContactEmail($this->username, $this->password, $email);
-				if(isset($this->result->contactData->contactid)){ // success
+				if(isset($this->response->contactData->contactid)){ // success
 					return $this->_successHandler->return_success($this->response);
 				}else { // error
 				    return $this->_errorHandler->return_error('contact.get_error');
