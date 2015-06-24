@@ -6,7 +6,7 @@
 		public function __construct()
 		{
 			$this->errors = include 'Errors.php'; // error message config
-			$this->customer_soap_errors = include 'Errors.php'; // soap errors that are customer facing
+			$this->customer_soap_errors = include 'CustomerErrors.php'; // soap errors that are customer facing
 		}		
 
 		/**
@@ -30,6 +30,8 @@
 					$return->soap_fault = $soapfault;
 					if($this->createCustomerSOAPerror($soapfault)){ // check to see if soap fault is customer facing
 						$return->error_customer = $soapfault;
+					}else{
+						$return->error_customer = 'An error has occured';
 					}
 				}
 			}else{ // no error message, so return a default
