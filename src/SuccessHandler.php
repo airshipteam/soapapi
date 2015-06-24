@@ -17,6 +17,7 @@
 			$return = new \stdClass();
 			$return->status = true;
 			$return->response = $response;
+			return $return;
 
 		}
 		
