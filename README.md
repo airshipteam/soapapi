@@ -157,3 +157,16 @@ $result = $this->_airshipContact->getUDFValue($contactid, $udfid);
 ```
 $result = $this->_airshipContact->setUDFValue($contactid, $udfid, $udfvalue, $sourceid);
 ```
+
+**Get Interactions In Monitored Group**
+
+```
+$result = $this->_airshipContact->getInteractionsInMonitoredGroup($groupid);
+```
+
+
+**Delete Interactions In Monitored Group**
+
+```
+$result = $this->_airshipContact->deleteInteractionsInMonitoredGroup($records);
+```
