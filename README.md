@@ -133,3 +133,9 @@ $result = $this->_airshipContact->lookupContactByLastname($unitid, $lastname);
 ```
 $result = $this->_airshipContact->lookupContactByUDF($udfid, $udfvalue);
 ```
+
+**Unsubscribe Contact**
+
+```
+$result = $this->_airshipContact->unsubscribeContact($contacts);
+```
