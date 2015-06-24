@@ -9,7 +9,7 @@ The package supports use with the [Laravel framework][2] (v5)
 
 In order to install add the following to your `composer.json` file within the `repositories` block:
 
-```js
+```
 "repositories": [{
             "type": "vcs",
             "url": "https://github.com/airshipwebservices/soapapi"
