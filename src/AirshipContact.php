@@ -50,8 +50,8 @@
 			//Airship doesn't like empty properties to be sent
 			$contact = array();
 			foreach ($possibleFields as $field) {
-				if (isset($this->$contact[$field])) {
-					$contact[$field] = $this->$contact[$field];
+				if (isset($this->contact[$field])) {
+					$contact[$field] = $this->contact[$field];
 				}
 			}
 
