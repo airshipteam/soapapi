@@ -58,18 +58,21 @@ Set your airship keys and server
 $airship_server   = 'https://secure.powertext.co.uk/SOAP/V2/';
 $airship_username = 'XXXXXXXXXX';
 $airship_password = 'XXXXXXXXXX';
-$airshipContact = new AirshipContact();
+$airshipContact   = new AirshipContact();
 $airshipContact->authenticate($this->airship_server, $this->airship_username, $this->airship_password);
 ```
 
 Create a new contact
 
 ```
-$airshipContact->contact['title'] = 'Mr';
+$airshipContact->contact['title']      = 'Mr';
 $airshipContact->contact['firstname']  = 'Peter';
-$airshipContact->contact['lastname']  = 'Tecks';
-$airshipContact->contact['email']     = 'peter@tecks.com';
-$airshipContact->groups[] = 1234;
-$airshipContact->udfs[] =  array("udfnameid"=>79, "data"=>"Test Co", "type"=>"Text");
-$airshipContact->create();
+$airshipContact->contact['lastname']   = 'Tecks';
+$airshipContact->contact['email']      = 'peter@tecks.com';
+
+$airshipContact->groups[]              = 1234;
+$airshipContact->udfs[]                = array("udfnameid"=>79, 
+                                               "data"=>"Test Co", 
+                                               "type"=>"Text");
+$result = $airshipContact->create();
 ```
