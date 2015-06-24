@@ -98,7 +98,62 @@ return array(
 			'error_num' => 102,
 			'error_msg' => 'There was a problem getting your contact',
 			'error_customer' => 'An error has occured'
+			),
+
+		'lookup_lastname_error' => array(
+			'error_num' => 103,
+			'error_msg' => 'There was a problem looking up last name',
+			'error_customer' => 'An error has occured'
+			),
+
+		'lookup_lastname_noresults' => array(
+			'error_num' => 104,
+			'error_msg' => 'your search did not return any results',
+			'error_customer' => 'An error has occured'
+			),
+
+		'lookup_udf_noresults' => array(
+			'error_num' => 105,
+			'error_msg' => 'your search did not return any results',
+			'error_customer' => 'An error has occured'
+			),
+
+		'unsubscribe_error' => array(
+			'error_num' => 106,
+			'error_msg' => 'there was a problem unsubscribing your contacts',
+			'error_customer' => 'An error has occured'
+			),
+
+		'unsubscribe_group_error' => array(
+			'error_num' => 107,
+			'error_msg' => 'there was a problem unsubscribing your contact',
+			'error_customer' => 'An error has occured'
+			),
+
+		'udf_empty' => array(
+			'error_num' => 108,
+			'error_msg' => 'UDF is empty',
+			'error_customer' => 'An error has occured'
+			),
+
+		'set_udf_error' => array(
+			'error_num' => 109,
+			'error_msg' => 'There as an error setting the UDF',
+			'error_customer' => 'An error has occured'
+			),
+
+		'get_group_interactions_empty' => array(
+			'error_num' => 110,
+			'error_msg' => 'There are no interactions within this group',
+			'error_customer' => 'An error has occured'
+			),
+
+		'delete_group_interactions_error' => array(
+			'error_num' => 111,
+			'error_msg' => 'there was a problem deleting records',
+			'error_customer' => 'An error has occured'
 			)
+
 
 
 	)
