@@ -113,6 +113,6 @@ the `error_customer` is a customer friendly error message.
 **Get Contact**
 
 ```
-$result = $this->_airshipContact->get();
+$result = $this->_airshipContact->get($contactid);
 ```
 
