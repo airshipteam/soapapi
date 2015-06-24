@@ -15,7 +15,6 @@ In order to install add the following to your `composer.json` file within the `r
             "url": "https://github.com/airshipwebservices/soapapi"
         }
     ]
-
 ```
 
 Add the following to your `composer.json` file within the `require` block:
