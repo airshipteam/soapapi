@@ -37,11 +37,7 @@
 		public $groups;//array
 		public $udfs;//array
 
-		public function authenticate($server, $username, $password)
-		{
-			parent::__construct($server, $username, $password);
-
-		}
+		
 
 		public function create()
 		{

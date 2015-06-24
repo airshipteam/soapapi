@@ -16,11 +16,14 @@
 		public function __construct($server, $username, $password)
 			{
 				ini_set("soap.wsdl_cache_enabled", "0");
-
-				$this->server = $server;
-				$this->username = $username;
-				$this->password = $password;
 			}
+
+		public function authenticate($server, $username,  $password)
+		{
+			$this->server = $server;
+			$this->username = $username;
+			$this->password = $password;
+		}
 
 		protected function handleSoapErrors()
 		{
