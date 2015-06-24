@@ -48,7 +48,9 @@ At the top of your controller, include this plugin using the `use` keyword
 
 ```
 <?php namespace App\Http\Controllers;
+
 use airshipwebservices\soapapi\AirshipContact;
+
 class MyController extends Controller {
 ```
 
