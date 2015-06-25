@@ -9,25 +9,6 @@ return array(
 	*/
 
 
-	/*
-	|--------------------------------------------------------------------------
-	| Default
-	|--------------------------------------------------------------------------
-	|
-	| Fallback error
- 	|
-	*/
-
-
-	'default' => array(
-
-		'default' => array(
-			'error_num' => 2,
-			'error_msg' => 'An error has occured',
-			'error_customer' => 'An error has occured'
-			)
-
-	),
 
 
 	/*
@@ -45,6 +26,27 @@ return array(
 		'soap_fault' => array(
 			'error_num' => 1,
 			'error_msg' => 'SOAP Fault',
+			'error_customer' => 'An error has occured'
+			)
+
+	),
+
+
+	/*
+	|--------------------------------------------------------------------------
+	| Default
+	|--------------------------------------------------------------------------
+	|
+	| Fallback error
+ 	|
+	*/
+
+
+	'default' => array(
+
+		'default' => array(
+			'error_num' => 2,
+			'error_msg' => 'An error has occured',
 			'error_customer' => 'An error has occured'
 			)
 
