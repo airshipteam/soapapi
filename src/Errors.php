@@ -22,7 +22,7 @@ return array(
 	'default' => array(
 
 		'default' => array(
-			'error_num' => 0,
+			'error_num' => 2,
 			'error_msg' => 'An error has occured',
 			'error_customer' => 'An error has occured'
 			)
