@@ -112,60 +112,60 @@ the `error_customer` is a customer friendly error message.
 **Get Contact**
 
 ```
-$result = $this->_airshipContact->getContact($contactid);
+$result = $airshipContact->getContact($contactid);
 ```
 
 **Get Contact Email**
 
 ```
-$result = $this->_airshipContact->getContactEmail($contactemail);
+$result = $airshipContact->getContactEmail($contactemail);
 ```
 
 **Lookup Contact By Last Name**
 
 ```
-$result = $this->_airshipContact->lookupContactByLastname($unitid, $lastname);
+$result = $airshipContact->lookupContactByLastname($unitid, $lastname);
 ```
 
 **Lookup Contact By UDF**
 
 ```
-$result = $this->_airshipContact->lookupContactByUDF($udfid, $udfvalue);
+$result = $airshipContact->lookupContactByUDF($udfid, $udfvalue);
 ```
 
 **Unsubscribe Contact**
 
 ```
-$result = $this->_airshipContact->unsubscribeContact($contacts);
+$result = $airshipContact->unsubscribeContact($contacts);
 ```
 
 **Unsubscribe Contact Group**
 
 ```
-$result = $this->_airshipContact->unsubscribeContactGroup($contactid, $groupid);
+$result = $airshipContact->unsubscribeContactGroup($contactid, $groupid);
 ```
 
 **Get UDF Value**
 
 ```
-$result = $this->_airshipContact->getUDFValue($contactid, $udfid);
+$result = $airshipContact->getUDFValue($contactid, $udfid);
 ```
 
 **Set UDF Value**
 
 ```
-$result = $this->_airshipContact->setUDFValue($contactid, $udfid, $udfvalue, $sourceid);
+$result = $airshipContact->setUDFValue($contactid, $udfid, $udfvalue, $sourceid);
 ```
 
 **Get Interactions In Monitored Group**
 
 ```
-$result = $this->_airshipContact->getInteractionsInMonitoredGroup($groupid);
+$result = $airshipContact->getInteractionsInMonitoredGroup($groupid);
 ```
 
 
 **Delete Interactions In Monitored Group**
 
 ```
-$result = $this->_airshipContact->deleteInteractionsInMonitoredGroup($records);
+$result = $airshipContact->deleteInteractionsInMonitoredGroup($records);
 ```
