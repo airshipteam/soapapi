@@ -13,10 +13,12 @@
 
 		public function __construct()
 			{
+
 				$this->wsdl = 'Contact.wsdl';
 				$this->_errorHandler = new ErrorHandler();
 				$this->_successHandler = new SuccessHandler();
 				$this->_validator = new Validator();
+
 			}
 
 
@@ -29,7 +31,6 @@
 		*/
 
 		protected function formatInput(){
-
 			//format mobile number
 			if(isset($this->contact['mobilenumber'])){
 				$this->contact['mobilenumber'] = $this->formatMobileNumber($this->contact['mobilenumber']);
@@ -71,7 +72,7 @@
 			$this->formatInput();
 
 			if(!empty($this->contact))
-				$this->contactWrite = $this->_validator->checkPossibleFields($this->contact, $action);
+				$this->contactWrite = $this->_validator->checkPossibleFields($this->contact, $action.'_fields');
 
 			if(!$this->checkWSDL($this->server.$this->wsdl))
 			    return $this->response = $this->_errorHandler->return_error('server.connection_error');
@@ -80,6 +81,19 @@
 
 		}
 
+		/*
+		* 	VALIDATE RESPONSE
+		*
+		*	@description 		Validate response of return from SOAP
+		*
+		*/
+
+		protected function validateResponse($action)
+		{
+				return $this->_validator->validateResponse($this->response, $action.'_response');
+
+
+		}
 
 
 		/*
@@ -103,12 +117,8 @@
 			
 			//Make The Call
     		$this->response = $this->soapCall('createContact', $this->username, $this->password, $this->contactWrite, $this->groups, $this->udfs);
-
-			if($this->_validator->validateResponse($this->response, 'create_contact'))
-    			return $this->response;
-		    
-		    return $this->_errorHandler->return_error('contact.create_error');
-				
+			return $this->validateResponse('create_contact');
+		    				
 		}
 
 
@@ -132,14 +142,7 @@
 		    	return $this->response;
 		    
     		$this->response = $this->soapCall('updateContact', $this->username, $this->password, $this->contactWrite, $this->groups, $this->udfs);
-
-    		if(isset($this->reponse->error_number))
-    			return $this->response;
-
-    		if($this->response >=1) // success
-				return $this->_successHandler->return_success($this->response);
-		    
-		    return $this->_errorHandler->return_error('contact.update_error');
+			return $this->validateResponse('update_contact');
 
 		}
 
@@ -165,14 +168,7 @@
 		    	return $this->response;
 
     		$this->response = $this->soapCall('getContact', $this->username, $this->password, $contactid);
-
-    		if(isset($this->reponse->error_number))
-				return $this->response;
-
-			if(isset($this->response->contactData->contactid)) // success
-				return $this->_successHandler->return_success($this->response);
-
-		    return $this->_errorHandler->return_error('contact.get_error');
+			return $this->validateResponse('get_contact');
 
 		}
 
@@ -195,14 +191,8 @@
 		    	return $this->response;
 
     		$this->response = $this->soapCall('getContactEmail', $this->username, $this->password, $email);
-
-    		if(isset($this->reponse->error_number))
-				return $this->response;
-
-			if(isset($this->response->contactData->contactid)) // success
-				return $this->_successHandler->return_success($this->response);
-
-		    return $this->_errorHandler->return_error('contact.get_error');
+			return $this->validateResponse('get_contact_email');
+		
 			
 		}
 
@@ -228,17 +218,8 @@
 		    	return $this->response;
 
     		$this->response = $this->soapCall('lookupContactByLastname', $this->username, $this->password, $unitid, $email);
-
-    		if(isset($this->reponse->error_number))
-				return $this->response;
-
-			if(is_array($this->response) && !empty($this->reponse)) // success
-				return $this->_successHandler->return_success($this->response);
+			return $this->validateResponse('lookup_contact_by_lastname');
 			
-			if(!is_array($this->response)) {// error
-			    return $this->_errorHandler->return_error('contact.lookup_lastname_error');
-
-		    return $this->_errorHandler->return_error('contact.lookup_lastname_noresults');
 
 		}
 
