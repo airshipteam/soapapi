@@ -21,39 +21,6 @@
 
 
 		/*
-		* 	CREATE
-		*
-		*	@description 		A wrapper function for PowerText's createContact SOAP API
-		*
-		*	@param 	object   	contact
-		*	@param 	array 		groups
-		*	@param 	array 		UDFs
-		*
-		*	@return int 		mixed
-		*/
-		
-
-		public function createContact()
-		{
-
-			$this->formatInput();
-			//Airship doesn't like empty properties to be sent
-			$this->contactWrite = $this->_validator->checkPossibleFields($this->contact, 'create_contact');
-			// Check connection to Airship API
-			if(!$this->checkWSDL($this->server.$this->wsdl))
-			    return $this->_errorHandler->return_error('server.connection_error');
-			
-			//Make The Call
-    		$this->response = $this->soapCall();
-
-			if($this->response >=1){ // success
-				return $this->_successHandler->return_success($this->response);
-		    
-		    return $this->_errorHandler->return_error('contact.create_error');
-				
-		}
-
-		/*
 		* 	Format Inputs
 		*
 		*	@description 		formats input array 
@@ -73,20 +40,75 @@
 		/*
 		* 	SOAP CALL
 		*
-		*	@description 		make the soap call
+		*	@description 		make the soap call.
 		*		
 		*	@return BOOL 		BOOL
 		*/
 
-		protected function soapCall(){
-
+		protected function soapCall($call, $p1 = false, $p2 = false, $p3 = false, $p4 = false, $p5 = false, $p6 = false, $p7 = false, $p8 = false, $p9 = false, $p10 = false){
+		
 			try {
 				$this->soap_client = new SoapClient($this->server . $this->wsdl, array("exceptions" => 1));
-	    		return $this->soap_client->createContact($this->username, $this->password, $this->contactWrite, $this->groups, $this->udfs);
+	    		return $this->soap_client->$call($p1,$p2,$p3,$p4,$p5,$p6);
     		}catch(\SoapFault $e) {
 				return $this->_errorHandler->return_error('airship.soap_fault', $e->getMessage());
 	    	}
 
+		}
+
+		/*
+		* 	PREPARE INPUT
+		*
+		*	@description 		prepares input array and checks we havea valid soap connection
+		*
+		*	@param 	string 		action
+		*
+		*	@return int 		mixed
+		*/
+
+		protected function prepareInput($action){
+
+			$this->formatInput();
+
+			if(!empty($this->contact))
+				$this->contactWrite = $this->_validator->checkPossibleFields($this->contact, $action);
+
+			if(!$this->checkWSDL($this->server.$this->wsdl))
+			    return $this->response = $this->_errorHandler->return_error('server.connection_error');
+
+			return true;
+
+		}
+
+
+
+		/*
+		* 	CREATE
+		*
+		*	@description 		A wrapper function for PowerText's createContact SOAP API
+		*
+		*	@param 	object   	contact
+		*	@param 	array 		groups
+		*	@param 	array 		UDFs
+		*
+		*	@return int 		mixed
+		*/
+		
+
+		public function createContact()
+		{
+
+			if($this->prepareInput('create_contact') !== true)
+		    	return $this->response;
+			
+			//Make The Call
+    		$this->response = $this->soapCall('createContact', $this->username, $this->password, $this->contactWrite, $this->groups, $this->udfs);
+
+			if($this->_validator->validateResponse($this->response, 'create_contact'))
+    			return $this->response;
+		    
+		    return $this->_errorHandler->return_error('contact.create_error');
+				
 		}
 
 
@@ -105,66 +127,23 @@
 
 		public function updateContact()
 		{
-			$possibleFields = array(
-				'contactid',
-				'title',
-				'gender',
-				'firstname',
-				'lastname',
-				'buildingname',
-				'buildingnumstreet',
-				'locality',
-				'city',
-				'postcode',
-				'county',
-				'country',
-				'membershipnumber',
-				'membershiptype',
-				'mobilenumber',
-				'landnumber',
-				'email',
-				'dob',
-				'sourceid',
-				'allowsms',
-				'allowcall',
-				'allowemail',
-				'allowsnailmail',
-			);
+			
+		    if($this->prepareInput('update_contact') !== true)
+		    	return $this->response;
+		    
+    		$this->response = $this->soapCall('updateContact', $this->username, $this->password, $this->contactWrite, $this->groups, $this->udfs);
 
-			//format mobile number
-			if(isset($this->contact['mobilenumber'])){
-				$this->contact['mobilenumber'] = $this->formatMobileNumber($this->contact['mobilenumber']);
-			}
+    		if(isset($this->reponse->error_number))
+    			return $this->response;
 
-			//Airship doesn't like empty properties to be sent
-			$contact = array();
-			foreach ($possibleFields as $field) {
-				if (isset($this->contact[$field])) {
-					$contact[$field] = $this->contact[$field];
-				}
-			}
-
-			try {
-
-				// Check connection to Airship API
-				if(!$this->checkWSDL($this->server.$this->wsdl)){
-				    return $this->_errorHandler->return_error('server.connection_error');
-				}
-
-	    		$this->soap_client = new SoapClient($this->server . $this->wsdl, array("exceptions" => 1));
-	    		$this->response = $this->soap_client->updateContact($this->username, $this->password, $contact, $this->groups, $this->udfs);
-
-				if($this->response >=1){ // success
-					return $this->_successHandler->return_success($this->response);
-				}else { // error
-				    return $this->_errorHandler->return_error('contact.update_error');
-				}
-
-	    	}catch(\SoapFault $e) {
-				return $this->_errorHandler->return_error('airship.soap_fault', $e->getMessage());
-	    	}
+    		if($this->response >=1) // success
+				return $this->_successHandler->return_success($this->response);
+		    
+		    return $this->_errorHandler->return_error('contact.update_error');
 
 		}
+
+		
 
 
 
@@ -182,25 +161,18 @@
 		public function getContact($contactid)
 		{
 			
-			try {
+			if($this->prepareInput('get_contact') !== true)
+		    	return $this->response;
 
-				// Check connection to Airship API
-				if(!$this->checkWSDL($this->server.$this->wsdl)){
-				    return $this->_errorHandler->return_error('server.connection_error');
-				}
+    		$this->response = $this->soapCall('getContact', $this->username, $this->password, $contactid);
 
-	    		$this->soap_client = new SoapClient($this->server . $this->wsdl, array("exceptions" => 1));
-	    		$this->response = $this->soap_client->getContact($this->username, $this->password, $contactid);
+    		if(isset($this->reponse->error_number))
+				return $this->response;
 
-				if(isset($this->response->contactData->contactid)){ // success
-					return $this->_successHandler->return_success($this->response);
-				}else { // error
-				    return $this->_errorHandler->return_error('contact.get_error');
-				}
+			if(isset($this->response->contactData->contactid)) // success
+				return $this->_successHandler->return_success($this->response);
 
-	    	}catch(\SoapFault $e) {
-				return $this->_errorHandler->return_error('airship.soap_fault', $e->getMessage());
-	    	}
+		    return $this->_errorHandler->return_error('contact.get_error');
 
 		}
 
@@ -218,27 +190,20 @@
 
 		public function getContactEmail($email)
 		{
+
+			if($this->prepareInput('get_contact_email') !== true)
+		    	return $this->response;
+
+    		$this->response = $this->soapCall('getContactEmail', $this->username, $this->password, $email);
+
+    		if(isset($this->reponse->error_number))
+				return $this->response;
+
+			if(isset($this->response->contactData->contactid)) // success
+				return $this->_successHandler->return_success($this->response);
+
+		    return $this->_errorHandler->return_error('contact.get_error');
 			
-			try {
-
-				// Check connection to Airship API
-				if(!$this->checkWSDL($this->server.$this->wsdl)){
-				    return $this->_errorHandler->return_error('server.connection_error');
-				}
-
-	    		$this->soap_client = new SoapClient($this->server . $this->wsdl, array("exceptions" => 1));
-	    		$this->response = $this->soap_client->getContactEmail($this->username, $this->password, $email);
-
-				if(isset($this->response->contactData->contactid)){ // success
-					return $this->_successHandler->return_success($this->response);
-				}else { // error
-				    return $this->_errorHandler->return_error('contact.get_error');
-				}
-
-	    	}catch(\SoapFault $e) {
-				return $this->_errorHandler->return_error('airship.soap_fault', $e->getMessage());
-	    	}
-
 		}
 
 
@@ -257,27 +222,23 @@
 		public function lookupContactByLastname($unitid, $name)
 		{
 			
-			try {
 
-				// Check connection to Airship API
-				if(!$this->checkWSDL($this->server.$this->wsdl)){
-				    return $this->_errorHandler->return_error('server.connection_error');
-				}
+			// Check connection to Airship API
+			if($this->prepareInput('lookup_contact_lastname') !== true)
+		    	return $this->response;
 
-	    		$this->soap_client = new SoapClient($this->server . $this->wsdl, array("exceptions" => 1));
-	    		$this->response = $this->soap_client->lookupContactByLastname($this->username, $this->password, $unitid, $email);
+    		$this->response = $this->soapCall('lookupContactByLastname', $this->username, $this->password, $unitid, $email);
 
-				if(is_array($this->response) && !empty($this->reponse)){ // success
-					return $this->_successHandler->return_success($this->response);
-				}elseif(!is_array($this->response)) { // error
-				    return $this->_errorHandler->return_error('contact.lookup_lastname_error');
-				}else{
-				    return $this->_errorHandler->return_error('contact.lookup_lastname_noresults');
-				}
+    		if(isset($this->reponse->error_number))
+				return $this->response;
 
-	    	}catch(\SoapFault $e) {
-				return $this->_errorHandler->return_error('airship.soap_fault', $e->getMessage());
-	    	}
+			if(is_array($this->response) && !empty($this->reponse)) // success
+				return $this->_successHandler->return_success($this->response);
+			
+			if(!is_array($this->response)) {// error
+			    return $this->_errorHandler->return_error('contact.lookup_lastname_error');
+
+		    return $this->_errorHandler->return_error('contact.lookup_lastname_noresults');
 
 		}
 
@@ -296,25 +257,19 @@
 		public function lookupContactByUDF($udfid, $udfvalue)
 		{
 			
-			try {
+			// Check connection to Airship API
+			if($this->prepareInput('lookup_contact_by_udf') !== true)
+		    	return $this->response;
 
-				// Check connection to Airship API
-				if(!$this->checkWSDL($this->server.$this->wsdl)){
-				    return $this->_errorHandler->return_error('server.connection_error');
-				}
+    		$this->response = $this->soapCall('lookupContactByUDF', $this->username, $this->password, $udfid, $udfvalue);
 
-	    		$this->soap_client = new SoapClient($this->server . $this->wsdl, array("exceptions" => 1));
-	    		$this->response = $this->soap_client->lookupContactByUDF($this->username, $this->password, $udfid, $udfvalue);
+    		if(isset($this->reponse->error_number))
+				return $this->response;
 
-				if(is_numeric($this->response) && $this->response >= 1){ // success
-					return $this->_successHandler->return_success($this->response);
-				}else{
-				    return $this->_errorHandler->return_error('contact.lookup_udf_noresults');
-				}
+			if(is_numeric($this->response) && $this->response >= 1) // success
+				return $this->_successHandler->return_success($this->response);
 
-	    	}catch(\SoapFault $e) {
-				return $this->_errorHandler->return_error('airship.soap_fault', $e->getMessage());
-	    	}
+		    return $this->_errorHandler->return_error('contact.lookup_udf_noresults');
 
 		}
 
@@ -333,25 +288,19 @@
 		public function unsubscribeContact($contacts)
 		{
 			
-			try {
+			// Check connection to Airship API
+			if($this->prepareInput('unsubscribe_contact') !== true)
+		    	return $this->response;
 
-				// Check connection to Airship API
-				if(!$this->checkWSDL($this->server.$this->wsdl)){
-				    return $this->_errorHandler->return_error('server.connection_error');
-				}
+    		$this->response = $this->soapCall('unsubscribeContact', $this->username, $this->password, $contacts);
 
-	    		$this->soap_client = new SoapClient($this->server . $this->wsdl, array("exceptions" => 1));
-	    		$this->response = $this->soap_client->unsubscribeContact($this->username, $this->password, $contacts);
+    		if(isset($this->reponse->error_number))
+				return $this->response;
 
-				if($this->response == 100){ // success
-					return $this->_successHandler->return_success($this->response);
-				}else{
-				    return $this->_errorHandler->return_error('contact.unsubscribe_error');
-				}
+			if($this->response == 100) // success
+				return $this->_successHandler->return_success($this->response);
 
-	    	}catch(\SoapFault $e) {
-				return $this->_errorHandler->return_error('airship.soap_fault', $e->getMessage());
-	    	}
+		    return $this->_errorHandler->return_error('contact.unsubscribe_error');
 
 		}
 
@@ -371,26 +320,20 @@
 		public function unsubscribeContactGroup($contactid, $groupid)
 		{
 			
-			try {
+			// Check connection to Airship API
+			if($this->prepareInput('unsubscribe_contact_group') !== true)
+		    	return $this->response;
 
-				// Check connection to Airship API
-				if(!$this->checkWSDL($this->server.$this->wsdl)){
-				    return $this->_errorHandler->return_error('server.connection_error');
-				}
+    		$this->response = $this->soapCall('unsubscribeContactGroup', $this->username, $this->password, $contactid, $groupid);
 
-	    		$this->soap_client = new SoapClient($this->server . $this->wsdl, array("exceptions" => 1));
-	    		$this->response = $this->soap_client->unsubscribeContactGroup($this->username, $this->password, $contactid, $groupid);
+    		if(isset($this->reponse->error_number))
+				return $this->response;
 
-				if($this->response == 100){ // success
-					return $this->_successHandler->return_success($this->response);
-				}else{
-				    return $this->_errorHandler->return_error('contact.unsubscribe_group_error');
-				}
-
-	    	}catch(\SoapFault $e) {
-				return $this->_errorHandler->return_error('airship.soap_fault', $e->getMessage());
-	    	}
-
+			if($this->response == 100)// success
+				return $this->_successHandler->return_success($this->response);
+			
+			return $this->_errorHandler->return_error('contact.unsubscribe_group_error');
+			
 		}
 
 
@@ -409,26 +352,20 @@
 		public function getUDFValue($contactid, $udfid)
 		{
 			
-			try {
 
-				// Check connection to Airship API
-				if(!$this->checkWSDL($this->server.$this->wsdl)){
-				    return $this->_errorHandler->return_error('server.connection_error');
-				}
+			if($this->prepareInput('get_udf_value') !== true)
+		    	return $this->response;
 
-	    		$this->soap_client = new SoapClient($this->server . $this->wsdl, array("exceptions" => 1));
-	    		$this->response = $this->soap_client->getUDFValue($this->username, $this->password, $contactid, $udfid);
+    		$this->response = $this->soapCall('getUDFValue', $this->username, $this->password, $contactid, $udfid);
+    		if(isset($this->reponse->error_number))
+				return $this->response;
 
-				if(strlen($this->respons) >= 1){ // success
-					return $this->_successHandler->return_success($this->response);
-				}else{
-				    return $this->_errorHandler->return_error('contact.udf_empty');
-				}
+			if(strlen($this->respons) >= 1) // success
+				return $this->_successHandler->return_success($this->response);
 
-	    	}catch(\SoapFault $e) {
-				return $this->_errorHandler->return_error('airship.soap_fault', $e->getMessage());
-	    	}
+		    return $this->_errorHandler->return_error('contact.udf_empty');
 
+	    
 		}
 
 
@@ -449,26 +386,21 @@
 		public function setUDFValue($contactid, $udfid, $udfvalue, $sourceid)
 		{
 			
-			try {
 
-				// Check connection to Airship API
-				if(!$this->checkWSDL($this->server.$this->wsdl)){
-				    return $this->_errorHandler->return_error('server.connection_error');
-				}
+			// Check connection to Airship API
+			if($this->prepareInput('set_udf_value') !== true)
+		    	return $this->response;
 
-	    		$this->soap_client = new SoapClient($this->server . $this->wsdl, array("exceptions" => 1));
-	    		$this->response = $this->soap_client->setUDFValue($this->username, $this->password, $contactid, $udfid, $udfvalue, $sourceid);
+    		$this->response = $this->callSoap('setUDFValue'. $this->username, $this->password, $contactid, $udfid, $udfvalue, $sourceid);
 
-				if($this->response == 100){ // success
-					return $this->_successHandler->return_success($this->response);
-				}else{
-				    return $this->_errorHandler->return_error('contact.set_udf_error');
-				}
+    		if(isset($this->reponse->error_number))
+				return $this->response;
 
-	    	}catch(\SoapFault $e) {
-				return $this->_errorHandler->return_error('airship.soap_fault', $e->getMessage());
-	    	}
+			if($this->response == 100) // success
+				return $this->_successHandler->return_success($this->response);
 
+		    return $this->_errorHandler->return_error('contact.set_udf_error');
+			
 		}
 
 
@@ -486,24 +418,21 @@
 		public function getInteractionsInMonitoredGroup($groupid)
 		{
 			
-			try {
+			// Check connection to Airship API
+			if($this->prepareInput('get_interactions_in_monitored_group') !== true)
+		    	return $this->response;
 
-				// Check connection to Airship API
-				if(!$this->checkWSDL($this->server.$this->wsdl)){
-				    return $this->_errorHandler->return_error('server.connection_error');
-				}
 
-	    		$this->soap_client = new SoapClient($this->server . $this->wsdl, array("exceptions" => 1));
-	    		$this->response = $this->soap_client->getInteractionsInMonitoredGroup($this->username, $this->password, $groupid);
-				if(is_array($this->response) && !empty($this->response)){ // success
-					return $this->_successHandler->return_success($this->response);
-				}else{
-				    return $this->_errorHandler->return_error('contact.get_group_interactions_empty');
-				}
+    		$this->response = $this->soapCall('getInteractionsInMonitoredGroup', $this->username, $this->password, $groupid);
 
-	    	}catch(\SoapFault $e) {
-				return $this->_errorHandler->return_error('airship.soap_fault', $e->getMessage());
-	    	}
+    		if(isset($this->reponse->error_number))
+				return $this->response;
+
+			if(is_array($this->response) && !empty($this->response)) // success
+				return $this->_successHandler->return_success($this->response);
+
+		    return $this->_errorHandler->return_error('contact.get_group_interactions_empty');
+			
 
 		}
 
@@ -522,26 +451,22 @@
 
 		public function deleteInteractionsInMonitoredGroup($records)
 		{
+
+			// Check connection to Airship API
+			if($this->prepareInput('delete_interactions_in_monitored_group') !== true)
+		    	return $this->response;
+
+    		$this->response = $this->soapCall('deleteInteractionsInMonitoredGroup', $this->username, $this->password, $records);
+
+    		if(isset($this->reponse->error_number))
+				return $this->response;
+
+			if($this->response == 100) // success
+				return $this->_successHandler->return_success($this->response);
+
+		    return $this->_errorHandler->return_error('contact.delete_group_interactions_error');
 			
-			try {
-
-				// Check connection to Airship API
-				if(!$this->checkWSDL($this->server.$this->wsdl)){
-				    return $this->_errorHandler->return_error('server.connection_error');
-				}
-
-	    		$this->soap_client = new SoapClient($this->server . $this->wsdl, array("exceptions" => 1));
-	    		$this->response = $this->soap_client->deleteInteractionsInMonitoredGroup($this->username, $this->password, $records);
-				if($this->response == 100){ // success
-					return $this->_successHandler->return_success($this->response);
-				}else{
-				    return $this->_errorHandler->return_error('contact.delete_group_interactions_error');
-				}
 				
-	    	}catch(\SoapFault $e) {
-				return $this->_errorHandler->return_error('airship.soap_fault', $e->getMessage());
-	    	}
-
 		}
 
 
