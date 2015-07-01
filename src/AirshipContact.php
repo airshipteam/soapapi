@@ -7,6 +7,7 @@
 		public $contact   = array();          // Array
 		public $groups    = array();          // Array
 		public $udfs      = array();          // Array
+		private $contactWrite  = array();          // Array
 
 		public $wsdl;             // Alphanumeric
 
@@ -15,6 +16,7 @@
 				$this->wsdl = 'Contact.wsdl';
 				$this->_errorHandler = new ErrorHandler();
 				$this->_successHandler = new SuccessHandler();
+				$this->_validator = new Validator();
 			}
 
 
@@ -33,59 +35,55 @@
 
 		public function createContact()
 		{
-			$possibleFields = array(
-				'title',
-				'gender',
-				'firstname',
-				'lastname',
-				'buildingname',
-				'buildingnumstreet',
-				'locality',
-				'city',
-				'postcode',
-				'county',
-				'country',
-				'membershipnumber',
-				'membershiptype',
-				'mobilenumber',
-				'landnumber',
-				'email',
-				'dob',
-				'sourceid',
-				'allowsms',
-				'allowcall',
-				'allowemail',
-				'allowsnailmail',
-			);
+
+			$this->formatInput();
+			//Airship doesn't like empty properties to be sent
+			$this->contactWrite = $this->_validator->checkPossibleFields($this->contact, 'create_contact');
+			// Check connection to Airship API
+			if(!$this->checkWSDL($this->server.$this->wsdl))
+			    return $this->_errorHandler->return_error('server.connection_error');
+			
+			//Make The Call
+    		$this->response = $this->soapCall();
+
+			if($this->response >=1){ // success
+				return $this->_successHandler->return_success($this->response);
+		    
+		    return $this->_errorHandler->return_error('contact.create_error');
+				
+		}
+
+		/*
+		* 	Format Inputs
+		*
+		*	@description 		formats input array 
+		*		
+		*	@return BOOL 		BOOL
+		*/
+
+		protected function formatInput(){
 
 			//format mobile number
 			if(isset($this->contact['mobilenumber'])){
 				$this->contact['mobilenumber'] = $this->formatMobileNumber($this->contact['mobilenumber']);
 			}
 
-			//Airship doesn't like empty properties to be sent
-			$contact = array();
-			foreach ($possibleFields as $field) {
-				if (isset($this->contact[$field])) {
-					$contact[$field] = $this->contact[$field];
-				}
-			}
+		}
+
+		/*
+		* 	SOAP CALL
+		*
+		*	@description 		make the soap call
+		*		
+		*	@return BOOL 		BOOL
+		*/
+
+		protected function soapCall(){
 
 			try {
-
-				// Check connection to Airship API
-				if(!$this->checkWSDL($this->server.$this->wsdl)){
-				    return $this->_errorHandler->return_error('server.connection_error');
-				}
-
-	    		$this->soap_client = new SoapClient($this->server . $this->wsdl, array("exceptions" => 1));
-	    		$this->response = $this->soap_client->createContact($this->username, $this->password, $contact, $this->groups, $this->udfs);
-				if($this->response >=1){ // success
-					return $this->_successHandler->return_success($this->response);
-				}else { // error
-				    return $this->_errorHandler->return_error('contact.create_error');
-				}
-	    	}catch(\SoapFault $e) {
+				$this->soap_client = new SoapClient($this->server . $this->wsdl, array("exceptions" => 1));
+	    		return $this->soap_client->createContact($this->username, $this->password, $this->contactWrite, $this->groups, $this->udfs);
+    		}catch(\SoapFault $e) {
 				return $this->_errorHandler->return_error('airship.soap_fault', $e->getMessage());
 	    	}
 
