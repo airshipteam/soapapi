@@ -3,6 +3,9 @@
 
 	class ErrorHandler {
 
+		protected $return;
+		protected $error;
+
 		public function __construct()
 		{
 			$this->errors = include 'Errors.php'; // error message config
@@ -19,29 +22,78 @@
 		public function return_error($error_id, $soapfault = false)
 		{
 
-			$error = explode('.',$error_id);
-			$return = new \stdClass();
-			$return->status = false;
-			if(isset($this->errors[$error[0]][$error[1]])){
-				$return->error_number =  $this->errors[$error[0]][$error[1]]['error_num'];
-				$return->error_message = $this->errors[$error[0]][$error[1]]['error_msg'];
-				$return->error_customer = $this->errors[$error[0]][$error[1]]['error_customer'];
-				if($soapfault !== false){// return a SOAP fault if we have one.
-					$return->soap_fault = $soapfault;
-					if($this->createCustomerSOAPerror($soapfault)){ // check to see if soap fault is customer facing
-						$return->error_customer = $soapfault;
-					}else{
-						$return->error_customer = 'An error has occured';
-					}
+			$this->error = explode('.',$error_id);
+			$this->return = new \stdClass();
+			$this->return->status = false;
+			$this->setErrorVariables();
+			$this->setSoapError($soapfault);
+			return $this->return;
+
+		}
+
+		/**
+		 * SET SOAP ERROR
+		 *
+		 * @description SET error variables specific to code
+		 * @param  String
+		 */
+
+		protected function setSoapError($soapfault)
+		{
+			if($soapfault !== false){// return a SOAP fault if we have one.
+				$this->return->soap_fault = $soapfault;
+				if($this->createCustomerSOAPerror($soapfault)){ // check to see if soap fault is customer facing
+					$this->return->error_customer = $soapfault;
+				}else{
+					$this->return->error_customer = 'An error has occured';
 				}
-			}else{ // no error message, so return a default
-				$return->error_number =  $this->errors['default']['default']['error_num'];
-				$return->error_message = $this->errors['default']['default']['error_msg'];
-				$return->error_customer = $this->errors['default']['default']['error_customer'];
 			}
-			return $return;
+		}
 
+		/**
+		 * SET ERROR CODE VARIABLES
+		 *
+		 * @description SET error variables specific to code
+		 * @param  String
+		 */
 
+		protected function setErrorCodeVariables()
+		{
+			$this->return->error_number =  $this->errors[$this->error[0]][$this->error[1]]['error_num'];
+			$this->return->error_message = $this->errors[$this->error[0]][$this->error[1]]['error_msg'];
+			$this->return->error_customer = $this->errors[$this->error[0]][$ethis->rror[1]]['error_customer'];
+		}
+
+		/*
+		 * SET ERROR DEFAULT ERROR VARIABLES
+		 *
+		 * @description Use default error variables, incase we don't know what the error is.
+		 * @param  String
+		 */
+
+		protected function setDefaultErrorVariables(){
+			$this->return->error_number =  $this->errors['default']['default']['error_num'];
+			$this->return->error_message = $this->errors['default']['default']['error_msg'];
+			$this->return->error_customer = $this->errors['default']['default']['error_customer'];
+
+		}
+
+		/**
+		 * SET ERROR VARIABLES
+		 *
+		 * @description SET error variables
+		 * @param  String
+		 */
+
+		protected function setErrorVariables()
+		{
+			if(isset($this->errors[$this->error[0]][$this->error[1]])){
+				$this->setErrorCodeVariables();
+			}else{
+				$this->setDefaultErrorVariables();
+			}
+				
+			
 		}
 
 		/**

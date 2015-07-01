@@ -48,6 +48,12 @@ return array(
 			'error_num' => 2,
 			'error_msg' => 'An error has occured',
 			'error_customer' => 'An error has occured'
+			),
+
+		'empty_array' => array(
+			'error_num' => 105,
+			'error_msg' => 'your search did not return any results',
+			'error_customer' => 'An error has occured'
 			)
 
 	),
@@ -113,13 +119,7 @@ return array(
 			'error_msg' => 'your search did not return any results',
 			'error_customer' => 'An error has occured'
 			),
-
-		'lookup_udf_noresults' => array(
-			'error_num' => 105,
-			'error_msg' => 'your search did not return any results',
-			'error_customer' => 'An error has occured'
-			),
-
+		
 		'unsubscribe_error' => array(
 			'error_num' => 106,
 			'error_msg' => 'there was a problem unsubscribing your contacts',
@@ -154,14 +154,9 @@ return array(
 			'error_num' => 111,
 			'error_msg' => 'there was a problem deleting records',
 			'error_customer' => 'An error has occured'
-			)
-
-
+			),
 
 	)
-
-
-
 
 )
 

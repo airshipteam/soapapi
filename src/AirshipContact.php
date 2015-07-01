@@ -4,12 +4,16 @@
 
 	class AirshipContact extends Airship{
 		
-		public $contact   = array();          // Array
-		public $groups    = array();          // Array
-		public $udfs      = array();          // Array
-		private $contactWrite  = array();          // Array
-
-		public $wsdl;             // Alphanumeric
+		public  $contact   = array();          // Array
+		public  $groups    = array();          // Array
+		public  $udfs      = array();          // Array
+		public  $wsdl;             // Alphanumeric
+		protected $contactWrite  = array();          // Array
+		protected $_errorHandler;
+		protected $_successHandler;
+		protected $_validator;
+		protected $soap_client;
+		protected $response;
 
 		public function __construct()
 			{
@@ -32,10 +36,9 @@
 
 		protected function formatInput(){
 			//format mobile number
-			if(isset($this->contact['mobilenumber'])){
-				$this->contact['mobilenumber'] = $this->formatMobileNumber($this->contact['mobilenumber']);
-			}
-
+			isset($this->contact['mobilenumber']))
+				$this->formatMobileNumber();
+			
 		}
 
 		/*
@@ -90,11 +93,8 @@
 
 		protected function validateResponse($action)
 		{
-				return $this->_validator->validateResponse($this->response, $action.'_response');
-
-
+			return $this->_validator->validateResponse($this->response, $action.'_response');
 		}
-
 
 		/*
 		* 	CREATE
@@ -108,7 +108,6 @@
 		*	@return int 		mixed
 		*/
 		
-
 		public function createContact()
 		{
 
@@ -134,7 +133,6 @@
 		*	@return int 		mixed
 		*/
 		
-
 		public function updateContact()
 		{
 			
@@ -146,10 +144,6 @@
 
 		}
 
-		
-
-
-
 		/*
 		* 	GET
 		*
@@ -159,7 +153,6 @@
 		*
 		*	@return int 		mixed
 		*/
-		
 
 		public function getContact($contactid)
 		{
@@ -182,7 +175,6 @@
 		*
 		*	@return int 		mixed
 		*/
-		
 
 		public function getContactEmail($email)
 		{
@@ -192,7 +184,6 @@
 
     		$this->response = $this->soapCall('getContactEmail', $this->username, $this->password, $email);
 			return $this->validateResponse('get_contact_email');
-		
 			
 		}
 
@@ -211,16 +202,14 @@
 
 		public function lookupContactByLastname($unitid, $name)
 		{
-			
-
+		
 			// Check connection to Airship API
 			if($this->prepareInput('lookup_contact_lastname') !== true)
 		    	return $this->response;
 
     		$this->response = $this->soapCall('lookupContactByLastname', $this->username, $this->password, $unitid, $email);
-			return $this->validateResponse('lookup_contact_by_lastname');
+			return $this->validateResponse('lookup_contact_lastname');
 			
-
 		}
 
 		/*
@@ -243,14 +232,7 @@
 		    	return $this->response;
 
     		$this->response = $this->soapCall('lookupContactByUDF', $this->username, $this->password, $udfid, $udfvalue);
-
-    		if(isset($this->reponse->error_number))
-				return $this->response;
-
-			if(is_numeric($this->response) && $this->response >= 1) // success
-				return $this->_successHandler->return_success($this->response);
-
-		    return $this->_errorHandler->return_error('contact.lookup_udf_noresults');
+			return $this->validateResponse('lookup_contact_by_udf');
 
 		}
 
@@ -265,7 +247,6 @@
 		*	@return mixed 		response
 		*/
 		
-
 		public function unsubscribeContact($contacts)
 		{
 			
@@ -274,17 +255,9 @@
 		    	return $this->response;
 
     		$this->response = $this->soapCall('unsubscribeContact', $this->username, $this->password, $contacts);
-
-    		if(isset($this->reponse->error_number))
-				return $this->response;
-
-			if($this->response == 100) // success
-				return $this->_successHandler->return_success($this->response);
-
-		    return $this->_errorHandler->return_error('contact.unsubscribe_error');
+			return $this->validateResponse('unsubscribe_contact');
 
 		}
-
 
 		/*
 		* 	UNSUBSCRIBE CONTACT GROUP
@@ -297,7 +270,6 @@
 		*	@return mixed 		response
 		*/
 		
-
 		public function unsubscribeContactGroup($contactid, $groupid)
 		{
 			
@@ -306,17 +278,9 @@
 		    	return $this->response;
 
     		$this->response = $this->soapCall('unsubscribeContactGroup', $this->username, $this->password, $contactid, $groupid);
-
-    		if(isset($this->reponse->error_number))
-				return $this->response;
-
-			if($this->response == 100)// success
-				return $this->_successHandler->return_success($this->response);
-			
-			return $this->_errorHandler->return_error('contact.unsubscribe_group_error');
+			return $this->validateResponse('unsubscribe_contact_group');
 			
 		}
-
 
 		/*
 		* 	UNSUBSCRIBE UDF VALUE
@@ -328,27 +292,17 @@
 		*		
 		*	@return mixed 		response
 		*/
-		
 
 		public function getUDFValue($contactid, $udfid)
 		{
-			
 
 			if($this->prepareInput('get_udf_value') !== true)
 		    	return $this->response;
 
     		$this->response = $this->soapCall('getUDFValue', $this->username, $this->password, $contactid, $udfid);
-    		if(isset($this->reponse->error_number))
-				return $this->response;
+			return $this->validateResponse('get_udf_value');
 
-			if(strlen($this->respons) >= 1) // success
-				return $this->_successHandler->return_success($this->response);
-
-		    return $this->_errorHandler->return_error('contact.udf_empty');
-
-	    
 		}
-
 
 		/*
 		* 	SET UDF VALUE
@@ -363,7 +317,6 @@
 		*	@return mixed 		response
 		*/
 		
-
 		public function setUDFValue($contactid, $udfid, $udfvalue, $sourceid)
 		{
 			
@@ -373,17 +326,9 @@
 		    	return $this->response;
 
     		$this->response = $this->callSoap('setUDFValue'. $this->username, $this->password, $contactid, $udfid, $udfvalue, $sourceid);
+			return $this->validateResponse('set_udf_value');
 
-    		if(isset($this->reponse->error_number))
-				return $this->response;
-
-			if($this->response == 100) // success
-				return $this->_successHandler->return_success($this->response);
-
-		    return $this->_errorHandler->return_error('contact.set_udf_error');
-			
 		}
-
 
 		/*
 		* 	GET INTERACTIONS IN MONITORED GROUP
@@ -403,21 +348,12 @@
 			if($this->prepareInput('get_interactions_in_monitored_group') !== true)
 		    	return $this->response;
 
-
     		$this->response = $this->soapCall('getInteractionsInMonitoredGroup', $this->username, $this->password, $groupid);
 
-    		if(isset($this->reponse->error_number))
-				return $this->response;
-
-			if(is_array($this->response) && !empty($this->response)) // success
-				return $this->_successHandler->return_success($this->response);
-
 		    return $this->_errorHandler->return_error('contact.get_group_interactions_empty');
-			
+			return $this->validateResponse('get_interactions_in_monitored_group');
 
 		}
-
-
 
 		/*
 		* 	DELETE INTERACTIONS IN MONITORED GROUP
@@ -428,7 +364,6 @@
 		*		
 		*	@return mixed 		response
 		*/
-		
 
 		public function deleteInteractionsInMonitoredGroup($records)
 		{
@@ -438,18 +373,9 @@
 		    	return $this->response;
 
     		$this->response = $this->soapCall('deleteInteractionsInMonitoredGroup', $this->username, $this->password, $records);
-
-    		if(isset($this->reponse->error_number))
-				return $this->response;
-
-			if($this->response == 100) // success
-				return $this->_successHandler->return_success($this->response);
-
-		    return $this->_errorHandler->return_error('contact.delete_group_interactions_error');
+			return $this->validateResponse('delete_interactions_in_monitored_group');
 			
-				
 		}
-
 
 		/**
 		 * powertext validation for +44 and 0044 fails
@@ -460,17 +386,14 @@
 		protected function formatMobileNumber($number)
 		{
 			//convert from +44 to 44 to pass powertext validation
-	        if (substr($number,0,1) == '+') {
-	            return str_replace('+', '', $number);
-	            
-	        }
+	        if (substr($number,0,1) == '+') 
+	            $this->contact['mobilenumber'] = str_replace('+', '', $number)
+	        
 	        //convert from 00 to 44 to pass powertext validation
-	        if (substr($number,0,4) == '0044') {
-	            $this->mobilenumber = substr($number,2);
-	            return true;
-	        }
+	        if (substr($number,0,4) == '0044') 
+	            $this->contact['mobilenumber'] = substr($number,2);
 
-	        return $number;
+	        $this->contact['mobilenumber'] = $number;
 		}
 
 
