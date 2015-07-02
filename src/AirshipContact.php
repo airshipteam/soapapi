@@ -348,8 +348,6 @@
 		    	return $this->response;
 
     		$this->response = $this->soapCall('getInteractionsInMonitoredGroup', $this->username, $this->password, $groupid);
-
-		    return $this->_errorHandler->return_error('contact.get_group_interactions_empty');
 			return $this->validateResponse('get_interactions_in_monitored_group');
 
 		}
