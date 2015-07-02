@@ -380,17 +380,16 @@
 		 * @param  string $number mobile phone number
 		 * @return string        mobile phone number
 		 */
-		protected function formatMobileNumber($number)
+		protected function formatMobileNumber()
 		{
 			//convert from +44 to 44 to pass powertext validation
-	        if (substr($number,0,1) == '+') 
-	            $this->contact['mobilenumber'] = str_replace('+', '', $number);
+	        if (substr($this->contact['mobilenumber'],0,1) == '+') 
+	            $this->contact['mobilenumber'] = str_replace('+', '', $this->contact['mobilenumber']);
 	        
 	        //convert from 00 to 44 to pass powertext validation
-	        if (substr($number,0,4) == '0044') 
-	            $this->contact['mobilenumber'] = substr($number,2);
+	        if (substr($this->contact['mobilenumber'],0,4) == '0044') 
+	            $this->contact['mobilenumber'] = substr($this->contact['mobilenumber'],2);
 
-	        $this->contact['mobilenumber'] = $number;
 		}
 
 

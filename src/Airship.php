@@ -7,9 +7,18 @@
 		public $password;// Holder for Airship Password
 		public $response;  // Holder for Airship API query response
 
+		protected $_errorHandler;
+		protected $_successHandler;
+		protected $_validator;
+		protected $soap_client;
+
 		public function __construct()
 		{
 			ini_set("soap.wsdl_cache_enabled", "0");
+
+			$this->_errorHandler = new ErrorHandler();
+			$this->_successHandler = new SuccessHandler();
+			$this->_validator = new Validator();
 		}
 
 		/**
