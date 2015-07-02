@@ -61,7 +61,7 @@
 		{
 			$this->return->error_number =  $this->errors[$this->error[0]][$this->error[1]]['error_num'];
 			$this->return->error_message = $this->errors[$this->error[0]][$this->error[1]]['error_msg'];
-			$this->return->error_customer = $this->errors[$this->error[0]][$ethis->rror[1]]['error_customer'];
+			$this->return->error_customer = $this->errors[$this->error[0]][$this->error[1]]['error_customer'];
 		}
 
 		/*
