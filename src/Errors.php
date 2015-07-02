@@ -156,7 +156,27 @@ return array(
 			'error_customer' => 'An error has occured'
 			),
 
-	)
+	),
+
+	/*
+	|--------------------------------------------------------------------------
+	| Brodcast API
+	|--------------------------------------------------------------------------
+	|
+	| Errors that can be returned when trying to access the Airship Contact API
+ 	|
+	*/
+
+	'broadcast' => array(
+
+		'send_eflyer_error' => array(
+			'error_num' => 200,
+			'error_msg' => 'There was a problem sending your eflyer',
+			'error_customer' => 'An error has occured'
+			),
+
+		)
+
 
 )
 

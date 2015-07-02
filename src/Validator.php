@@ -3,6 +3,7 @@
 
 	class Validator extends Airship{ 
 
+
 		public function __construct()
 			{
 
@@ -11,163 +12,208 @@
 
 			}
 
-		/**
-		 * Validation for create contact response
-		 *
-		 * @var array
-		 */
-		protected $create_contact_response = array(
-									'rules' => array(
-										'numeric'=>true,
-										'min'=>1
-										), 
-									'error' => 'contact.create_error'
-								);
 
-		/**
-		 * Validation for update contact response
-		 *
-		 * @var array
-		 */
-		protected $update_contact_response = array(
-									'rules' => array(
-										'numeric'=>true,
-										'min'=>1
-										), 
-									'error' => 'contact.create_error'
-								);
+		/*
+		|--------------------------------------------------------------------------
+		| Contact responses
+		|--------------------------------------------------------------------------
+		|
+		| 
+	 	|
+		*/
 
-		/**
-		 * Validation for get contact response
-		 *
-		 * @var array
-		 */
-		protected $get_contact_response = array(
-									'rules' => array(
-										'required'=>'contactData'
-										), 
-									'error' => 'contact.get_error'
-								);
+				/**
+				 * Validation for create contact response
+				 *
+				 * @var array
+				 */
+				protected $create_contact_response = array(
+											'rules' => array(
+												'numeric'=>true,
+												'min'=>1
+												), 
+											'error' => 'contact.create_error'
+										);
 
-		/**
-		 * Validation for get contact email response
-		 *
-		 * @var array
-		 */
-		protected $get_contact_email_response = array(
-									'rules' => array(
-										'required'=>'contactData'
-										), 
-									'error' => 'contact.get_error'
-								);
+				/**
+				 * Validation for update contact response
+				 *
+				 * @var array
+				 */
+				protected $update_contact_response = array(
+											'rules' => array(
+												'numeric'=>true,
+												'min'=>1
+												), 
+											'error' => 'contact.create_error'
+										);
 
-		/**
-		 * Validation for get contact response
-		 *
-		 * @var array
-		 */
-		protected $lookup_contact_lastname_response = array(
-									'rules' => array(
-										'isarray'=>true,
-										'arraycontent'=>true
-										), 
-									'error' => 'contact.lookup_lastname_error'
-								);
+				/**
+				 * Validation for get contact response
+				 *
+				 * @var array
+				 */
+				protected $get_contact_response = array(
+											'rules' => array(
+												'required'=>'contactData'
+												), 
+											'error' => 'contact.get_error'
+										);
 
-		/**
-		 * Validation for get contact by UDF response
-		 *
-		 * @var array
-		 */
+				/**
+				 * Validation for get contact email response
+				 *
+				 * @var array
+				 */
+				protected $get_contact_email_response = array(
+											'rules' => array(
+												'required'=>'contactData'
+												), 
+											'error' => 'contact.get_error'
+										);
 
-		protected $lookup_contact_by_udf = array(
-									'rules' => array(
-										'numeric'=>true,
-										'min'=>1
-										), 
-									'error' => 'contact.lookup_udf_noresults'
-								);
+				/**
+				 * Validation for get contact response
+				 *
+				 * @var array
+				 */
+				protected $lookup_contact_lastname_response = array(
+											'rules' => array(
+												'isarray'=>true,
+												'arraycontent'=>true
+												), 
+											'error' => 'contact.lookup_lastname_error'
+										);
 
+				/**
+				 * Validation for get contact by UDF response
+				 *
+				 * @var array
+				 */
 
-		/**
-		 * Validation for unsubscribe contact response
-		 *
-		 * @var array
-		 */
-
-		protected $unsubscribe_contact = array(
-									'rules' => array(
-										'equalto'=>100
-										), 
-									'error' => 'contact.unsubscribe_error'
-								);
-
-		/**
-		 * Validation for unsubscribe contact group response
-		 *
-		 * @var array
-		 */
-
-		protected $unsubscribe_contact_group = array(
-									'rules' => array(
-										'equalto'=>100
-										), 
-									'error' => 'contact.unsubscribe_contact_group'
-								);
+				protected $lookup_contact_by_udf_response = array(
+											'rules' => array(
+												'numeric'=>true,
+												'min'=>1
+												), 
+											'error' => 'contact.lookup_udf_noresults'
+										);
 
 
-		/**
-		 * Validation for get UDF value response
-		 *
-		 * @var array
-		 */
+				/**
+				 * Validation for unsubscribe contact response
+				 *
+				 * @var array
+				 */
 
-		protected $get_udf_value = array(
-									'rules' => array(
-										'minlength'=>1
-										), 
-									'error' => 'contact.udf_empty'
-								);
+				protected $unsubscribe_contact_response = array(
+											'rules' => array(
+												'equalto'=>100
+												), 
+											'error' => 'contact.unsubscribe_error'
+										);
 
-		/**
-		 * Validation for set UDF value response
-		 *
-		 * @var array
-		 */
+				/**
+				 * Validation for unsubscribe contact group response
+				 *
+				 * @var array
+				 */
 
-		protected $set_udf_value = array(
-									'rules' => array(
-										'equalto'=>100
-										), 
-									'error' => 'contact.set_udf_error'
-								);
+				protected $unsubscribe_contact_group_response = array(
+											'rules' => array(
+												'equalto'=>100
+												), 
+											'error' => 'contact.unsubscribe_contact_group'
+										);
 
-		/**
-		 * Validation for get_interactions_in_monitored_group  response
-		 *
-		 * @var array
-		 */
 
-		protected $get_interactions_in_monitored_group = array(
-									'rules' => array(
-										'isarray'=>true,
-										'arraycontent'=>true
-										), 
-									'error' => 'contact.get_group_interactions_empty'
-								);
+				/**
+				 * Validation for get UDF value response
+				 *
+				 * @var array
+				 */
 
-		/**
-		 * Validation for get_interactions_in_monitored_group  response
-		 *
-		 * @var array
-		 */
+				protected $get_udf_value_response = array(
+											'rules' => array(
+												'minlength'=>1
+												), 
+											'error' => 'contact.udf_empty'
+										);
 
-		protected $delete_interactions_in_monitored_group = array(
-									'rules' => array(
-										'equalto'=>100
-										), 
-									'error' => 'contact.delete_group_interactions_error'
-								);
+				/**
+				 * Validation for set UDF value response
+				 *
+				 * @var array
+				 */
+
+				protected $set_udf_value_response = array(
+											'rules' => array(
+												'equalto'=>100
+												), 
+											'error' => 'contact.set_udf_error'
+										);
+
+				/**
+				 * Validation for get_interactions_in_monitored_group  response
+				 *
+				 * @var array
+				 */
+
+				protected $get_interactions_in_monitored_group_response = array(
+											'rules' => array(
+												'isarray'=>true,
+												'arraycontent'=>true
+												), 
+											'error' => 'contact.get_group_interactions_empty'
+										);
+
+				/**
+				 * Validation for get_interactions_in_monitored_group  response
+				 *
+				 * @var array
+				 */
+
+				protected $delete_interactions_in_monitored_group_response = array(
+											'rules' => array(
+												'equalto'=>100
+												), 
+											'error' => 'contact.delete_group_interactions_error'
+										);
+
+
+		/*
+		|--------------------------------------------------------------------------
+		| Broadcast responses
+		|--------------------------------------------------------------------------
+		|
+		| 
+	 	|
+		*/
+
+				/**
+				 * Validation for send new eflyer response
+				 *
+				 * @var array
+				 */
+				protected $send_new_eflyer = array(
+											'rules' => array(
+												'numeric'=>true,
+												'min'=>1
+												), 
+											'error' => 'broadcast.send_eflyer_error'
+										);
+
+				
+
+
+		/*
+		|--------------------------------------------------------------------------
+		| Contact field validation
+		|--------------------------------------------------------------------------
+		|
+		| 
+	 	|
+		*/
 
 		/**
 		 * Possible fields fore create contact

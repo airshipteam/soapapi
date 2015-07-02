@@ -1,7 +1,5 @@
 <?php namespace airshipwebservices\soapapi {
 	
-	use SoapClient;
-
 	class AirshipContact extends Airship{
 		
 		public  $contact   = array();          // Array
@@ -9,19 +7,11 @@
 		public  $udfs      = array();          // Array
 		public  $wsdl;             // Alphanumeric
 		protected $contactWrite  = array();          // Array
-		protected $_errorHandler;
-		protected $_successHandler;
-		protected $_validator;
-		protected $soap_client;
+		
 
 		public function __construct()
 			{
-
 				$this->wsdl = 'Contact.wsdl';
-				$this->_errorHandler = new ErrorHandler();
-				$this->_successHandler = new SuccessHandler();
-				$this->_validator = new Validator();
-
 			}
 
 
@@ -38,25 +28,6 @@
 			if(isset($this->contact['mobilenumber']))
 				$this->formatMobileNumber();
 			
-		}
-
-		/*
-		* 	SOAP CALL
-		*
-		*	@description 		make the soap call.
-		*		
-		*	@return BOOL 		BOOL
-		*/
-
-		protected function soapCall($call, $p1 = false, $p2 = false, $p3 = false, $p4 = false, $p5 = false, $p6 = false, $p7 = false, $p8 = false, $p9 = false, $p10 = false){
-		
-			try {
-				$this->soap_client = new SoapClient($this->server . $this->wsdl, array("exceptions" => 1));
-	    		return $this->soap_client->$call($p1,$p2,$p3,$p4,$p5,$p6);
-    		}catch(\SoapFault $e) {
-				return $this->_errorHandler->return_error('airship.soap_fault', $e->getMessage());
-	    	}
-
 		}
 
 		/*
