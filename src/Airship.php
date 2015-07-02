@@ -31,11 +31,11 @@
 		*	@return BOOL 		BOOL
 		*/
 
-		protected function soapCall($call, $p1 = false, $p2 = false, $p3 = false, $p4 = false, $p5 = false, $p6 = false, $p7 = false, $p8 = false, $p9 = false, $p10 = false){
+		protected function soapCall($call, $p1 = false, $p2 = false, $p3 = false, $p4 = false, $p5 = false, $p6 = false, $p7 = false, $p8 = false, $p9 = false, $p10 = false, $p11 = false, $p12 = false){
 		
 			try {
 				$this->soap_client = new SoapClient($this->server . $this->wsdl, array("exceptions" => 1));
-	    		return $this->soap_client->$call($p1,$p2,$p3,$p4,$p5,$p6);
+	    		return $this->soap_client->$call($p1,$p2,$p3,$p4,$p5,$p6,$p7,$p8,$p9,$p10,$p11,$p12);
     		}catch(\SoapFault $e) {
 				return $this->_errorHandler->return_error('airship.soap_fault', $e->getMessage());
 	    	}

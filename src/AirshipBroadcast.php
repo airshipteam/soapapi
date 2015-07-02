@@ -5,6 +5,7 @@
 		public  $htmlContent;          // string
 		public  $textContent;          // string
 		public  $fromAddress;          // string
+		public  $subject;          // string
 		public  $unitID;          // string
 		public  $recipients  = array();          // array
 		public  $wsdl;             // Alphanumeric
@@ -70,7 +71,7 @@
 			if($this->prepareInput('send_new_eflyer') !== true)
 		    	return $this->response;
 
-    		$this->response = $this->soapCall('sendNewEflyer', $this->username, $this->password, $this->unitID, $this->fromAddress, $this->recipients, $this->htmlContent, $this->textContent);
+    		$this->response = $this->soapCall('sendNewEflyer', $this->username, $this->password, $this->unitID, $this->fromAddress, $this->recipients, $this->subject, $this->htmlContent, $this->textContent);
 			return $this->validateResponse('send_new_eflyer');
 		    				
 		}
