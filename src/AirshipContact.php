@@ -387,7 +387,7 @@
 		{
 			//convert from +44 to 44 to pass powertext validation
 	        if (substr($number,0,1) == '+') 
-	            $this->contact['mobilenumber'] = str_replace('+', '', $number)
+	            $this->contact['mobilenumber'] = str_replace('+', '', $number);
 	        
 	        //convert from 00 to 44 to pass powertext validation
 	        if (substr($number,0,4) == '0044') 
