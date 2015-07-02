@@ -206,7 +206,7 @@
 			if($this->prepareInput('lookup_contact_lastname') !== true)
 		    	return $this->response;
 
-    		$this->response = $this->soapCall('lookupContactByLastname', $this->username, $this->password, $unitid, $email);
+    		$this->response = $this->soapCall('lookupContactByLastname', $this->username, $this->password, $unitid, $name);
 			return $this->validateResponse('lookup_contact_lastname');
 			
 		}
