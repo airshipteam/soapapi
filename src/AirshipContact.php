@@ -13,7 +13,6 @@
 		protected $_successHandler;
 		protected $_validator;
 		protected $soap_client;
-		protected $response;
 
 		public function __construct()
 			{

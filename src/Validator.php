@@ -262,7 +262,7 @@
 		public function validateResponse($response, $rules_type)
 		{
 
-			$this->response = $response();
+			$this->response = $response;
 			$this->rules = $this->$rules_type;
 
 			// check for an existing SOAP error
