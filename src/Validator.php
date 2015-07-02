@@ -195,7 +195,7 @@
 				 *
 				 * @var array
 				 */
-				protected $send_new_eflyer = array(
+				protected $send_new_eflyer_response = array(
 											'rules' => array(
 												'numeric'=>true,
 												'min'=>1
