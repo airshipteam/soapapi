@@ -36,7 +36,7 @@
 
 		protected function formatInput(){
 			//format mobile number
-			isset($this->contact['mobilenumber']))
+			if(isset($this->contact['mobilenumber']))
 				$this->formatMobileNumber();
 			
 		}
