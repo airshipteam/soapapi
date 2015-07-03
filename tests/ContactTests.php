@@ -1,64 +1,46 @@
 <?php
 use  airshipwebservices\soapapi\AirshipContact;
  
-class LoggerTest extends PHPUnit_Framework_TestCase {
+class ContactTests extends PHPUnit_Framework_TestCase {
 
 	public function __construct(){
 		parent::__construct();
 
-		$airship_server   = 'https://secure.powertext.co.uk/SOAP/V2/';
-		$airship_username = 'xxx';
-		$airship_password = 'xxx';
-		$airshipContact->authenticate($airship_server, $airship_username, $airship_password);
-
-
-
-		$this->mockLogger = $this->getMockBuilder( 'airshipwebservices\webmonitorclient\Logger' )
-						 ->setMethods( array('makeWebMonitorRequest') )
+		$this->mockSoap = $this->getMockBuilder( 'airshipwebservices\soapapi\AirshipContact' )
+						 ->setMethods( array('soapCall') )
 						 ->getMock();
 
-		$this->params = [
-			"body" => [
-				"status" => FALSE, 
-				"severity" => 50,
-				"msg" => "This is an Error"
-			],
-			"app_id" => 1
-		];
+		
 	}
  
-	public function testWriteLog(){
-		$fail_return_obj = new stdClass();
-		$fail_return_obj->code = 200;
-		$fail_return_obj->body = ['body'];
-		
-		$this->mockLogger->expects( $this->once() )
-				 		 ->method( 'makeWebMonitorRequest' )
-				 		 ->will( $this->returnValue($fail_return_obj) );
+	public function testCreateContact(){
 
-		$this->assertEquals( True, $this->mockLogger->writeLog( $this->params ) );
+		$soap_return_obj = 123456;
+		
+		$this->mockSoap->expects( $this->once() )
+				 		 ->method( 'soapCall' )
+				 		 ->will( $this->returnValue($soap_return_obj) );
+
+		$this->mockSoap->contact['title']           = 'Mr';
+		$this->mockSoap->contact['gender']          = 'M';
+		$this->mockSoap->contact['firstname']       = 'Peter';
+		$this->mockSoap->contact['lastname']        = 'Tecks';
+		$this->mockSoap->contact['email']           = 'peter@tecks.com';
+		$this->mockSoap->contact['mobilenumber']    = '07706000000';
+		$this->mockSoap->contact['allowsms']        = 'Y';
+		$this->mockSoap->contact['allowemail']      = 'Y';
+
+		$this->mockSoap->groups[]                   = 1234;
+		$this->mockSoap->udfs[]                     = array("udfnameid"=>79, 
+		                                                    "data"=>"Test Co", 
+		                                                    "type"=>"Text");
+
+		$return_obj = new stdClass();
+		$return_obj->status = true;
+		$return_obj->response = 123456;
+
+		$this->assertEquals( $return_obj, $this->mockSoap->createContact() );
 	} 
 
-	public function testWriteLogFailCode(){
-		$fail_return_obj = new stdClass();
-		$fail_return_obj->code = 500;
-		$fail_return_obj->body = ['body'];
-
-		$this->mockLogger->expects( $this->once() )
-				 		 ->method( 'makeWebMonitorRequest' )
-				 		 ->will( $this->returnValue($fail_return_obj) );
-
-		$this->assertEquals( False, $this->mockLogger->writeLog( $this->params ) );
-	}
-
-	public function testWriteLogFailBody(){
-		$fail_return_obj = new stdClass();
-		$fail_return_obj->code = 200;
-
-		$this->mockLogger->expects( $this->once() )
-				 		 ->method( 'makeWebMonitorRequest' )
-				 		 ->will( $this->returnValue($fail_return_obj) );
-
-		$this->assertEquals( False, $this->mockLogger->writeLog( $this->params ) );
-	}
+	
 }
