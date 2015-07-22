@@ -296,7 +296,7 @@
 			if($this->prepareInput('set_udf_value') !== true)
 		    	return $this->response;
 
-    		$this->response = $this->callSoap('setUDFValue'. $this->username, $this->password, $contactid, $udfid, $udfvalue, $sourceid);
+    		$this->response = $this->soapCall('setUDFValue'. $this->username, $this->password, $contactid, $udfid, $udfvalue, $sourceid);
 			return $this->validateResponse('set_udf_value');
 
 		}

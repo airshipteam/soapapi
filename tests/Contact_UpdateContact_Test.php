@@ -32,19 +32,9 @@ class Contact_UpdateContact_Test extends PHPUnit_Framework_TestCase {
 
 				$this->mockSoap = $this->getMockBuilder( 'airshipwebservices\soapapi\AirshipContact' )
 								 ->setMethods( array('soapCall', 
-													'prepareInput'))
+													'prepareInput',
+													'validateResponse'))
 								 ->getMock();
-
-		        // Soap is going to return our contact ID of 123456
-				$soap_return_obj = 100;
-				$this->mockSoap->expects( $this->once() )
-						 		 ->method( 'soapCall' )
-						 		 ->will( $this->returnValue($soap_return_obj) );
-
-				// We'll pretend that we've got a valid soap connection
-				$this->mockSoap->expects( $this->once() )
-						 		 ->method( 'prepareInput' )
-						 		 ->will( $this->returnValue(true) );
 
 				// Build our contact and assign the groups and UDFs
 				$this->mockSoap->contact['contactid']       = 123456;
@@ -62,10 +52,28 @@ class Contact_UpdateContact_Test extends PHPUnit_Framework_TestCase {
 				                                                    "data"=>"Test Co", 
 				                                                    "type"=>"Text");
 
+		        // Soap is going to return our contact ID of 123456
+				$soap_return_obj = 100;
+				$this->mockSoap->expects( $this->once() )
+						 		 ->method( 'soapCall' )
+						 		 ->will( $this->returnValue($soap_return_obj) );
+
+				// We'll pretend that we've got a valid soap connection
+				$this->mockSoap->expects( $this->once() )
+						 		 ->method( 'prepareInput' )
+						 		 ->will( $this->returnValue(true) );
+
+				
+
 				// We expect to get a successful response with the contact id
 				$return_obj = new stdClass();
 				$return_obj->status = true;
 				$return_obj->response = 100;
+
+				// Simulate validation and format the response  
+				$this->mockSoap->expects( $this->once() )
+						 		 ->method( 'validateResponse' )
+						 		 ->will( $this->returnValue($return_obj) );
 
 				// Do the test
 				$this->assertEquals( $return_obj, $this->mockSoap->updateContact() );
@@ -84,8 +92,26 @@ class Contact_UpdateContact_Test extends PHPUnit_Framework_TestCase {
 
 				$this->mockSoap = $this->getMockBuilder( 'airshipwebservices\soapapi\AirshipContact' )
 								 ->setMethods( array('soapCall', 
-													'prepareInput'))
+													'prepareInput',
+													'validateResponse'))
 								 ->getMock();
+
+
+				// Build our contact and assign the groups and UDFs
+				$this->mockSoap->contact['contactid']       = 123456;
+				$this->mockSoap->contact['title']           = 'Mr';
+				$this->mockSoap->contact['gender']          = 'M';
+				$this->mockSoap->contact['firstname']       = 'Peter';
+				$this->mockSoap->contact['lastname']        = 'Tecks';
+				$this->mockSoap->contact['email']           = 'peter@tecks.com';
+				$this->mockSoap->contact['mobilenumber']    = '07706000000';
+				$this->mockSoap->contact['allowsms']        = 'Y';
+				$this->mockSoap->contact['allowemail']      = 'Y';
+
+				$this->mockSoap->groups[]                   = 1234;
+				$this->mockSoap->udfs[]                     = array("udfnameid"=>79, 
+				                                                    "data"=>"Test Co", 
+				                                                    "type"=>"Text");
 
 		        // Soap is going to return an error as the contact ID we are passing in doesn't exist
 				$soap_return_obj = new stdClass();
@@ -104,21 +130,7 @@ class Contact_UpdateContact_Test extends PHPUnit_Framework_TestCase {
 						 		 ->method( 'prepareInput' )
 						 		 ->will( $this->returnValue(true) );
 
-				// Build our contact and assign the groups and UDFs
-				$this->mockSoap->contact['contactid']       = 123456;
-				$this->mockSoap->contact['title']           = 'Mr';
-				$this->mockSoap->contact['gender']          = 'M';
-				$this->mockSoap->contact['firstname']       = 'Peter';
-				$this->mockSoap->contact['lastname']        = 'Tecks';
-				$this->mockSoap->contact['email']           = 'peter@tecks.com';
-				$this->mockSoap->contact['mobilenumber']    = '07706000000';
-				$this->mockSoap->contact['allowsms']        = 'Y';
-				$this->mockSoap->contact['allowemail']      = 'Y';
-
-				$this->mockSoap->groups[]                   = 1234;
-				$this->mockSoap->udfs[]                     = array("udfnameid"=>79, 
-				                                                    "data"=>"Test Co", 
-				                                                    "type"=>"Text");
+				
 
 				// We expect to get an unsuccessful response as contact id doesn't exist
 				$return_obj = new stdClass();
@@ -127,6 +139,11 @@ class Contact_UpdateContact_Test extends PHPUnit_Framework_TestCase {
 				$return_obj->error_message = 'SOAP Fault';
 				$return_obj->error_customer = 'An error has occured';
 				$return_obj->soap_fault = 'ContactID: 111588955 is invalid';
+
+				// Simulate validation and format the response  
+				$this->mockSoap->expects( $this->once() )
+						 		 ->method( 'validateResponse' )
+						 		 ->will( $this->returnValue($return_obj) );
 
 				// Do the test
 				$this->assertEquals( $return_obj, $this->mockSoap->updateContact() );
