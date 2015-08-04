@@ -160,7 +160,7 @@ return array(
 
 	/*
 	|--------------------------------------------------------------------------
-	| Brodcast API
+	| Broadcast API
 	|--------------------------------------------------------------------------
 	|
 	| Errors that can be returned when trying to access the Airship Contact API
@@ -173,9 +173,8 @@ return array(
 			'error_num' => 200,
 			'error_msg' => 'There was a problem sending your eflyer',
 			'error_customer' => 'An error has occured'
-			),
+			)
 
-		)
 
 	),
 
@@ -194,12 +193,11 @@ return array(
 			'error_num' => 300,
 			'error_msg' => 'There was a problem getting your request',
 			'error_customer' => 'An error has occured'
-			),
-
-		)
-
+			)
+		
 	),
 
+);
 
 
 ?>
