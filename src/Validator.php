@@ -203,6 +203,29 @@
 											'error' => 'broadcast.send_eflyer_error'
 										);
 
+		/*
+		|--------------------------------------------------------------------------
+		| Statistics responses
+		|--------------------------------------------------------------------------
+		|
+		| 
+	 	|
+		*/
+
+				/**
+				 * Validation for send new eflyer response
+				 *
+				 * @var array
+				 */
+				protected $unit_list_response = array(
+											'rules' => array(
+												'isarray'=>true,
+												'arraycontent'=>true
+												), 
+											'error' => 'statistics.unit_list'
+										);
+
+
 				
 
 

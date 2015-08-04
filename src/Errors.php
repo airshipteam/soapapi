@@ -177,7 +177,29 @@ return array(
 
 		)
 
+	),
 
-)
+	/*
+	|--------------------------------------------------------------------------
+	| Statistics API
+	|--------------------------------------------------------------------------
+	|
+	| Errors that can be returned when trying to access the Airship Contact API
+ 	|
+	*/
+
+	'broadcast' => array(
+
+		'unit_list' => array(
+			'error_num' => 300,
+			'error_msg' => 'There was a problem getting your request',
+			'error_customer' => 'An error has occured'
+			),
+
+		)
+
+	),
+
+
 
 ?>
