@@ -2,7 +2,7 @@
 	
 	class AirshipWifiInteraction extends Airship{
 
-		public $wifiinteraction_hotspot_name     = 'dsafdas';
+		public $wifiinteraction_hotspot_name     = false;
 		public $wifiinteraction_mac_name         = false;
 		public $wifiinteraction_device_mime_type = false;
 		public $wifiinteraction_interaction_type = false;

@@ -169,3 +169,71 @@ $result = $airshipContact->getInteractionsInMonitoredGroup($groupid);
 ```
 $result = $airshipContact->deleteInteractionsInMonitoredGroup($records);
 ```
+
+###Broadcast API:
+
+Set your airship keys and server
+
+```
+$airshipBroadcast = new AirshipBroadcast();
+$airshipBroadcast->authenticate($airship_server, $airship_username, $airship_password);
+```
+
+**Send New Eflyer**
+
+```
+$airshipBroadcast->unitID = 1234;
+$airshipBroadcast->fromAddress = 'peter@tecks.com';
+$airshipBroadcast->recipients = 'phileas_fogg@airship.co.uk';
+$airshipBroadcast->subject = 'pie in the sky';
+$airshipBroadcast->htmlContent '<html><body></body></html>';
+$airshipBroadcast->textContent 'text';
+$result = $airshipBroadcast->sendNewEflyer();
+```
+
+###Statistics API:
+
+Set your airship keys and server
+
+```
+$airshipStatistics = new AirshipStatistics();
+$airshipStatistics->authenticate($airship_server, $airship_username, $airship_password);
+```
+
+**Unit List**
+
+```
+$result = $airshipStatistics->unitList();
+```
+
+###WIFI Interaction API:
+
+Set your airship keys and server
+
+```
+$airshipWifi = new AirshipWifiInteraction();
+$airshipWifi->authenticate($airship_server, $airship_username, $airship_password);
+```
+
+**Create WIFI Interaction**
+
+```
+$airshipWifi->wifiinteraction_hotspot_name     = 'Airship Basket';
+$airshipWifi->wifiinteraction_mac_name         = '00:A0:C9:14:C8:29';
+$airshipWifi->wifiinteraction_device_mime_type = 'airshipapp';
+$airshipWifi->wifiinteraction_interaction_type = 'detected';
+$airshipWifi->wifiinteraction_contact_id       = 1234;
+$result = $airshipWifi->createWifiInteraction();
+```
+
+**Create WIFI Interaction History**
+
+```
+$airshipWifi->wifiinteraction_hotspot_name     = 'Airship Basket';
+$airshipWifi->wifiinteraction_mac_name         = '00:A0:C9:14:C8:29';
+$airshipWifi->wifiinteraction_device_mime_type = 'airshipapp';
+$airshipWifi->wifiinteraction_interaction_type = 'detected';
+$airshipWifi->wifiinteraction_contact_id       = 1234;
+$airshipWifi->wifiinteraction_created_datetime = '2015-04-01 19:40:41';
+$result = $airshipWifi->createWifiInteractionHistory();
+
