@@ -2,7 +2,7 @@
 	
 	class AirshipWifiInteraction extends Airship{
 
-		public $wifiinteraction_hotspot_name     = false;
+		public $wifiinteraction_hotspot_name     = 'dsafdas';
 		public $wifiinteraction_mac_name         = false;
 		public $wifiinteraction_device_mime_type = false;
 		public $wifiinteraction_interaction_type = false;
@@ -16,7 +16,6 @@
 				parent::__construct();
 				$this->wsdl = 'WifiInteraction.wsdl';
 			}
-
 
 
 		/*
@@ -75,11 +74,11 @@
     		$this->response = $this->soapCall('createWifiInteraction', 
 					$this->username, 
 					$this->password, 
-					$wifiinteraction_hotspot_name,
-					$wifiinteraction_mac_name,
-					$wifiinteraction_device_mime_type,
-					$wifiinteraction_interaction_type,
-					$wifiinteraction_contact_id
+					$this->wifiinteraction_hotspot_name,
+					$this->wifiinteraction_mac_name,
+					$this->wifiinteraction_device_mime_type,
+					$this->wifiinteraction_interaction_type,
+					$this->wifiinteraction_contact_id
     			);
 
 
@@ -113,12 +112,12 @@
     		$this->response = $this->soapCall('createWifiInteractionHistory', 
 					$this->username, 
 					$this->password, 
-					$wifiinteraction_hotspot_name,
-					$wifiinteraction_mac_name,
-					$wifiinteraction_device_mime_type,
-					$wifiinteraction_interaction_type,
-					$wifiinteraction_contact_id,
-					$wifiinteraction_created_datetime
+					$this->wifiinteraction_hotspot_name,
+					$this->wifiinteraction_mac_name,
+					$this->wifiinteraction_device_mime_type,
+					$this->wifiinteraction_interaction_type,
+					$this->wifiinteraction_contact_id,
+					$this->wifiinteraction_created_datetime
     			);
 
 			return $this->validateResponse('create_wifi_interaction_history');

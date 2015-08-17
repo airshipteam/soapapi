@@ -1,4 +1,5 @@
 <?php
+
 use  airshipwebservices\soapapi\AirshipWifiInteraction;
 
 /*
@@ -10,7 +11,6 @@ class WIFI_CreateWifiInteraction_Test extends PHPUnit_Framework_TestCase {
 	public function __construct(){
 		parent::__construct();
 	}
-
 
 	/*
 	|--------------------------------------------------------------------------
@@ -35,7 +35,8 @@ class WIFI_CreateWifiInteraction_Test extends PHPUnit_Framework_TestCase {
 								 ->setMethods( array('soapCall', 
 													'prepareInput',
 													'validateResponse'))
-								 ->getMock();
+								 ->getMock('airshipwebservices\soapapi\AirshipWifiInteraction');
+
 
 				// Build our contact and assign the groups and UDFs
 				$this->mockSoap->wifiinteraction_hotspot_name     = 'Airship Web Studio';
@@ -44,8 +45,10 @@ class WIFI_CreateWifiInteraction_Test extends PHPUnit_Framework_TestCase {
 				$this->mockSoap->wifiinteraction_interaction_type = 'detected';
 				$this->mockSoap->wifiinteraction_contact_id       = 123456;
 
+
 		        // Soap is going to return our contact ID of 123456
 				$soap_return_obj = 1234;
+
 				$this->mockSoap->expects( $this->once() )
 						 		 ->method( 'soapCall' )
 						 		 ->will( $this->returnValue($soap_return_obj) );
@@ -55,12 +58,12 @@ class WIFI_CreateWifiInteraction_Test extends PHPUnit_Framework_TestCase {
 						 		 ->method( 'prepareInput' )
 						 		 ->will( $this->returnValue(true) );
 
-				
 
 				// We expect to get a successful response with the contact id
 				$return_obj           = new stdClass();
 				$return_obj->status   = true;
-				$return_obj->response = 1234;
+				$return_obj->response = $soap_return_obj;
+
 
 				// Simulate validation and format the response  
 				$this->mockSoap->expects( $this->once() )
@@ -72,6 +75,9 @@ class WIFI_CreateWifiInteraction_Test extends PHPUnit_Framework_TestCase {
 
 			} 
 
+			
+
+
 			/*
 			* 	TEST UPDATE CONTACT CONTACT DOESN'T EXIST
 			*
@@ -80,7 +86,7 @@ class WIFI_CreateWifiInteraction_Test extends PHPUnit_Framework_TestCase {
 			*	@return BOOL 		BOOL
 			*/
 		 
-			/*public function testCreateWifiInteractionHistory(){
+			public function testCreateWifiInteractionHistory(){
 
 				$this->mockSoap = $this->getMockBuilder( 'airshipwebservices\soapapi\AirshipWifiInteraction' )
 								 ->setMethods( array('soapCall', 
@@ -122,7 +128,7 @@ class WIFI_CreateWifiInteraction_Test extends PHPUnit_Framework_TestCase {
 				// Do the test
 				$this->assertEquals( $return_obj, $this->mockSoap->createWifiInteractionHistory() );
 
-			} */
+			} 
 
 	
 }
