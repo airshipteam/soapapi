@@ -225,6 +225,41 @@
 											'error' => 'statistics.unit_list'
 										);
 
+		/*
+		|--------------------------------------------------------------------------
+		| WIFI Interaction responses
+		|--------------------------------------------------------------------------
+		|
+		| 
+	 	|
+		*/
+
+				/**
+				 * Validation for create wifi interaction response
+				 *
+				 * @var array
+				 */
+				protected $create_wifi_interaction_response = array(
+											'rules' => array(
+												'numeric'=>true,
+												'min'=>1
+												), 
+											'error' => 'wifi.create_wifi_interaction'
+										);
+
+				/**
+				 * Validation for create wifi interaction histroy response
+				 *
+				 * @var array
+				 */
+				protected $create_wifi_interaction_history_response = array(
+											'rules' => array(
+												'numeric'=>true,
+												'min'=>1
+												), 
+											'error' => 'wifi.create_wifi_interaction_history'
+										);
+
 
 				
 

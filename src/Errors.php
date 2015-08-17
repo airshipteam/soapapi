@@ -197,6 +197,31 @@ return array(
 		
 	),
 
+	/*
+	|--------------------------------------------------------------------------
+	| WIFI Interaction API
+	|--------------------------------------------------------------------------
+	|
+	| Errors that can be returned when trying to access the Airship Contact API
+ 	|
+	*/
+
+	'wifi' => array(
+
+		'create_wifi_interaction' => array(
+			'error_num' => 400,
+			'error_msg' => 'There was a problem creating this interaction',
+			'error_customer' => 'An error has occured'
+			),
+
+		'create_wifi_interaction_history' => array(
+			'error_num' => 401,
+			'error_msg' => 'There was a problem creating this interaction',
+			'error_customer' => 'An error has occured'
+			)
+		
+	),
+
 );
 
 
