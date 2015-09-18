@@ -204,6 +204,25 @@
 			'error' => 'bookings.get_booking_notes_error'
 		);	
 
+		/*
+		|--------------------------------------------------------------------------
+		| Feedback responses
+		|--------------------------------------------------------------------------
+		|
+		| 
+	 	|
+		*/
+		/**
+		 * Validation for search_feedback response
+		 *
+		 * @var array
+		 */
+		protected $search_feedback_response = array(
+			'rules' => array(
+			), 
+			'error' => 'feedback.search_feedback_error'
+		);
+
 
 		/*
 		|--------------------------------------------------------------------------
@@ -502,7 +521,7 @@
 		 * @return BOOL
 		 */
 		protected function validateIsArray($rule){
-
+			
 			if(!is_array($this->response) ){
 				$this->setError();
 				return false;

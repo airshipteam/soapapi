@@ -1,6 +1,6 @@
 <?php namespace airshipwebservices\soapapi;
 	
-class AirshipBooking extends Airship{
+class AirshipFeedback extends Airship{
 
 	/*************
 	* 
@@ -13,14 +13,14 @@ class AirshipBooking extends Airship{
 	 *
 	 * @var string
 	 */ 		
-	protected $wsdl = 'Bookings.wsdl';	
+	protected $wsdl = 'Feedback.wsdl';
 
 	/**
 	 * The parameter names for the getBookings call
 	 *
 	 * @var array
 	 */ 		
-	protected $booking_param_names = array(
+	protected $feedback_param_names = array(
 		'EqualsArgs',
 		'GreaterThanArgs',
 		'LessThanArgs',
@@ -44,7 +44,6 @@ class AirshipBooking extends Airship{
 		parent::__construct();
 	}
 
-
 	/**
 	 * CHECK WSDL
 	 * Checks we have a valid soap connection
@@ -59,77 +58,65 @@ class AirshipBooking extends Airship{
 		 	);
 		
 		return array( 'success' => true, 'message' => false );
-	}	
+	}
 
 	/**
 	 * VALIDATE RESPONSE
 	 * Validate response of return from SOAP
-	 *
-	 * @return 
+	 *	
+	 * @return mixed
 	 */
 	protected function validateResponse( $action ){
 		return $this->_validator->validateResponse( $this->response, $action.'_response' );
 	}
 
 	/**
-	 * GET BOOKINGS
-	 * Will get bookings dependant on parameters passed	
-	 *
-	 * @param array $params
-	 * @return null
-	 */		
-	public function getBookings( $params ){
+	* GET FEEDBACK
+	* Will get feedback for a contact id
+	*
+	* @param int $feedback_id
+	* @param array $options
+	* @return mixed
+	*/		
+	public function getFeedback( $params ){
 		if ( count($params) === 0 )
 			return array(
 		 			'success' => false,
-		 			'message' => $this->_errorHandler->return_error('booking.no_params_set')->error_message
+		 			'message' => $this->_errorHandler->return_error('feedback.no_params_set')->error_message
 		 	);
 
 		$connection = $this->checkConnection();
 		if($connection['success'] !== true)
 	    	return $connection['message'];	    
 	    
-	    $booking_params = array();
+	    $feedback_params = array();
 
-	    foreach( $this->booking_param_names as $param_name ){
-	    	$bookings_params[$param_name] = array();
+	    foreach( $this->feedback_param_names as $param_name ){
+	    	$feedback_params[$param_name] = array();
 	   		if( isset($params[$param_name])  && count($params[$param_name]) > 0)
 				foreach( $params[$param_name] as $field => $value ){
-					$bookings_params[$param_name][$field] = $value;
+					$feedback_params[$param_name][$field] = $value;
 				}	
 	    }		
 		
 		//Make The Call
-		$this->response = $this->soapCall(	'getBookings', 
+		$this->response = $this->soapCall(	'searchFeedback', 
 											$this->username, 
 											$this->password,
-											$bookings_params['EqualsArgs'],
-											$bookings_params['GreaterThanArgs'],
-											$bookings_params['LessThanArgs'],
-											$bookings_params['InSQLArgs'],
-											$bookings_params['myResultOptions']
+											$feedback_params['EqualsArgs'],
+											$feedback_params['GreaterThanArgs'],
+											$feedback_params['LessThanArgs'],
+											$feedback_params['InSQLArgs'],
+											$feedback_params['myResultOptions']
 										);
 		
-		return $this->validateResponse( 'get_bookings' );	    				
-	}
-
-	/**
-	* GET BOOKING NOTES
-	* Will get booking notes for a given booking id
-	*
-	* @param int $booking_id
-	* @return null
-	*/		
-	public function getBookingNotes( $booking_id ){		
-		$connection = $this->checkConnection();
-		if($connection['success'] !== true)
-	    	return $connection['message'];
-
-	    //Make The Call
-		$this->response = $this->soapCall( 'getBookingNotes', $this->username, $this->password, $booking_id );
-		return $this->validateResponse( 'get_booking_notes' ); 
+		return $this->validateResponse( 'search_feedback' );	
 	}
 }
+
+
+
+
 
 
 
