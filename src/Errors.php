@@ -222,6 +222,22 @@ return array(
 		
 	),
 
+	/*
+	|--------------------------------------------------------------------------
+	| Booking API
+	|--------------------------------------------------------------------------
+	|
+	| Errors that can be returned when trying to access the Booking API
+ 	|
+	*/
+
+	'booking' => array(
+		'no_params_set' => array(
+			'error_num' => 500,
+			'error_msg' => 'No search params were sent to booking request. Stopped to prevent all bookings being returned',
+			'error_customer' => 'An error has occured'
+		)
+	)
 );
 
 
