@@ -272,6 +272,12 @@ $booking_id = 614708;
 $booking_notes = $_airship_booking->getBookingNotes( $booking_id );
 ```
 
+**Get Booking Types**
+
+```
+$booking_types = $_airship_booking->getBookingTypes();
+```
+
 ###Feedback API:
 
 ```
@@ -299,3 +305,4 @@ $params['myResultOptions'] = array(
 );
 $result = $airshipBooking->getBookings( $params );
 ```
+
