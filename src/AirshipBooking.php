@@ -129,6 +129,21 @@ class AirshipBooking extends Airship{
 		$this->response = $this->soapCall( 'getBookingNotes', $this->username, $this->password, $booking_id );
 		return $this->validateResponse( 'get_booking_notes' ); 
 	}
+
+	/**
+	* GET BOOKING TYPES
+	* Will get booking types for a given account
+	*	
+	* @return null
+	*/		
+	public function getBookingTypes(){
+		$connection = $this->checkConnection();
+		if($connection['success'] !== true)
+	    	return $connection['message'];
+
+	    $this->response = $this->soapCall( 'getBookingTypes', $this->username, $this->password );
+	    return $this->validateResponse( 'get_booking_types' );
+	}	
 }
 
 

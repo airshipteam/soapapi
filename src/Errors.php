@@ -247,6 +247,11 @@ return array(
 			'error_num' => 520,
 			'error_msg' => 'There was an error getting booking notes',
 			'error_customer' => 'An error has occured'
+		),
+		'get_booking_types_error' => array(
+			'error_num' => 530,
+			'error_msg' => 'There was an error getting booking types',
+			'error_customer' => 'An error has occured'
 		)
 	),
 

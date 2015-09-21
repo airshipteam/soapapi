@@ -202,6 +202,18 @@
 				'isarray' => true,
 			),
 			'error' => 'bookings.get_booking_notes_error'
+		);
+
+		/**
+		 * Validation for getBookingTypes response
+		 *
+		 * @var array
+		 */
+		protected $get_booking_types_response = array(
+			'rules' => array(
+				'isarray' => true,
+			),
+			'error' => 'bookings.get_booking_types_error'
 		);	
 
 		/*
