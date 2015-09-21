@@ -236,4 +236,66 @@ $airshipWifi->wifiinteraction_interaction_type = 'detected';
 $airshipWifi->wifiinteraction_contact_id       = 1234;
 $airshipWifi->wifiinteraction_created_datetime = '2015-04-01 19:40:41';
 $result = $airshipWifi->createWifiInteractionHistory();
+```
 
+###Bookings API:
+
+```
+Set your airship keys and server
+
+$airshipBooking = new AirshipBooking();
+$airshipBooking->authenticate($airship_server, $airship_username, $airship_password);
+```
+
+**Get Bookings**
+
+```
+$params = array();
+$params['EqualsArgs']['booking_contact_id'] = $contact_id; // exact match args
+
+$params['InSQLArgs'] = array();
+$params['InSQLArgs']['booking_unit_id'] = '121';
+
+$params['GreaterThanArgs'] = array();
+$params['LessThanArgs'] = array();
+$params['myResultOptions'] = array(
+	'result_limit' => '2',
+	'result_offset' => '0'
+);
+$result = $airshipBooking->getBookings( $params );
+```
+
+**Get Booking Notes**
+
+```
+$booking_id = 614708;
+$booking_notes = $_airship_booking->getBookingNotes( $booking_id );
+```
+
+###Feedback API:
+
+```
+Set your airship keys and server
+
+$airshipFeedback = new AirshipFeedback();
+$airshipFeedback->authenticate($airship_server, $airship_username, $airship_password);
+```
+
+**Get Feedback**
+
+```
+$params = array();
+$params['EqualsArgs'] = array();
+$params['EqualsArgs']['feedback_contact_id'] = $contact_id; // exact match args
+
+$params['InSQLArgs'] = array();
+$params['InSQLArgs']['feedback_unit_id'] = '121';
+
+$params['GreaterThanArgs'] = array();
+$params['LessThanArgs'] = array();
+$params['myResultOptions'] = array(
+	'result_limit' => '10',
+	'result_offset' => '0'
+);
+$result = $airshipBooking->getBookings( $params );
+```
