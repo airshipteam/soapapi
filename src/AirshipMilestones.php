@@ -61,7 +61,7 @@ class AirshipMilestones extends Airship{
 	 * GET CONTACT MILESTONES
 	 * Will get milestones dependant on contact id	
 	 *
-	 * @param array $params
+	 * @param int $contact_id
 	 * @return null
 	 */		
 	public function getContactMilestones( $contact_id ){
@@ -76,5 +76,26 @@ class AirshipMilestones extends Airship{
 										);
 
     	return $this->validateResponse( 'get_milestones' );	
+	}
+
+	/**
+	 * GET STAR RATING
+	 * Will get star rating dependant on contact id	
+	 *
+	 * @param int $contact_id
+	 * @return null
+	 */		
+	public function getStarRating( $contact_id ){
+		$connection = $this->checkConnection();
+		if($connection['success'] !== true)
+	    	return $connection['message'];	
+
+    	$this->response = $this->soapCall( 	'getStarRating', 
+											$this->username, 
+											$this->password,
+											$contact_id
+										);
+
+    	return $this->validateResponse( 'get_star_rating' );	
 	}
 }

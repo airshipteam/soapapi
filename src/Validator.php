@@ -254,6 +254,17 @@
 			'error' => 'milestones.get_milestones_error'
 		);
 
+		/**
+		 * Validation for contact star rating response
+		 *
+		 * @var array
+		 */
+		protected $get_star_rating_response = array(
+			'rules' => array(
+			), 
+			'error' => 'milestones.get_star_rating_error'
+		);
+
 		/*
 		|--------------------------------------------------------------------------
 		| Broadcast responses

@@ -285,7 +285,13 @@ return array(
 			'error_msg' => 'There was an error getting milestones for a contact',
 			'error_customer' => 'An error has occured'
 		),
-	),
+		'get_star_rating_error' => array(
+			'error_num' => 710,
+			'error_msg' => 'There was an error getting star ratings for a contact',
+			'error_customer' => 'An error has occured'
+		),
+
+	)
 );
 
 
