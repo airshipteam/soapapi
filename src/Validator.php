@@ -235,6 +235,24 @@
 			'error' => 'feedback.search_feedback_error'
 		);
 
+		/*
+		|--------------------------------------------------------------------------
+		| Milestones responses
+		|--------------------------------------------------------------------------
+		|
+		| 
+	 	|
+		*/
+		/**
+		 * Validation for contact milestones response
+		 *
+		 * @var array
+		 */
+		protected $get_milestones_response = array(
+			'rules' => array(
+			), 
+			'error' => 'milestones.get_milestones_error'
+		);
 
 		/*
 		|--------------------------------------------------------------------------

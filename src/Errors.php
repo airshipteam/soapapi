@@ -263,11 +263,26 @@ return array(
 	| Errors that can be returned when trying to access the Feedback API
  	|
 	*/
-
 	'feedback' => array(
 		'search_feedback_error' => array(
 			'error_num' => 600,
 			'error_msg' => 'There was an error searching for feedback',
+			'error_customer' => 'An error has occured'
+		),
+	),
+
+	/*
+	|--------------------------------------------------------------------------
+	| Milestones API
+	|--------------------------------------------------------------------------
+	|
+	| Errors that can be returned when trying to access the Milestones API
+ 	|
+	*/
+	'milestones' => array(
+		'get_milestones_error' => array(
+			'error_num' => 700,
+			'error_msg' => 'There was an error getting milestones for a contact',
 			'error_customer' => 'An error has occured'
 		),
 	),
