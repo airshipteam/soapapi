@@ -222,7 +222,76 @@ return array(
 		
 	),
 
+	/*
+	|--------------------------------------------------------------------------
+	| Booking API
+	|--------------------------------------------------------------------------
+	|
+	| Errors that can be returned when trying to access the Booking API
+ 	|
+	*/
+
+	'booking' => array(
+		'no_params_set' => array(
+			'error_num' => 500,
+			'error_msg' => 'No search params were sent to booking request. Stopped to prevent all bookings being returned',
+			'error_customer' => 'An error has occured'
+		),
+
+		'get_bookings_error' => array(
+			'error_num' => 510,
+			'error_msg' => 'There was an error getting bookings',
+			'error_customer' => 'An error has occured'
+		),
+		'get_booking_notes_error' => array(
+			'error_num' => 520,
+			'error_msg' => 'There was an error getting booking notes',
+			'error_customer' => 'An error has occured'
+		),
+		'get_booking_types_error' => array(
+			'error_num' => 530,
+			'error_msg' => 'There was an error getting booking types',
+			'error_customer' => 'An error has occured'
+		)
+	),
+
+	/*
+	|--------------------------------------------------------------------------
+	| Feedback API
+	|--------------------------------------------------------------------------
+	|
+	| Errors that can be returned when trying to access the Feedback API
+ 	|
+	*/
+	'feedback' => array(
+		'search_feedback_error' => array(
+			'error_num' => 600,
+			'error_msg' => 'There was an error searching for feedback',
+			'error_customer' => 'An error has occured'
+		),
+	),
+
+	/*
+	|--------------------------------------------------------------------------
+	| Milestones API
+	|--------------------------------------------------------------------------
+	|
+	| Errors that can be returned when trying to access the Milestones API
+ 	|
+	*/
+	'milestones' => array(
+		'get_milestones_error' => array(
+			'error_num' => 700,
+			'error_msg' => 'There was an error getting milestones for a contact',
+			'error_customer' => 'An error has occured'
+		),
+		'get_star_rating_error' => array(
+			'error_num' => 710,
+			'error_msg' => 'There was an error getting star ratings for a contact',
+			'error_customer' => 'An error has occured'
+		),
+
+	)
 );
 
 
-?>
