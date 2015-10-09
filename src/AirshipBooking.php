@@ -84,7 +84,12 @@ class AirshipBooking extends Airship{
 		if($connection['success'] !== true)
 	    	return $connection['message'];	
 
-	    $this->response = $this->soapCall( 'createBooking', $this->username, $this->password, $params['booking'], $params['booking_areas'] );
+	    // Do we have booking area? 
+	    if( isset($params['booking_areas']) )
+		    $this->response = $this->soapCall( 'createBooking', $this->username, $this->password, $params['booking'], $params['booking_areas'] );
+		else
+			$this->response = $this->soapCall( 'createBooking', $this->username, $this->password, $params['booking'] );
+
 	    return $this->validateResponse( 'create_booking' );
 	}
 
