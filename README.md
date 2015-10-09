@@ -247,6 +247,28 @@ $airshipBooking = new AirshipBooking();
 $airshipBooking->authenticate($airship_server, $airship_username, $airship_password);
 ```
 
+**Create Booking**
+
+Create two arrays, one with booking details and one with booking_areas details, and pass these to the method in one $params array
+
+```
+$booking = array();
+$booking['contact_id'] = $contact_id;
+$booking['booking_enquiry_source_id'] = $enquiry_source_id;
+$booking['booking_stage_value'] = $stage_value; // can be empty
+$booking['booking_type_id'] = $type_id; // Type of booking
+$booking['booking_unit_id'] = $unit_id; // Unit id booking is being made at
+$booking['booking_deposit_paid'] = 0; // can be 0
+$booking['booking_hpbr_drink'] = 0; // can be 0
+$booking['booking_hpbr_food'] = 0; // can be 0
+$booking['booking_hpbr_entertainment'] = 0; // can be 0
+
+$booking_areas = array('108', '109'); // Not required
+
+$params = array('booking' => $booking[, 'booking_areas' = > $booking_areas] );
+$result = $airshipBooking->createBookings( $params );
+```
+
 **Get Bookings**
 
 ```
