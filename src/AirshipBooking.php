@@ -49,7 +49,7 @@ class AirshipBooking extends Airship{
 	 * CHECK WSDL
 	 * Checks we have a valid soap connection
 	 * 
-	 * @return mixed
+	 * @return array
 	 */
 	protected function checkConnection(){
 		if(!$this->checkWSDL($this->server.$this->wsdl))
@@ -65,10 +65,27 @@ class AirshipBooking extends Airship{
 	 * VALIDATE RESPONSE
 	 * Validate response of return from SOAP
 	 *
-	 * @return 
+	 * @return array
 	 */
 	protected function validateResponse( $action ){
 		return $this->_validator->validateResponse( $this->response, $action.'_response' );
+	}
+
+	/**
+	 * CREATE BOOKINGS
+	 * Will create a booking 
+	 * NB - No tests for this method. Feel free to add them if making any change to this method!
+	 *
+	 * @param array $params
+	 * @return array
+	 */		
+	public function createBooking( $params ){
+		$connection = $this->checkConnection();
+		if($connection['success'] !== true)
+	    	return $connection['message'];	
+
+	    $this->response = $this->soapCall( 'createBooking', $this->username, $this->password, $params['booking'], $params['booking_areas'] );
+	    return $this->validateResponse( 'create_booking' );
 	}
 
 	/**
@@ -76,13 +93,13 @@ class AirshipBooking extends Airship{
 	 * Will get bookings dependant on parameters passed	
 	 *
 	 * @param array $params
-	 * @return null
+	 * @return array
 	 */		
 	public function getBookings( $params ){
 		if ( count($params) === 0 )
 			return array(
-		 			'success' => false,
-		 			'message' => $this->_errorHandler->return_error('booking.no_params_set')->error_message
+		 		'success' => false,
+		 		'message' => $this->_errorHandler->return_error('booking.no_params_set')->error_message
 		 	);
 
 		$connection = $this->checkConnection();
@@ -118,7 +135,7 @@ class AirshipBooking extends Airship{
 	* Will get booking notes for a given booking id
 	*
 	* @param int $booking_id
-	* @return null
+	* @return array
 	*/		
 	public function getBookingNotes( $booking_id ){		
 		$connection = $this->checkConnection();
@@ -134,7 +151,7 @@ class AirshipBooking extends Airship{
 	* GET BOOKING TYPES
 	* Will get booking types for a given account
 	*	
-	* @return null
+	* @return array
 	*/		
 	public function getBookingTypes(){
 		$connection = $this->checkConnection();

@@ -237,7 +237,6 @@ return array(
 			'error_msg' => 'No search params were sent to booking request. Stopped to prevent all bookings being returned',
 			'error_customer' => 'An error has occured'
 		),
-
 		'get_bookings_error' => array(
 			'error_num' => 510,
 			'error_msg' => 'There was an error getting bookings',
@@ -251,6 +250,11 @@ return array(
 		'get_booking_types_error' => array(
 			'error_num' => 530,
 			'error_msg' => 'There was an error getting booking types',
+			'error_customer' => 'An error has occured'
+		),
+		'create_booking_error' => array(
+			'error_num' => 540,
+			'error_msg' => 'There was an error creating a booking',
 			'error_customer' => 'An error has occured'
 		)
 	),
