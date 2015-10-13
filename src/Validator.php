@@ -181,6 +181,18 @@
 	 	|
 		*/
 		/**
+		 * Validation for create_booking response
+		 *
+		 * @var array
+		 */
+		protected $create_booking_response = array(
+			'rules' => array(
+				'numeric'=>true,			
+			), 
+			'error' => 'bookings.create_booking_error'
+		);
+
+		/**
 		 * Validation for get_bookings response
 		 *
 		 * @var array
