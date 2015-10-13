@@ -51,15 +51,12 @@ class AirshipBooking extends Airship{
 	 * 
 	 * @return array
 	 */
-	protected function checkConnection(){
+	protected function prepareInput($action){
 		if(!$this->checkWSDL($this->server.$this->wsdl))
-		 	return array(
-		 			'success' => false,
-		 			'message' => $this->_errorHandler->return_error('server.connection_error')
-		 	);
-		
-		return array( 'success' => true, 'message' => false );
-	}	
+			return $this->response = $this->_errorHandler->return_error('server.connection_error');
+
+		return true;
+	}
 
 	/**
 	 * VALIDATE RESPONSE
@@ -80,9 +77,9 @@ class AirshipBooking extends Airship{
 	 * @return array
 	 */		
 	public function createBooking( $params ){
-		$connection = $this->checkConnection();
-		if($connection['success'] !== true)
-	    	return $connection['message'];	
+
+		if($this->prepareInput('get_feedback') !== true)
+	    	return $this->response;  	
 
 	    // Do we have booking area? 
 	    if( isset($params['booking_areas']) )
@@ -102,16 +99,12 @@ class AirshipBooking extends Airship{
 	 */		
 	public function getBookings( $params ){
 		if ( count($params) === 0 )
-			return array(
-		 		'success' => false,
-		 		'message' => $this->_errorHandler->return_error('booking.no_params_set')->error_message
-		 	);
+			return $this->_errorHandler->return_error('booking.no_params_set');
 
-		$connection = $this->checkConnection();
-		if($connection['success'] !== true)
-	    	return $connection['message'];	    
+		if($this->prepareInput('get_feedback') !== true)
+	    	return $this->response;  	    
 	    
-	    $booking_params = array();
+	    $bookings_params = array();
 
 	    foreach( $this->booking_param_names as $param_name ){
 	    	$bookings_params[$param_name] = array();
@@ -143,10 +136,8 @@ class AirshipBooking extends Airship{
 	* @return array
 	*/		
 	public function getBookingNotes( $booking_id ){		
-		$connection = $this->checkConnection();
-		if($connection['success'] !== true)
-	    	return $connection['message'];
-
+		if($this->prepareInput('get_feedback') !== true)
+	    	return $this->response;  
 	    //Make The Call
 		$this->response = $this->soapCall( 'getBookingNotes', $this->username, $this->password, $booking_id );
 		return $this->validateResponse( 'get_booking_notes' ); 
@@ -159,9 +150,8 @@ class AirshipBooking extends Airship{
 	* @return array
 	*/		
 	public function getBookingTypes(){
-		$connection = $this->checkConnection();
-		if($connection['success'] !== true)
-	    	return $connection['message'];
+		if($this->prepareInput('get_feedback') !== true)
+	    	return $this->response;  
 
 	    $this->response = $this->soapCall( 'getBookingTypes', $this->username, $this->password );
 	    return $this->validateResponse( 'get_booking_types' );

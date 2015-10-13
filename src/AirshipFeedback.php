@@ -50,14 +50,11 @@ class AirshipFeedback extends Airship{
 	 * 
 	 * @return mixed
 	 */
-	protected function checkConnection(){
+	protected function prepareInput(){
 		if(!$this->checkWSDL($this->server.$this->wsdl))
-		 	return array(
-		 			'success' => false,
-		 			'message' => $this->_errorHandler->return_error('server.connection_error')
-		 	);
-		
-		return array( 'success' => true, 'message' => false );
+			    return $this->response = $this->_errorHandler->return_error('server.connection_error');
+
+		return true;
 	}
 
 	/**
@@ -79,15 +76,12 @@ class AirshipFeedback extends Airship{
 	* @return mixed
 	*/		
 	public function getFeedback( $params ){
+		
 		if ( count($params) === 0 )
-			return array(
-		 			'success' => false,
-		 			'message' => $this->_errorHandler->return_error('feedback.no_params_set')->error_message
-		 	);
+			return $this->_errorHandler->return_error('feedback.no_params_set');
 
-		$connection = $this->checkConnection();
-		if($connection['success'] !== true)
-	    	return $connection['message'];	    
+		if($this->prepareInput('get_feedback') !== true)
+	    	return $this->response;    
 	    
 	    $feedback_params = array();
 

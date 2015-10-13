@@ -29,7 +29,7 @@ class Milestones_GetStarRating_Test extends PHPUnit_Framework_TestCase {
 
 		$this->mockSoap = $this->getMockBuilder( 'airshipwebservices\soapapi\AirshipMilestones' )
 						 ->setMethods( array('soapCall', 
-											'checkConnection',
+											'prepareInput',
 											'validateResponse') )
 						 ->getMock();
 	
@@ -40,10 +40,9 @@ class Milestones_GetStarRating_Test extends PHPUnit_Framework_TestCase {
 				 	   ->will( $this->returnValue($return) );
 
 		// We'll pretend that we've got a valid soap connection
-		$connection_reponse = array( 'success' => true, 'message' => false );
 		$this->mockSoap->expects( $this->once() )
-				 	   ->method( 'checkConnection' )
-				 	   ->will( $this->returnValue($connection_reponse) );
+				 	   ->method( 'prepareInput' )
+				 	   ->will( $this->returnValue(true) );
 
 		// We expect to get a successful response with the contact id
 		$return_obj = new stdClass();

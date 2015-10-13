@@ -37,14 +37,11 @@ class AirshipMilestones extends Airship{
 	 * 
 	 * @return mixed
 	 */
-	protected function checkConnection(){
+	protected function prepareInput($action){
 		if(!$this->checkWSDL($this->server.$this->wsdl))
-		 	return array(
-		 			'success' => false,
-		 			'message' => $this->_errorHandler->return_error('server.connection_error')
-		 	);
+		 	return $this->_errorHandler->return_error('server.connection_error');
 		
-		return array( 'success' => true, 'message' => false );
+		return true;
 	}	
 
 	/**
@@ -65,9 +62,8 @@ class AirshipMilestones extends Airship{
 	 * @return null
 	 */		
 	public function getContactMilestones( $contact_id ){
-		$connection = $this->checkConnection();
-		if($connection['success'] !== true)
-	    	return $connection['message'];	
+		if($this->prepareInput('get_milestones') !== true)
+	    	return $this->response;
 
     	$this->response = $this->soapCall( 	'getContactMilestones', 
 											$this->username, 
@@ -86,9 +82,8 @@ class AirshipMilestones extends Airship{
 	 * @return null
 	 */		
 	public function getStarRating( $contact_id ){
-		$connection = $this->checkConnection();
-		if($connection['success'] !== true)
-	    	return $connection['message'];	
+		if($this->prepareInput('get_star_rating') !== true)
+	    	return $this->response;
 
     	$this->response = $this->soapCall( 	'getStarRating', 
 											$this->username, 

@@ -30,15 +30,14 @@ class Booking_GetBookingNotes_Test extends PHPUnit_Framework_TestCase {
 
 		$this->mockSoap = $this->getMockBuilder( 'airshipwebservices\soapapi\AirshipBooking' )
 						 ->setMethods( array('soapCall', 
-											'checkConnection',
+											'prepareInput',
 											'validateResponse') )
 						 ->getMock();
 
 		// We expect the connection to return true
- 		$connection_reponse = array( 'success' => true, 'message' => false );
 		$this->mockSoap->expects( $this->once() )
-			 ->method( 'checkConnection' )
-			 ->will( $this->returnValue($connection_reponse) );
+			 ->method( 'prepareInput' )
+			 ->will( $this->returnValue(true) );
 
 		$soap_return_obj = new stdClass();
 		$soap_return_obj->booking_note = new stdClass();
@@ -52,17 +51,13 @@ class Booking_GetBookingNotes_Test extends PHPUnit_Framework_TestCase {
 				 		 ->method( 'soapCall' )
 				 		 ->will( $this->returnValue( array($soap_return_obj) ) );
 
-		// We expect to get a successful response with the contact id
-		$return_obj = new stdClass();
-		$return_obj->status = true;
-		$return_obj->response = array( $soap_return_obj );
 	
 		// Simulate validation and format the response  
 		$this->mockSoap->expects( $this->once() )
 				 		 ->method( 'validateResponse' )
-				 		 ->will( $this->returnValue($return_obj) );
+				 		 ->will( $this->returnValue($soap_return_obj) );
 
-		$this->assertEquals( $return_obj, $this->mockSoap->getBookingNotes( $booking_id ) );
+		$this->assertEquals( $soap_return_obj, $this->mockSoap->getBookingNotes( $booking_id ) );
 	}
 
 	/**
@@ -76,15 +71,14 @@ class Booking_GetBookingNotes_Test extends PHPUnit_Framework_TestCase {
 
 		$this->mockSoap = $this->getMockBuilder( 'airshipwebservices\soapapi\AirshipBooking' )
 						 ->setMethods( array('soapCall', 
-											'checkConnection',
+											'prepareInput',
 											'validateResponse') )
 						 ->getMock();
 
 		// We expect the connection to return true
- 		$connection_reponse = array( 'success' => true, 'message' => false );
 		$this->mockSoap->expects( $this->once() )
-			 ->method( 'checkConnection' )
-			 ->will( $this->returnValue($connection_reponse) );
+			 ->method( 'prepareInput' )
+			 ->will( $this->returnValue(true) );
 
 		$soap_return_obj = new stdClass();
 		$soap_return_obj->status = false;

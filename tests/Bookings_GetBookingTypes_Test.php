@@ -29,15 +29,14 @@ class Booking_GetBookingTypes_Test extends PHPUnit_Framework_TestCase {
 
 		$this->mockSoap = $this->getMockBuilder( 'airshipwebservices\soapapi\AirshipBooking' )
 						 ->setMethods( array('soapCall', 
-											'checkConnection',
+											'prepareInput',
 											'validateResponse') )
 						 ->getMock();
 
 		// We expect the connection to return true
- 		$connection_reponse = array( 'success' => true, 'message' => false );
 		$this->mockSoap->expects( $this->once() )
-			 ->method( 'checkConnection' )
-			 ->will( $this->returnValue($connection_reponse) );
+			 ->method( 'prepareInput' )
+			 ->will( $this->returnValue(true) );
 
 		$soap_return = array();
 		$soap_return[0] = new stdClass();
