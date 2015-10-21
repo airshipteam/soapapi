@@ -172,6 +172,18 @@
 			'error' => 'contact.delete_group_interactions_error'
 		);
 
+		/**
+		 * Validation for get_social  response
+		 *
+		 * @var array
+		 */
+		protected $get_contact_social_response = array(
+			'rules' => array(
+				
+				), 
+			'error' => 'contact.get_contact_social'
+		);
+
 		/*
 		|--------------------------------------------------------------------------
 		| Bookings responses

@@ -155,6 +155,11 @@ return array(
 			'error_msg' => 'there was a problem deleting records',
 			'error_customer' => 'An error has occured'
 			),
+		'get_contact_social' => array(
+			'error_num' => 120,
+			'error_msg' => 'there was a problem getting social data for this contact',
+			'error_customer' => 'An error has occured'
+		),
 
 	),
 
