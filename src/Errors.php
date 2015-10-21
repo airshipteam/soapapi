@@ -160,6 +160,11 @@ return array(
 			'error_msg' => 'there was a problem getting social data for this contact',
 			'error_customer' => 'An error has occured'
 		),
+		'get_contact_photo' => array(
+			'error_num' => 130,
+			'error_msg' => 'there was a problem getting photo data for this contact',
+			'error_customer' => 'An error has occured'
+		),
 
 	),
 

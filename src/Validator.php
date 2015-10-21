@@ -184,6 +184,18 @@
 			'error' => 'contact.get_contact_social'
 		);
 
+		/**
+		 * Validation for get_photo response
+		 *
+		 * @var array
+		 */
+		protected $get_contact_photo_response = array(
+			'rules' => array(
+				
+				), 
+			'error' => 'contact.get_contact_photo'
+		);
+
 		/*
 		|--------------------------------------------------------------------------
 		| Bookings responses
