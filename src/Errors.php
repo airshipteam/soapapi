@@ -165,6 +165,11 @@ return array(
 			'error_msg' => 'there was a problem getting photo data for this contact',
 			'error_customer' => 'An error has occured'
 		),
+		'set_contact_photo' => array(
+			'error_num' => 140,
+			'error_msg' => 'there was a problem setting photo data for this contact',
+			'error_customer' => 'An error has occured'
+		),
 
 	),
 

@@ -196,6 +196,18 @@
 			'error' => 'contact.get_contact_photo'
 		);
 
+		/**
+		 * Validation for set_photo response
+		 *
+		 * @var array
+		 */
+		protected $set_contact_photo_response = array(
+			'rules' => array(
+				'equalto'=>100
+			), 
+			'error' => 'contact.set_contact_photo'
+		);
+
 		/*
 		|--------------------------------------------------------------------------
 		| Bookings responses

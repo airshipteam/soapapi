@@ -377,6 +377,21 @@
 		}
 
 		/**
+		 * SET CONTACT PHOTO 
+		 * Will set photo details for a contact
+		 *
+		 * @param  array $params
+		 * @return object
+		 */
+		public function setContactPhoto( $photo_data ){
+			if($this->prepareInput('set_contact_photo') !== true)
+		    	return $this->response;
+
+		    $this->response = $this->soapCall( 'setContactPhoto', $this->username, $this->password, $photo_data );
+		    return $this->validateResponse( 'set_contact_photo' );
+		}
+
+		/**
 		 * powertext validation for +44 and 0044 fails
 		 * powertext formats mobile numbers starting with 0 as 44
 		 * @param  string $number mobile phone number
