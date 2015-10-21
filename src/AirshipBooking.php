@@ -78,7 +78,7 @@ class AirshipBooking extends Airship{
 	 */		
 	public function createBooking( $params ){
 
-		if($this->prepareInput('get_feedback') !== true)
+		if($this->prepareInput('create_booking') !== true)
 	    	return $this->response;  	
 
 	    // Do we have booking area? 
@@ -101,7 +101,7 @@ class AirshipBooking extends Airship{
 		if ( count($params) === 0 )
 			return $this->_errorHandler->return_error('booking.no_params_set');
 
-		if($this->prepareInput('get_feedback') !== true)
+		if($this->prepareInput('get_bookings') !== true)
 	    	return $this->response;  	    
 	    
 	    $bookings_params = array();
@@ -136,7 +136,7 @@ class AirshipBooking extends Airship{
 	* @return array
 	*/		
 	public function getBookingNotes( $booking_id ){		
-		if($this->prepareInput('get_feedback') !== true)
+		if($this->prepareInput('get_booking_notes') !== true)
 	    	return $this->response;  
 	    //Make The Call
 		$this->response = $this->soapCall( 'getBookingNotes', $this->username, $this->password, $booking_id );
@@ -150,11 +150,25 @@ class AirshipBooking extends Airship{
 	* @return array
 	*/		
 	public function getBookingTypes(){
-		if($this->prepareInput('get_feedback') !== true)
+		if($this->prepareInput('get_booking_types') !== true)
 	    	return $this->response;  
 
 	    $this->response = $this->soapCall( 'getBookingTypes', $this->username, $this->password );
 	    return $this->validateResponse( 'get_booking_types' );
+	}	
+
+	/**
+	* GET BOOKING SOURCES
+	* Will get booking sources for a given account
+	*	
+	* @return array
+	*/		
+	public function getBookingSources(){
+		if($this->prepareInput('get_booking_sources') !== true)
+	    	return $this->response;  
+
+	    $this->response = $this->soapCall( 'getBookingSources', $this->username, $this->password );
+	    return $this->validateResponse( 'get_booking_sources' );
 	}	
 }
 

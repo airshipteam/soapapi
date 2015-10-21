@@ -228,6 +228,18 @@
 			'error' => 'bookings.get_booking_types_error'
 		);	
 
+		/**
+		 * Validation for getBookingSources response
+		 *
+		 * @var array
+		 */
+		protected $get_booking_sources_response = array(
+			'rules' => array(
+				'isarray' => true,
+			),
+			'error' => 'bookings.get_booking_sources_error'
+		);	
+
 		/*
 		|--------------------------------------------------------------------------
 		| Feedback responses

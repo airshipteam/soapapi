@@ -256,7 +256,12 @@ return array(
 			'error_num' => 540,
 			'error_msg' => 'There was an error creating a booking',
 			'error_customer' => 'An error has occured'
-		)
+		),
+		'get_booking_sources_error' => array(
+			'error_num' => 550,
+			'error_msg' => 'There was an error getting booking sources',
+			'error_customer' => 'An error has occured'
+		),
 	),
 
 	/*
