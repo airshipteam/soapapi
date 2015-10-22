@@ -70,15 +70,16 @@
 
 		protected function checkWSDL($url)
 		{
-			$handle = curl_init($url);
-			curl_setopt($handle,  CURLOPT_RETURNTRANSFER, TRUE);
-			$response = curl_exec($handle);
-			$httpCode = curl_getinfo($handle, CURLINFO_HTTP_CODE);
-			curl_close($handle);
-			if($httpCode != 200){
-			    return false;
-			}
-			return true;
+			return true; // Getting rid of this check as it seems to be an unnecessary extra call for each soap call that is made.
+			// $handle = curl_init($url);
+			// curl_setopt($handle,  CURLOPT_RETURNTRANSFER, TRUE);
+			// $response = curl_exec($handle);
+			// $httpCode = curl_getinfo($handle, CURLINFO_HTTP_CODE);
+			// curl_close($handle);
+			// if($httpCode != 200){
+			//     return false;
+			// }
+			// return true;
 		}
 
 	    
