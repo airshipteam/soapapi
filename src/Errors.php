@@ -173,6 +173,9 @@ return array(
 
 	),
 
+
+	
+
 	/*
 	|--------------------------------------------------------------------------
 	| Broadcast API
@@ -315,7 +318,28 @@ return array(
 			'error_customer' => 'An error has occured'
 		),
 
-	)
+	),
+
+
+	/*
+	|--------------------------------------------------------------------------
+	| Admin API
+	|--------------------------------------------------------------------------
+	|
+	| Errors that can be returned when trying to access the Airship Admin API
+ 	|
+	*/
+
+	'admin' => array(
+
+		'get_error' => array(
+			'error_num' => 800,
+			'error_msg' => 'There was an error retrieving your details',
+			'error_customer' => 'There was an error retrieving your details'
+			)
+
+
+	),
 );
 
 

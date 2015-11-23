@@ -367,6 +367,27 @@
 			'error' => 'statistics.unit_list'
 		);
 
+
+		/*
+		|--------------------------------------------------------------------------
+		| Admin responses
+		|--------------------------------------------------------------------------
+		|
+		| 
+	 	|
+		*/
+		/**
+		 * Validation for get system auth
+		 *
+		 * @var array
+		 */
+		protected $get_system_auth_response = array(
+			'rules' => array(
+				'required'=>'userid'
+				), 
+			'error' => 'admin.get_error'
+		);
+
 		/*
 		|--------------------------------------------------------------------------
 		| WIFI Interaction responses

@@ -327,4 +327,19 @@ $params['myResultOptions'] = array(
 );
 $result = $airshipBooking->getBookings( $params );
 ```
+###Admin API:
 
+Set your airship keys and server
+
+```
+$airshipAdmin = new AirshipAdmin();
+$airshipAdmin->authenticate($airship_server, $airship_username, $airship_password);
+```
+
+**Get System Auth**
+
+```
+$AirshipAdmin->as_username     = 'Phileas';
+$AirshipAdmin->as_password     = 'mySecret';
+$result = $AirshipAdmin->getSystemAuth();
+```
