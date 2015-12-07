@@ -92,14 +92,6 @@
 		}
 
 
- ini_set("soap.wsdl_cache_enabled", "0");
- $wsdl = "https://secure.airship.co.uk/SOAP/V2/Admin.wsdl";
- $client = new SoapClient($wsdl);
- $myUsers = $client->getSystemUsers("username", "password");
- echo print_r($myUsers,1);
-}
-
-
 	}
 
 }
