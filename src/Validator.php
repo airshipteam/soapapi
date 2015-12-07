@@ -388,6 +388,20 @@
 			'error' => 'admin.get_error'
 		);
 
+		/**
+		 * Validation for get system users
+		 *
+		 * @var array
+		 */
+
+		protected $get_system_users_reponse = array(
+			'rules' => array(
+				'isarray'=>true,
+				'arraycontent'=>true
+				), 
+			'error' => 'admin.get_users_error'
+		);
+
 		/*
 		|--------------------------------------------------------------------------
 		| WIFI Interaction responses

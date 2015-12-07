@@ -68,6 +68,38 @@
 		}
 
 
+		/*
+		* 	GET SYTSEM USERS
+		*
+		*	@description 		A wrapper function for Airship's GET SYSTEM USERS SOAP API
+		*
+		*	@param 	string   	username
+		*	@param 	array 		password
+		*
+		*	@return int 		mixed
+		*/
+		
+		public function getSystemUsers()
+		{
+
+			if($this->prepareInput('get_system_users') !== true)
+		    	return $this->response;
+			
+			//Make The Call
+    		$this->response = $this->soapCall('getSystemUsers', $this->username, $this->password);
+			return $this->validateResponse('get_system_users');
+		    				
+		}
+
+
+ ini_set("soap.wsdl_cache_enabled", "0");
+ $wsdl = "https://secure.airship.co.uk/SOAP/V2/Admin.wsdl";
+ $client = new SoapClient($wsdl);
+ $myUsers = $client->getSystemUsers("username", "password");
+ echo print_r($myUsers,1);
+}
+
+
 	}
 
 }

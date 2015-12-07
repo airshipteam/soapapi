@@ -336,6 +336,12 @@ return array(
 			'error_num' => 800,
 			'error_msg' => 'There was an error retrieving your details',
 			'error_customer' => 'There was an error retrieving your details'
+			),
+
+		'get_users_error' => array(
+			'error_num' => 800,
+			'error_msg' => 'There was an error retrieving user details',
+			'error_customer' => 'There was an error retrieving user details'
 			)
 
 
