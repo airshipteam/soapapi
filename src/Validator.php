@@ -394,7 +394,7 @@
 		 * @var array
 		 */
 
-		protected $get_system_users_reponse = array(
+		protected $get_system_users_response = array(
 			'rules' => array(
 				'isarray'=>true,
 				'arraycontent'=>true
