@@ -309,6 +309,40 @@ $airshipFeedback = new AirshipFeedback();
 $airshipFeedback->authenticate($airship_server, $airship_username, $airship_password);
 ```
 
+**Create Feedback**
+
+```
+$params = array();
+$params['contact_id'] = $contact_id;
+$params['unit_id'] = $unit_id;
+$params['source_id'] = $source_id;
+$params['type_id'] = $type_id;
+
+//Ratings
+$params['ratings'] = array(
+	array(
+		'feedback_rating_category_id' => '3',
+		'feedback_rating_text' => 'Very Satisfied',
+		'feedback_note_text' => 'Hot and Spicy just how I like my curries'
+	),
+	array(
+		'feedback_rating_category_id' => '2',
+		'feedback_rating_text' => 'Very Satisfied'
+	)
+);
+ 
+//Comments
+$params['comments'] = array(
+	array(
+		'feedback_note_type'=>'contact',
+		'feedback_note_text'=>'The outside is a bit dated'
+	)
+);
+
+
+$result = $airshipFeedback->createFeedback( $params );
+```
+
 **Get Feedback**
 
 ```
@@ -325,7 +359,7 @@ $params['myResultOptions'] = array(
 	'result_limit' => '10',
 	'result_offset' => '0'
 );
-$result = $airshipBooking->getBookings( $params );
+$result = $airshipFeedback->getFeedback( $params );
 ```
 ###Admin API:
 
