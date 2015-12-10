@@ -295,6 +295,18 @@
 			'error' => 'feedback.search_feedback_error'
 		);
 
+		/**
+		 * Validation for create_feedback response
+		 *
+		 * @var array
+		 */
+		protected $create_feedback_response = array(
+			'rules' => array(
+				'numeric'=>true,			
+			), 
+			'error' => 'feedback.create_feedback_error'
+		);
+
 		/*
 		|--------------------------------------------------------------------------
 		| Milestones responses

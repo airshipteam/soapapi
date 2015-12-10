@@ -296,6 +296,18 @@ return array(
 			'error_msg' => 'There was an error searching for feedback',
 			'error_customer' => 'An error has occured'
 		),
+
+		'create_feedback_error' => array(
+			'error_num' => 601,
+			'error_msg' => 'There was an error creating this feedback',
+			'error_customer' => 'An error has occured'
+		),
+
+		'no_params_set' => array(
+			'error_num' => 602,
+			'error_msg' => 'No search params were sent to feedback request. Stopped to prevent all feedback being returned',
+			'error_customer' => 'An error has occured'
+		),
 	),
 
 	/*

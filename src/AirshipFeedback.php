@@ -68,19 +68,37 @@ class AirshipFeedback extends Airship{
 	}
 
 	/**
-	* GET FEEDBACK
-	* Will get feedback for a contact id
+	 * CREATE FEEDBACK
+	 * Will create feedback
+	 * NB - No tests for this method. Feel free to add them if making any change to this method!
+	 *
+	 * @param array $params
+	 * @return array
+	 */		
+	public function createFeedback( $params ){
+
+		if($this->prepareInput('create_feedback') !== true)
+	    	return $this->response;  	
+
+		$this->response = $this->soapCall( 'createFeedback', $this->username, $this->password, $params['contact_id'], $params['unit_id'], $params['source_id'], $params['type_id'], $params['ratings'], $params['comments']);
+
+	    return $this->validateResponse( 'create_feedback' );
+	}
+
+	/**
+	* SEARCH FEEDBACK
+	* Will search feedback 
 	*
 	* @param int $feedback_id
 	* @param array $options
 	* @return mixed
 	*/		
-	public function getFeedback( $params ){
+	public function searchFeedback( $params ){
 		
 		if ( count($params) === 0 )
 			return $this->_errorHandler->return_error('feedback.no_params_set');
 
-		if($this->prepareInput('get_feedback') !== true)
+		if($this->prepareInput('search_feedback') !== true)
 	    	return $this->response;    
 	    
 	    $feedback_params = array();
