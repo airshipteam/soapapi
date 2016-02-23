@@ -205,14 +205,18 @@ return array(
  	|
 	*/
 
-	'broadcast' => array(
+	'statistics' => array(
 
 		'unit_list' => array(
 			'error_num' => 300,
 			'error_msg' => 'There was a problem getting your request',
 			'error_customer' => 'An error has occured'
+			),
+		'group_list' => array(
+			'error_num' => 310,
+			'error_msg' => 'There was a problem getting your request',
+			'error_customer' => 'An error has occured'
 			)
-		
 	),
 
 	/*

@@ -70,6 +70,28 @@
 		    				
 		}
 
+		/*
+		* 	GROUP LIST
+		*
+		*	@description 		A wrapper function for PowerText's groupList SOAP API
+		*
+		*	@param 	integer   	unitlist
+		*
+		*	@return int 		aray
+		*/
+		
+		public function groupList($unitId)
+		{
+
+			if($this->prepareInput('group_list') !== true)
+		    	return $this->response;
+			
+			//Make The Call
+    		$this->response = $this->soapCall('groupList', $this->username, $this->password,$unitId);
+			return $this->validateResponse('group_list');
+		    				
+		}
+
 
 	}
 

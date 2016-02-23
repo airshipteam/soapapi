@@ -367,7 +367,7 @@
 	 	|
 		*/
 		/**
-		 * Validation for send new eflyer response
+		 * Validation for unit list response
 		 *
 		 * @var array
 		 */
@@ -377,6 +377,19 @@
 				'arraycontent'=>true
 				), 
 			'error' => 'statistics.unit_list'
+		);
+
+		/**
+		 * Validation for group list response
+		 *
+		 * @var array
+		 */
+		protected $group_list_response = array(
+			'rules' => array(
+				'isarray'=>true,
+				'arraycontent'=>true
+				), 
+			'error' => 'statistics.group_list'
 		);
 
 
