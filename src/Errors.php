@@ -191,9 +191,12 @@ return array(
 			'error_num' => 200,
 			'error_msg' => 'There was a problem sending your eflyer',
 			'error_customer' => 'An error has occured'
+			),
+		'send_forced_eflyer_error' => array(
+			'error_num' => 210,
+			'error_msg' => 'There was a problem sending your eflyer',
+			'error_customer' => 'An error has occured'
 			)
-
-
 	),
 
 	/*

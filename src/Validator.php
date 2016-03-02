@@ -358,6 +358,21 @@
 			'error' => 'broadcast.send_eflyer_error'
 		);
 
+		/**
+		 * Validation for send forced eflyer response
+		 *
+		 * @var array
+		 */
+		protected $send_forced_eflyer_response = array(
+			'rules' => array(
+				'numeric'=>true,
+				'min'=>1
+				), 
+			'error' => 'broadcast.send_forced_eflyer_error'
+		);
+
+		
+
 		/*
 		|--------------------------------------------------------------------------
 		| Statistics responses
