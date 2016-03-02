@@ -208,6 +208,18 @@
 			'error' => 'contact.set_contact_photo'
 		);
 
+		/**
+		 * Validation for set_contact_social response
+		 *
+		 * @var array
+		 */
+		protected $set_contact_social_response = array(
+			'rules' => array(
+				'equalto'=>100
+			), 
+			'error' => 'contact.set_contact_social'
+		);
+
 		/*
 		|--------------------------------------------------------------------------
 		| Bookings responses
@@ -370,7 +382,6 @@
 				), 
 			'error' => 'broadcast.send_forced_eflyer_error'
 		);
-
 		
 
 		/*

@@ -392,6 +392,21 @@
 		}
 
 		/**
+		 * SET CONTACT SOCIAL 
+		 * Will set social details for a contact
+		 *
+		 * @param  array $params
+		 * @return object
+		 */
+		public function setContactSocial( $social_data ){
+			if($this->prepareInput('set_contact_social') !== true)
+		    	return $this->response;
+
+		    $this->response = $this->soapCall( 'setContactSocial', $this->username, $this->password, $social_data );
+		    return $this->validateResponse( 'set_contact_social' );
+		}
+
+		/**
 		 * powertext validation for +44 and 0044 fails
 		 * powertext formats mobile numbers starting with 0 as 44
 		 * @param  string $number mobile phone number

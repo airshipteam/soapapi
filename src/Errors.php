@@ -170,6 +170,11 @@ return array(
 			'error_msg' => 'there was a problem setting photo data for this contact',
 			'error_customer' => 'An error has occured'
 		),
+		'set_contact_social' => array(
+			'error_num' => 150,
+			'error_msg' => 'there was a problem setting social data for this contact',
+			'error_customer' => 'An error has occured'
+		),
 
 	),
 
