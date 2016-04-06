@@ -33,7 +33,6 @@
 
 			if(!$this->checkWSDL($this->server.$this->wsdl))
 			    return $this->response = $this->_errorHandler->return_error('server.connection_error');
-
 			return true;
 
 		}
