@@ -12,7 +12,7 @@ In order to install add the following to your `composer.json` file within the `r
 ```
 "repositories": [{
             "type": "vcs",
-            "url": "https://github.com/airshipwebservices/soapapi"
+            "url": "http://212.71.247.61/airshipwebinternal/soap-wrapper.git"
         }
     ]
 ```
