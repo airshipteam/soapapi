@@ -170,6 +170,22 @@ class AirshipBooking extends Airship{
 	    $this->response = $this->soapCall( 'getBookingSources', $this->username, $this->password );
 	    return $this->validateResponse( 'get_booking_sources' );
 	}	
+
+	/**
+	* UPDATE BOOKING 
+	* Will update a booking
+	*	
+	* @return array
+	*/		
+	public function updateBooking($booking){
+		if($this->prepareInput('update_booking') !== true)
+	    	return $this->response;  	
+
+	    // Do we have booking area? 
+		    $this->response = $this->soapCall( 'updateBooking', $this->username, $this->password, $booking->booking, $booking->booking_areas );
+
+	    return $this->validateResponse( 'update_booking' );
+	}	
 }
 
 

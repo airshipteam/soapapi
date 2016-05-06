@@ -292,6 +292,11 @@ return array(
 			'error_msg' => 'There was an error getting booking sources',
 			'error_customer' => 'An error has occured'
 		),
+		'update_booking_error' => array(
+			'error_num' => 560,
+			'error_msg' => 'There was an error updating the booking',
+			'error_customer' => 'An error has occured'
+		),
 	),
 
 	/*

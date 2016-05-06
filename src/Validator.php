@@ -241,6 +241,18 @@
 		);
 
 		/**
+		 * Validation for update_booking response
+		 *
+		 * @var array
+		 */
+		protected $update_booking_response = array(
+			'rules' => array(
+				'equalto'=>100
+			), 
+			'error' => 'bookings.update_booking_error'
+		);
+
+		/**
 		 * Validation for get_bookings response
 		 *
 		 * @var array
