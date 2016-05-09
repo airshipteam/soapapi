@@ -375,6 +375,25 @@ return array(
 
 
 	),
+
+	/*
+	|--------------------------------------------------------------------------
+	| UNIQUE CODE API
+	|--------------------------------------------------------------------------
+	|
+	| Errors that can be returned when trying to access the Airship UNIQUE CODE API
+ 	|
+	*/
+
+	'uniquecode' => array(
+
+		'redeem_unique_code_error' => array(
+			'error_num' => 900,
+			'error_msg' => 'There was a problem redeeming the code',
+			'error_customer' => 'There was a problem redeeming the code'
+			)
+
+	),
 );
 
 

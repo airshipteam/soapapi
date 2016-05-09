@@ -497,7 +497,27 @@
 				'min'=>1
 				), 
 			'error' => 'wifi.create_wifi_interaction_history'
-		);				
+		);	
+
+		/*
+		|--------------------------------------------------------------------------
+		| UNIQUE CODE responses
+		|--------------------------------------------------------------------------
+		|
+		| 
+	 	|
+		*/
+		/**
+		 * Validation for create wifi interaction response
+		 *
+		 * @var array
+		 */
+		protected $redeem_unique_code_response = array(
+			'rules' => array(
+				'equalto'=>100
+				), 
+			'error' => 'uniquecode.redeem_unique_code_error'
+		);			
 
 
 		/*
