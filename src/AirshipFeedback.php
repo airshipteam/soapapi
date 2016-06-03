@@ -86,6 +86,24 @@ class AirshipFeedback extends Airship{
 	}
 
 	/**
+	 * CREATE FEEDBACK WITH DATETIME
+	 * Will create feedback with the ability to set the created datetime.
+	 * NB - No tests for this method. Feel free to add them if making any change to this method!
+	 *
+	 * @param array $params
+	 * @return array
+	 */		
+	public function createFeedbackHistory( $params ){
+
+		if($this->prepareInput('create_feedback') !== true)
+	    	return $this->response;  	
+
+		$this->response = $this->soapCall( 'createFeedbackHistory', $this->username, $this->password, $params['contact_id'], $params['unit_id'], $params['source_id'], $params['type_id'], $params['created_datetime'], $params['ratings'], $params['comments']);
+
+	    return $this->validateResponse( 'create_feedback' );
+	}
+
+	/**
 	* SEARCH FEEDBACK
 	* Will search feedback 
 	*
