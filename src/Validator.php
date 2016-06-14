@@ -589,6 +589,10 @@
 			'allowsnailmail',
 		);
 
+		protected $get_contact_fields = array(
+			'contactid',
+		);
+
 		/**
 		 * Check possible fields
 		 * Return an array only of fields that Airhsip Likes. 
