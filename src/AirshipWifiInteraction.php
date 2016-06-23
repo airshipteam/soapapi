@@ -1,4 +1,4 @@
-<?php namespace airshipwebservices\soapapi 
+<?php namespace airshipwebservices\soapapi;
 	
 class AirshipWifiInteraction extends Airship{
 
@@ -142,21 +142,16 @@ class AirshipWifiInteraction extends Airship{
 	/*
 	* 	GET WIFI INTERACTIONS
 	*
-	*	@description 		A wrapper function for Airship's createWifiInteractionHistory SOAP API
+	*	@description 		A wrapper function for Airship's getWifiInteractions SOAP API
 	*
-	*	@param 	string   	wifiinteraction_hotspot_name
-	*	@param 	string 		wifiinteraction_mac_name
-	*	@param 	string 		wifiinteraction_device_mime_type
-	*	@param 	string 		wifiinteraction_interaction_type
-	*	@param 	integer     wifiinteraction_contact_id
-	*	@param 	string      wifiinteraction_created_datetime
+	*	@param 	array   	search array
 	*
 	*	@return int 		mixed
 	*/
 	
 	public function getWifiInteractions($params)
 	{
-		
+
 		if ( count($params) === 0 )
 			return $this->_errorHandler->return_error('booking.no_params_set');
 
