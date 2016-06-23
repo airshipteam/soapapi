@@ -248,7 +248,12 @@ return array(
 			'error_num' => 401,
 			'error_msg' => 'There was a problem creating this interaction',
 			'error_customer' => 'An error has occured'
-			)
+			),
+		'get_wifi_interactions_error' => array(
+			'error_num' => 402,
+			'error_msg' => 'There was an error getting wifi interactions',
+			'error_customer' => 'An error has occured'
+		),
 		
 	),
 

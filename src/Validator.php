@@ -499,6 +499,22 @@
 			'error' => 'wifi.create_wifi_interaction_history'
 		);	
 
+
+		/**
+		 * Validation for get wifi interactions response
+		 *
+		 * @var array
+		 */
+		protected $get_wifi_interactions_response = array(
+			'rules' => array(
+				'isarray' => true
+				), 
+			'error' => 'wifi.get_wifi_interactions_error'
+		);	
+
+
+		
+
 		/*
 		|--------------------------------------------------------------------------
 		| UNIQUE CODE responses
