@@ -86,7 +86,7 @@ class Contact_CreateContact_Test extends PHPUnit_Framework_TestCase {
 			*	@return BOOL 		BOOL
 			*/
 		 
-			public function testCreateContact_SOAP_down(){
+			/*public function testCreateContact_SOAP_down(){
 
 				$this->mockSoap = $this->getMockBuilder( 'airshipwebservices\soapapi\AirshipContact' )
 								 ->setMethods(null)
@@ -117,7 +117,7 @@ class Contact_CreateContact_Test extends PHPUnit_Framework_TestCase {
 				// Do the test
 				$this->assertEquals( $return_obj, $this->mockSoap->createContact() );
 
-			} 
+			} */
 
 			/*
 			* 	TEST CREATE CONTACT NO CONTACT DETAILS
