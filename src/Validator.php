@@ -534,7 +534,77 @@
 				), 
 			'error' => 'uniquecode.redeem_unique_code_error'
 		);			
+		
+		/*
+		|--------------------------------------------------------------------------
+		| Loyalty responses
+		|--------------------------------------------------------------------------
+		|
+		|
+	 	|
+		*/
+		protected $create_loyalty_scheme_interaction_response = array(
 
+			'rules' => array(
+				'isnumeric'
+			),
+			'error' => 'loyalty.create_loyalty_scheme_interaction'
+		);
+
+		protected $add_loyalty_source_response = array(
+
+			'rules' => array(
+				'isnumeric'
+			),
+			'error' => 'loyalty.add_loyalty_source_response'
+		);
+
+		protected $get_loyalty_sources_response = array(
+
+			'rules' => array(
+				'isarray' => true
+			),
+			'error' => 'loyalty.get_loyalty_sources'
+		);
+
+		protected $create_loyalty_scheme_response = array(
+
+			'rules' => array(
+				'isnumeric'
+			),
+			'error' => 'loyalty.get_loyalty_sources'
+		);
+		protected $assign_loyalty_scheme_sources_response = array(
+
+			'rules' => array(
+				'isnumeric'
+			),
+			'error' => 'loyalty.assign_loyalty_scheme_sources_response'
+		);
+
+		protected $is_membership_number_in_use_response = array(
+
+			'rules' => array(
+			),
+			'error' => 'loyalty.assign_loyalty_scheme_sources_response'
+		);
+
+		protected $get_loyalty_scheme_member_balances_response = [
+
+			'rules' => [
+				'isarray' => true
+			],
+			'error' => 'loyalty.get_loyalty_scheme_member_balances_response'
+
+		];
+
+		protected $get_loyalty_schemes_response = [
+
+			'rules' => [
+				'isarray' => true
+			],
+			'error' => 'loyalty.get_loyalty_schemes_response'
+		];
 
 		/*
 		|--------------------------------------------------------------------------
