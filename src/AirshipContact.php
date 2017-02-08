@@ -422,6 +422,8 @@
 	        if (substr($this->contact['mobilenumber'],0,4) == '0044') 
 	            $this->contact['mobilenumber'] = substr($this->contact['mobilenumber'],2);
 
+            $this->contact['mobilenumber'] = str_replace(' ', '', $this->contact['mobilenumber']);
+
 		}
 
 
