@@ -426,6 +426,71 @@
 
 		}
 
+		/**
+		 * Removes a contact from all groups on units passed
+		 * @param $contactId
+		 * @param array $unitIds
+		 * @return \stdClass
+         */
+		public function unsubscribeContactUnits($contactId, array $unitIds)
+		{
+			if($this->prepareInput('unsubscribe_contact') !== true)
+				return $this->response;
+
+			//Make The Call
+			$this->response = $this->soapCall('unsubscribeContactUnits', $this->username, $this->password,$contactId, $unitIds);
+
+			return $this->validateResponse('unsubscribe_contact');
+		}
+
+
+		/**
+		 * All notes for a contact
+		 * @param $contactId
+		 * @return \stdClass
+         */
+		public function getContactNotes($contactId)
+		{
+			if($this->prepareInput('get_contact_notes') !== true)
+				return $this->response;
+
+			//Make The Call
+			$this->response = $this->soapCall('getContactNotes', $this->username, $this->password,$contactId);
+
+			return $this->validateResponse('get_contact_notes');
+		}
+
+		/**
+		 * Add a note to a contacts records
+		 * @param $contactNoteParams
+		 * @return \stdClass
+         */
+		public function addContactNote($contactNoteParams)
+		{
+			if($this->prepareInput('add_contact_notes') !== true)
+				return $this->response;
+
+			//Make The Call
+			$this->response = $this->soapCall('addContactNote', $this->username, $this->password,$contactNoteParams);
+
+
+			return $this->validateResponse('add_contact_notes');
+		}
+
+
+		/**
+		 * Get the status of contact attributes
+		 * @param $contactId
+		 * @return \stdClass
+         */
+		public function getContactStatus($contactId)
+		{
+			//Make The Call
+			$this->response = $this->soapCall('getContactStatus', $this->username, $this->password,$contactId);
+
+			return $this->validateResponse('get_contact_status');
+		}
+
 
 	}
 
