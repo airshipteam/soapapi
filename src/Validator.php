@@ -608,6 +608,103 @@
 
 		/*
 		|--------------------------------------------------------------------------
+		| UnitUnsubscribe responses
+		|--------------------------------------------------------------------------
+		|
+		|
+	 	|
+		*/
+
+		/**
+		 * Validation for create contact response
+		 *
+		 * @var array
+		 */
+		protected $get_unit_subscriptions_response = array(
+			'rules' => array(
+				'isarray'=>true,
+				'arraycontent'=>true
+			),
+			'error' => 'unitunsubscribe.not_units_returned'
+		);
+
+
+		
+		/*
+		|--------------------------------------------------------------------------
+		| Employment responses
+		|--------------------------------------------------------------------------
+		|
+		|
+	 	|
+		*/
+
+		protected $add_sector_response = array(
+			'rules' => array(
+				'numeric'=>true,
+				'min'=>1
+			),
+			'error' => 'default.default'
+		);
+
+		protected $add_company_response = array(
+			'rules' => array(
+				'numeric'=>true,
+				'min'=>1
+			),
+			'error' => 'default.default'
+		);
+
+		protected $add_job_title_response = array(
+			'rules' => array(
+				'numeric'=>true,
+				'min'=>1
+			),
+			'error' => 'default.default'
+		);
+		protected $search_sectors_like_name_response = array(
+			'rules' => array(
+			),
+			'error' => 'default.default'
+		);
+		protected $search_companies_like_name_response = array(
+			'rules' => array(
+			),
+			'error' => 'default.default'
+		);
+
+		protected $search_job_title_like_name_response = array(
+			'rules' => array(
+			),
+			'error' => 'default.default'
+		);
+
+		protected $create_employment_history_response = array(
+			'rules' => array(
+				'numeric'=>true,
+				'min'=>1
+			),
+			'error' => 'default.default'
+		);
+		protected $update_employment_history_response = array(
+			'rules' => array(
+				'numeric'=>true,
+				'min'=>1
+			),
+			'error' => 'default.default'
+		);
+		protected $get_contact_employment_history_response = array(
+			'rules' => array(
+				'isarray'=>true,
+			),
+			'error' => 'default.default'
+		);
+
+
+
+
+		/*
+		|--------------------------------------------------------------------------
 		| Contact field validation
 		|--------------------------------------------------------------------------
 		|

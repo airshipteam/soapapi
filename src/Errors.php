@@ -399,6 +399,24 @@ return array(
 			)
 
 	),
+	/*
+	|--------------------------------------------------------------------------
+	| UNSUBSCRIBE UNIT API
+	|--------------------------------------------------------------------------
+	|
+	| Errors that can be returned when trying to access the Airship UNSUBSCRIBE UNIT API
+ 	|
+	*/
+
+	'uniquecode' => array(
+
+		'not_units_returned' => array(
+			'error_num' => 900,
+			'error_msg' => 'There was a problem getting units',
+			'error_customer' => 'Server error'
+		)
+
+	),
 );
 
 
