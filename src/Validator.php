@@ -72,6 +72,30 @@
 		);
 
 		/**
+		 * Validation for get contact status response
+		 *
+		 * @var array
+		 */
+		protected $get_contact_status = array(
+			'rules' => array(
+				'isarray'=>true,
+			),
+			'error' => 'contact.get_error'
+		);
+
+		/**
+		 * Validation for get contact notes response
+		 *
+		 * @var array
+		 */
+		protected $get_contact_notes = array(
+			'rules' => array(
+				'isarray'=>true,
+			),
+			'error' => 'contact.get_error'
+		);
+
+		/**
 		 * Validation for get contact response
 		 *
 		 * @var array
@@ -731,7 +755,7 @@
 			'membershipnumber',
 			'membershiptype',
 			'mobilenumber',
-			'landnumber',
+			'homenumber',
 			'email',
 			'dob',
 			'sourceid',
@@ -762,7 +786,7 @@
 			'membershipnumber',
 			'membershiptype',
 			'mobilenumber',
-			'landnumber',
+			'homenumber',
 			'email',
 			'dob',
 			'sourceid',
