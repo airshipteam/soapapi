@@ -78,7 +78,6 @@
 		 */
 		protected $get_contact_status_response = array(
 			'rules' => array(
-				'isarray'=>true,
 			),
 			'error' => 'contact.get_error'
 		);
@@ -90,7 +89,8 @@
 		 */
 		protected $add_contact_notes_response = array(
 			'rules' => array(
-				'isarray'=>true,
+				'numeric'=>true,
+				'min'=>1
 			),
 			'error' => 'contact.get_error'
 		);
@@ -102,8 +102,8 @@
 		 */
 		protected $get_contact_notes_response = array(
 			'rules' => array(
-				'numeric'=>true,
-				'min'=>1
+				'isarray'=>true
+
 			),
 			'error' => 'contact.get_error'
 		);
