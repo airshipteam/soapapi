@@ -84,13 +84,26 @@
 		);
 
 		/**
+		 * Validation for add note response
+		 *
+		 * @var array
+		 */
+		protected $add_contact_notes_response = array(
+			'rules' => array(
+				'isarray'=>true,
+			),
+			'error' => 'contact.get_error'
+		);
+
+		/**
 		 * Validation for get contact notes response
 		 *
 		 * @var array
 		 */
 		protected $get_contact_notes_response = array(
 			'rules' => array(
-				'isarray'=>true,
+				'numeric'=>true,
+				'min'=>1
 			),
 			'error' => 'contact.get_error'
 		);
