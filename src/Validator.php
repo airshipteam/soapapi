@@ -76,7 +76,7 @@
 		 *
 		 * @var array
 		 */
-		protected $get_contact_status = array(
+		protected $get_contact_status_response = array(
 			'rules' => array(
 				'isarray'=>true,
 			),
@@ -88,7 +88,7 @@
 		 *
 		 * @var array
 		 */
-		protected $get_contact_notes = array(
+		protected $get_contact_notes_response = array(
 			'rules' => array(
 				'isarray'=>true,
 			),
