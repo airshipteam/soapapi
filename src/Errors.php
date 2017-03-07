@@ -396,6 +396,11 @@ return array(
 			'error_num' => 900,
 			'error_msg' => 'There was a problem redeeming the code',
 			'error_customer' => 'There was a problem redeeming the code'
+			),
+		'unique_code_get_data_error' => array(
+			'error_num' => 900,
+			'error_msg' => 'There was a problem getting the code data',
+			'error_customer' => 'There was a problem getting the code data'
 			)
 
 	),

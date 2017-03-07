@@ -570,6 +570,17 @@
 				'equalto'=>100
 				), 
 			'error' => 'uniquecode.redeem_unique_code_error'
+		);
+		/**
+		 * Validation for create wifi interaction response
+		 *
+		 * @var array
+		 */
+		protected $unique_code_get_data_response = array(
+			'rules' => array(
+				
+			),
+			'error' => 'uniquecode.unique_code_get_data_error'
 		);			
 		
 		/*

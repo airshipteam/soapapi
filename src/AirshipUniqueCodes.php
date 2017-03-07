@@ -66,6 +66,19 @@
 			return $this->validateResponse('redeem_unique_code');
 		    				
 		}
+
+		public function uniqueCodeGetData($uniquecode, $ucgid)
+		{
+
+			if($this->prepareInput('unique_code_get_data') !== true)
+				return $this->response;
+
+			//Make The Call
+			$this->response = $this->soapCall('uniqueCodeGetData', $this->username, $this->password, $uniquecode, $ucgid);
+
+			return $this->validateResponse('unique_code_get_data');
+
+		}
 		
 
 	}
