@@ -373,7 +373,7 @@ return array(
 			),
 
 		'get_users_error' => array(
-			'error_num' => 800,
+			'error_num' => 810,
 			'error_msg' => 'There was an error retrieving user details',
 			'error_customer' => 'There was an error retrieving user details'
 			)
@@ -398,7 +398,7 @@ return array(
 			'error_customer' => 'There was a problem redeeming the code'
 			),
 		'unique_code_get_data_error' => array(
-			'error_num' => 900,
+			'error_num' => 910,
 			'error_msg' => 'There was a problem getting the code data',
 			'error_customer' => 'There was a problem getting the code data'
 			)
@@ -416,8 +416,27 @@ return array(
 	'uniquecode' => array(
 
 		'not_units_returned' => array(
-			'error_num' => 900,
+			'error_num' => 1000,
 			'error_msg' => 'There was a problem getting units',
+			'error_customer' => 'Server error'
+		)
+
+	),
+
+	/*
+	|--------------------------------------------------------------------------
+	| UNSUBSCRIBE UNIT API
+	|--------------------------------------------------------------------------
+	|
+	| Errors that can be returned when trying to access the Airship UNSUBSCRIBE UNIT API
+ 	|
+	*/
+
+	'search' => array(
+
+		'search_contact_udf_response' => array(
+			'error_num' => 1100,
+			'error_msg' => 'There was a problem searching the contact UDF',
 			'error_customer' => 'Server error'
 		)
 

@@ -749,6 +749,21 @@
 		);
 
 
+		/*
+		|--------------------------------------------------------------------------
+		| Serch responses
+		|--------------------------------------------------------------------------
+		|
+		|
+	 	|
+		*/
+
+		protected $search_contact_udf_response = array(
+			'rules' => array(
+				'isarray'=>true,
+			),
+			'error' => 'search.search_contact_udf_response'
+		);
 
 
 		/*
