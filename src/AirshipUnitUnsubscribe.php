@@ -65,6 +65,24 @@
         }
 
 
+        /**
+         * Returns last interacted unit for contact
+         * @param $contactId
+         * @return \stdClass
+         */
+        public function getUnitLastInteraction($contactId)
+        {
+
+            if($this->prepareInput('get_unit_lastt_interaction') !== true)
+                return $this->response;
+
+            //Make The Call
+            $this->response = $this->soapCall('getUnitLastInteraction', $this->username, $this->password, $contactId);
+            return $this->validateResponse('get_unit_lastt_interaction');
+
+        }
+
+
 
     }
 

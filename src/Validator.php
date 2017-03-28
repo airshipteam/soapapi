@@ -677,6 +677,16 @@
 		);
 
 
+		protected $get_unit_lastt_interaction_response = array(
+			'rules' => array(
+				'isarray'=>true,
+				'arraycontent'=>true
+			),
+			'error' => 'unitunsubscribe.not_units_returned'
+		);
+
+
+
 		
 		/*
 		|--------------------------------------------------------------------------
@@ -751,7 +761,7 @@
 
 		/*
 		|--------------------------------------------------------------------------
-		| Serch responses
+		| Search responses
 		|--------------------------------------------------------------------------
 		|
 		|
@@ -764,6 +774,17 @@
 			),
 			'error' => 'search.search_contact_udf_response'
 		);
+
+
+		protected $search_contact_udf_empty_response = array(
+			'rules' => array(
+				'isarray'=>true,
+			),
+			'error' => 'search.search_contact_udf_response'
+		);
+
+
+
 
 
 		/*

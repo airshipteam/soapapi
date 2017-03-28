@@ -67,6 +67,31 @@
 		}
 
 
+		/*
+		* 	Search contact UDF Empty
+		*
+		*	@description 		A wrapper function for PowerText's Search Contact UDF empty
+		*
+		*	@param 	object   	contact
+		*	@param 	array 		groups
+		*	@param 	array 		UDFs
+		*
+		*	@return int 		mixed
+		*/
+		
+		public function searchContactUDFEmpty($udfnameid,$myResultOptions = [])
+		{
+
+			if($this->prepareInput('search_contact_udf') !== true)
+		    	return $this->response;
+			
+			//Make The Calldd
+    		$this->response = $this->soapCall('searchContactUDFEmpty', $this->username, $this->password,$udfnameid,$myResultOptions);
+			return $this->validateResponse('search_contact_udf_empty');
+		    				
+		}
+
+
 	}
 
 }
