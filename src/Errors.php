@@ -425,7 +425,7 @@ return array(
 
 	/*
 	|--------------------------------------------------------------------------
-	| UNSUBSCRIBE UNIT API
+	| SEARCH  API
 	|--------------------------------------------------------------------------
 	|
 	| Errors that can be returned when trying to access the Airship UNSUBSCRIBE UNIT API
@@ -437,6 +437,26 @@ return array(
 		'search_contact_udf_response' => array(
 			'error_num' => 1100,
 			'error_msg' => 'There was a problem searching the contact UDF',
+			'error_customer' => 'Server error'
+		)
+
+	),
+
+
+	/*
+	|--------------------------------------------------------------------------
+	| UNSUBSCRIBE UNIT API
+	|--------------------------------------------------------------------------
+	|
+	| Errors that can be returned when trying to access the Airship UNSUBSCRIBE UNIT API
+ 	|
+	*/
+
+	'unitunsubscribe' => array(
+
+		'not_units_returned' => array(
+			'error_num' => 1200,
+			'error_msg' => 'An error has occured retrieving last interacted unit',
 			'error_customer' => 'Server error'
 		)
 
