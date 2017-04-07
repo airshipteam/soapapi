@@ -550,6 +550,19 @@
 		);	
 
 
+		/**
+		 * Validation for assign wifi interaction unit response
+		 *
+		 * @var array
+		 */
+		protected $assign_wifi_interaction_unit_response = array(
+			'rules' => array(
+				'equalto'=>100
+				),  
+			'error' => 'wifi.assign_interaction_unit_error'
+		);	
+
+
 		
 
 		/*

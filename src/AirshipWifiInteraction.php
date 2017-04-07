@@ -184,5 +184,33 @@ class AirshipWifiInteraction extends Airship{
 	}
 
 
+	/*
+	* 	GET WIFI INTERACTIONS
+	*
+	*	@description 		A wrapper function for Airship's getWifiInteractions SOAP API
+	*
+	*	@param 	array   	search array
+	*
+	*	@return int 		mixed
+	*/
+	
+	public function assignWifiInteractionUnit($wifiinteraction_id,$wifi_interaction_unit_id)
+	{
+
+		if($this->prepareInput('assignWifiInteractionUnit') !== true)
+	    	return $this->response;
+		//Make The Call
+		$this->response = $this->soapCall('assignWifiInteractionUnit', 
+										$this->username, 
+										$this->password,
+										$wifiinteraction_id,
+										$wifi_interaction_unit_id
+									);
+
+		return $this->validateResponse('assign_wifi_interaction_unit');
+	    				
+	}
+
+
 }
 

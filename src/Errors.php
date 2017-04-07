@@ -243,7 +243,6 @@ return array(
 			'error_msg' => 'There was a problem creating this interaction',
 			'error_customer' => 'An error has occured'
 			),
-
 		'create_wifi_interaction_history' => array(
 			'error_num' => 401,
 			'error_msg' => 'There was a problem creating this interaction',
@@ -253,7 +252,12 @@ return array(
 			'error_num' => 402,
 			'error_msg' => 'There was an error getting wifi interactions',
 			'error_customer' => 'An error has occured'
-		),
+			),
+		'assign_interaction_unit_error' => array(
+			'error_num' => 403,
+			'error_msg' => 'There was an error assigning wifi interaction unit',
+			'error_customer' => 'An error has occured'
+			),
 		
 	),
 
