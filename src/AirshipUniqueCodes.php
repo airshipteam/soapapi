@@ -79,6 +79,19 @@
 			return $this->validateResponse('unique_code_get_data');
 
 		}
+
+		public function contactGetUniqueCodes($contactid)
+		{
+
+			if($this->prepareInput('contact_get_unique_codes') !== true)
+				return $this->response;
+
+			//Make The Call
+			$this->response = $this->soapCall('contactGetUniqueCodes', $this->username, $this->password, $contactid);
+
+			return $this->validateResponse('contact_get_unique_codes');
+
+		}
 		
 
 	}

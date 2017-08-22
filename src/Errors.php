@@ -405,7 +405,12 @@ return array(
 			'error_num' => 910,
 			'error_msg' => 'There was a problem getting the code data',
 			'error_customer' => 'There was a problem getting the code data'
-			)
+			),
+		'contact_get_unique_codes_error' => array(
+			'error_num' => 920,
+			'error_msg' => 'There was a problem getting the code data',
+			'error_customer' => 'There was a problem getting the code data'
+			),
 
 	),
 	/*

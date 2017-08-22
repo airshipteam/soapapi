@@ -594,7 +594,20 @@
 				
 			),
 			'error' => 'uniquecode.unique_code_get_data_error'
-		);			
+		);	
+
+		/**
+		 * Validation for contact get unique codes
+		 *
+		 * @var array
+		 */	
+
+		protected $contact_get_unique_codes_response = array(
+			'rules' => array(
+				'isarray' => true
+			),
+			'error' => 'uniquecode.contact_get_unique_codes_error'
+		);	
 		
 		/*
 		|--------------------------------------------------------------------------
