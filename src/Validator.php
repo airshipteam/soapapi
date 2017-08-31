@@ -264,7 +264,7 @@
 		 */
 		protected $contact_validation_response = array(
 			'rules' => array(
-				'isarray' => true,
+				'isobject' => true,
 			), 
 			'error' => 'contact.contact_validation'
 		);
@@ -986,6 +986,10 @@
 				        if(!$this->validateIsArray($rule))
 				        	return $this->error;
 				        break;
+			        case "isobject":
+				        if(!$this->validateIsObject($rule))
+				        	return $this->error;
+				        break;
 			        case "arraycontent":
 				        if(!$this->validateArrayContent($rule))
 				        	return $this->error;
@@ -1081,6 +1085,23 @@
 		protected function validateIsArray($rule){
 			
 			if(!is_array($this->response) ){
+				$this->setError();
+				return false;
+			}
+
+			return true;
+
+		}
+
+		/**
+		 * VALIDATE IS OBJECT
+		 * validate the response is an object
+		 *
+		 * @return BOOL
+		 */
+		protected function validateIsObject($rule){
+			
+			if(!is_object($this->response) ){
 				$this->setError();
 				return false;
 			}
