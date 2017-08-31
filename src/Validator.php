@@ -257,6 +257,18 @@
 			'error' => 'contact.set_contact_social'
 		);
 
+		/**
+		 * Validation for contact_validation response
+		 *
+		 * @var array
+		 */
+		protected $set_contact_social_response = array(
+			'rules' => array(
+				'isarray' => true,
+			), 
+			'error' => 'contact.set_contact_social'
+		);
+
 		/*
 		|--------------------------------------------------------------------------
 		| Bookings responses
@@ -827,6 +839,36 @@
 		 * @var array
 		 */
 		protected $create_contact_fields = array(
+			'title',
+			'gender',
+			'firstname',
+			'lastname',
+			'buildingname',
+			'buildingnumstreet',
+			'locality',
+			'city',
+			'postcode',
+			'county',
+			'country',
+			'membershipnumber',
+			'membershiptype',
+			'mobilenumber',
+			'homenumber',
+			'email',
+			'dob',
+			'sourceid',
+			'allowsms',
+			'allowcall',
+			'allowemail',
+			'allowsnailmail',
+		);
+
+		/**
+		 * Possible fields fore create contact
+		 *
+		 * @var array
+		 */
+		protected $contact_validation_fields = array(
 			'title',
 			'gender',
 			'firstname',

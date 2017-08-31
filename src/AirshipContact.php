@@ -491,6 +491,24 @@
 			return $this->validateResponse('get_contact_status');
 		}
 
+		/**
+		 * Validate a contact
+		 * @param $contactId
+		 * @return \stdClass
+         */
+		public function contactValidation()
+		{
+
+			if($this->prepareInput('contact_validation') !== true)
+		    	return $this->response;
+
+		    //Make The Call
+    		$this->response = $this->soapCall('contactValidation', $this->username, $this->password, $this->contactWrite, $this->udfs);
+			return $this->validateResponse('contact_validation');
+
+		}
+
+
 
 	}
 
