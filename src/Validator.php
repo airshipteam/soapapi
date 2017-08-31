@@ -262,11 +262,11 @@
 		 *
 		 * @var array
 		 */
-		protected $set_contact_social_response = array(
+		protected $contact_validation_response = array(
 			'rules' => array(
 				'isarray' => true,
 			), 
-			'error' => 'contact.set_contact_social'
+			'error' => 'contact.contact_validation'
 		);
 
 		/*

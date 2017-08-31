@@ -175,7 +175,7 @@ return array(
 			'error_msg' => 'there was a problem setting social data for this contact',
 			'error_customer' => 'An error has occured'
 		),
-		'set_contact_social' => array(
+		'contact_validation' => array(
 			'error_num' => 160,
 			'error_msg' => 'there was a problem validating the passed data',
 			'error_customer' => 'An error has occured'
