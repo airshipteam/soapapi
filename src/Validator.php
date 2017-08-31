@@ -928,6 +928,10 @@
 			'contactid',
 		);
 
+		protected $get_contact_email_fields = array(
+			'email',
+		);
+
 		/**
 		 * Check possible fields
 		 * Return an array only of fields that Airhsip Likes. 
