@@ -55,7 +55,14 @@
 			$this->server = $server;
 			$this->username = $username;
 			$this->password = $password;
-			$this->soap_client = new SoapClient($this->server . $this->wsdl, array("exceptions" => 1));
+			try{
+				$this->soap_client = new SoapClient($this->server . $this->wsdl, array("exceptions" => 1));
+			}catch(\SoapFault $e) {
+				set_error_handler('var_dump', 0); // Never called because of empty mask.
+	            @trigger_error("");
+	            restore_error_handler();
+				return false;
+	    	}
 		}
 
 
