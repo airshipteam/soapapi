@@ -11,6 +11,7 @@
 		public  $eflyerID;
 		public  $wsdl;             // Alphanumeric
 		public  $smsContent;             // Alphanumeric
+		public  $fromName;             // Alphanumeric
 		
 
 		public function __construct()
@@ -74,6 +75,33 @@
 
     		$this->response = $this->soapCall('sendNewEflyer', $this->username, $this->password, $this->unitID, $this->fromAddress, $this->recipients, $this->subject, $this->htmlContent, $this->textContent);
 			return $this->validateResponse('send_new_eflyer');
+		    				
+		}
+
+		/*
+		* 	SEND NEW EFLYER
+		*
+		*	@description 		A wrapper function for Airship's send new eflyer SOAP API
+		*
+		*	@param 	int   	unit ID
+		*	@param 	string 		from address
+		*	@param 	array 		recipients
+		*	@param 	string 		subject
+		*	@param 	string 		html content
+		*	@param 	string 		text content
+		*	@param 	int 		broadcastID
+		*
+		*	@return int 		mixed
+		*/
+		
+		public function sendNewEflyerBroadcast()
+		{
+
+			if($this->prepareInput('send_new_eflyer_broadcast') !== true)
+		    	return $this->response;
+
+    		$this->response = $this->soapCall('sendNewEflyerBroadcast', $this->username, $this->password, $this->unitID, $this->fromAddress, $this->fromName, $this->recipients, $this->subject, $this->htmlContent, $this->textContent);
+			return $this->validateResponse('send_new_eflyer_broadcast');
 		    				
 		}
 

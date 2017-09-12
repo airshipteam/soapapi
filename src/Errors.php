@@ -212,6 +212,11 @@ return array(
 			'error_msg' => 'There was a problem sending your tflyer',
 			'error_customer' => 'An error has occured'
 			),
+		'send_new_eflyer_broadcast_error' => array(
+			'error_num' => 230,
+			'error_msg' => 'There was a problem sending your eflyer',
+			'error_customer' => 'An error has occured'
+			),
 	),
 
 	/*

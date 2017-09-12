@@ -449,13 +449,28 @@
 		 *
 		 * @var array
 		 */
+		
 		protected $send_new_tflyer_response = array(
 			'rules' => array(
 				'numeric'=>true,
 				'min'=>1
 				), 
 			'error' => 'broadcast.send_new_tflyer_error'
-		);		
+		);	
+
+		/**
+		 * Validation for send new eflyer broadcast response
+		 *
+		 * @var array
+		 */
+		protected $send_new_eflyer_broadcast_response = array(
+			'rules' => array(
+				'numeric'=>true,
+				'min'=>1
+				), 
+			'error' => 'broadcast.send_new_eflyer_broadcast_error'
+		);
+
 
 		/*
 		|--------------------------------------------------------------------------
