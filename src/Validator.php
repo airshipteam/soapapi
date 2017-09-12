@@ -443,7 +443,19 @@
 				), 
 			'error' => 'broadcast.send_forced_eflyer_error'
 		);
-		
+
+		/**
+		 * Validation for send new tflyer response
+		 *
+		 * @var array
+		 */
+		protected $send_new_tflyer_response = array(
+			'rules' => array(
+				'numeric'=>true,
+				'min'=>1
+				), 
+			'error' => 'broadcast.send_new_tflyer_error'
+		);		
 
 		/*
 		|--------------------------------------------------------------------------

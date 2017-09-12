@@ -10,6 +10,7 @@
 		public  $recipients  = array();          // array
 		public  $eflyerID;
 		public  $wsdl;             // Alphanumeric
+		public  $smsContent;             // Alphanumeric
 		
 
 		public function __construct()
@@ -100,6 +101,33 @@
 
     		$this->response = $this->soapCall('sendForcedEflyer', $this->username, $this->password, $this->eflyerID, $this->recipients);
 			return $this->validateResponse('send_forced_eflyer');
+		    				
+		}
+
+		/*
+		* 	SEND FORCED EFLYER
+		*
+		*	@description 		A wrapper function for Airship's send forced eflyer SOAP API
+		*
+		*	@param 	int   	unit ID
+		*	@param 	string 		from address
+		*	@param 	array 		recipients
+		*	@param 	string 		subject
+		*	@param 	string 		html content
+		*	@param 	string 		text content
+		*	@param 	int 		broadcastID
+		*
+		*	@return int 		mixed
+		*/
+		
+		public function sendNewTflyer()
+		{
+
+			if($this->prepareInput('send_new_tflyer') !== true)
+		    	return $this->response;
+
+    		$this->response = $this->soapCall('sendNewTflyer', $this->username, $this->password, $this->unitID, $this->recipients,$this->smsContent);
+			return $this->validateResponse('send_new_tflyer');
 		    				
 		}
 
