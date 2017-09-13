@@ -6,7 +6,7 @@ use  airshipwebservices\soapapi\AirshipWifiInteraction;
 * Run with vendor/bin/phpunit tests/
 */
  
-class WIFI_CreateWifiInteraction_Test extends PHPUnit_Framework_TestCase {
+class WIFI_CreateWifiInteraction_Test extends PHPUnit\Framework\TestCase {
 
 	public function __construct(){
 		parent::__construct();
