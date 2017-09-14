@@ -656,7 +656,7 @@
 
 		protected $add_unique_code_contact_response = array(
 			'rules' => array(
-				'isarray' => true
+				'equalto'=>100
 			),
 			'error' => 'uniquecode.add_unique_code_contact_error'
 		);	
