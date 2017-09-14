@@ -647,6 +647,19 @@
 			),
 			'error' => 'uniquecode.contact_get_unique_codes_error'
 		);	
+
+		/**
+		 * Validation for add uniquecode to contact
+		 *
+		 * @var array
+		 */	
+
+		protected $add_unique_code_contact_response = array(
+			'rules' => array(
+				'isarray' => true
+			),
+			'error' => 'uniquecode.add_unique_code_contact_error'
+		);	
 		
 		/*
 		|--------------------------------------------------------------------------
