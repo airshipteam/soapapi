@@ -5,7 +5,7 @@ use  airshipwebservices\soapapi\AirshipContact;
 * Run with vendor/bin/phpunit tests/
 */
  
-class Contact_GetUDFValue_Test extends PHPUnit\Framework\TestCase {
+class Contact_GetUDFValue_Test extends PHPUnit_Framework_TestCase {
 
 	public function __construct(){
 		parent::__construct();

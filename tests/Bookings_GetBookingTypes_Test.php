@@ -5,7 +5,7 @@ use  airshipwebservices\soapapi\AirshipBooking;
 * Run with vendor/bin/phpunit tests/
 */
  
-class Booking_GetBookingTypes_Test extends PHPUnit\Framework\TestCase {
+class Booking_GetBookingTypes_Test extends PHPUnit_Framework_TestCase {
 
 	public function __construct(){
 		parent::__construct();

@@ -5,7 +5,7 @@ use  airshipwebservices\soapapi\AirshipMilestones;
 * Run with vendor/bin/phpunit tests/
 */
  
-class Milestones_GetStarRating_Test extends PHPUnit\Framework\TestCase {
+class Milestones_GetStarRating_Test extends PHPUnit_Framework_TestCase {
 
 	public function __construct(){
 		parent::__construct();

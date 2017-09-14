@@ -5,7 +5,7 @@ use  airshipwebservices\soapapi\AirshipContact;
 * Run with vendor/bin/phpunit tests/
 */
  
-class Contact_UpdateContact_Test extends PHPUnit\Framework\TestCase {
+class Contact_UpdateContact_Test extends PHPUnit_Framework_TestCase {
 
 	public function __construct(){
 		parent::__construct();
