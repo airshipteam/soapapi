@@ -7,12 +7,14 @@
 		public  $fromAddress;          // string
 		public  $subject;          // string
 		public  $unitID;          // string
-		public  $recipients  = array();          // array
+		public  $recipients     = array();          // array
 		public  $eflyerID;
 		public  $wsdl;             // Alphanumeric
 		public  $smsContent;             // Alphanumeric
 		public  $fromName;             // Alphanumeric
-		
+		public  $searchCriteria = [];
+		public  $scheduleDateTime; //datetime
+		public  $limit          = []; //integer
 
 		public function __construct()
 			{
@@ -159,6 +161,15 @@
 		    				
 		}
 
+		public function scheduleNewTflyer()
+		{
+			if($this->prepareInput('schedule_new_tflyer') !== true)
+		    	return $this->response;
+
+    		$this->response = $this->soapCall('scheduleNewTflyer', $this->username, $this->password, $this->unitID, $this->searchCriteria,$this->smsContent, $this->scheduleDateTime,$this->limit);
+			return $this->validateResponse('schedule_new_tflyer');
+
+		}
 
 		
 

@@ -472,6 +472,22 @@
 		);
 
 
+		/**
+		 * Validation for schedule new tflyer broadcast response
+		 *
+		 * @var array
+		 */
+		
+		protected $send_new_eflyer_broadcast_response = array(
+			'rules' => array(
+				'numeric'=>true,
+				'min'=>1
+				), 
+			'error' => 'broadcast.schedule_new_tflyer_error'
+		);
+
+	
+
 		/*
 		|--------------------------------------------------------------------------
 		| Statistics responses
