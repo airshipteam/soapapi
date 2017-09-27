@@ -93,6 +93,18 @@
 
 		}
 		
+		public function addUniqueCodeContact($ucgid, $uniquecodes, $contactid)
+		{
+
+			if($this->prepareInput('add_unique_code_contact') !== true)
+				return $this->response;
+
+			//Make The Call
+			$this->response = $this->soapCall('addUniqueCodeContact', $this->username, $this->password, $ucgid, $uniquecodes, $contactid);
+
+			return $this->validateResponse('add_unique_code_contact');
+
+		}
 
 	}
 

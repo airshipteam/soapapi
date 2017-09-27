@@ -431,6 +431,11 @@ return array(
 			'error_msg' => 'There was a problem getting the code data',
 			'error_customer' => 'There was a problem getting the code data'
 			),
+		'add_unique_code_contact_error' => array(
+			'error_num' => 930,
+			'error_msg' => 'There was a problem adding uniquecode to contact',
+			'error_customer' => 'There was a problem adding uniquecode to contact'
+			),
 
 	),
 	/*
