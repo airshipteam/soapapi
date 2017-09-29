@@ -1125,7 +1125,7 @@
 		 */
 		protected function validateMin($rule){
 
-			if(!($this->response > $rule)){
+			if(!($this->response >= $rule)){
 				$this->setError();
 				return false;
 			}
