@@ -222,6 +222,11 @@ return array(
 			'error_msg' => 'There was a problem scheduling your tflyer',
 			'error_customer' => 'An error has occured'
 			),
+		'schedule_new_tflyer_count' => array(
+			'error_num' => 250,
+			'error_msg' => 'There was a problem getting your count',
+			'error_customer' => 'An error has occured'
+			),
 	),
 
 	/*

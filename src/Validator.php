@@ -486,6 +486,22 @@
 			'error' => 'broadcast.schedule_new_tflyer_error'
 		);
 
+		/**
+		 * Validation for schedule new tflyer count response
+		 *
+		 * @var array
+		 */
+		
+		protected $schedule_new_tflyer_count_response = array(
+			'rules' => array(
+				'numeric'=>true,
+				'min'=>0
+				), 
+			'error' => 'broadcast.schedule_new_tflyer_count'
+		);
+
+		
+
 	
 
 		/*

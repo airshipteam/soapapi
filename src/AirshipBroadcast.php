@@ -171,6 +171,16 @@
 
 		}
 
+		public function scheduleNewTflyerCount()
+		{
+			if($this->prepareInput('schedule_new_tflyer_count') !== true)
+		    	return $this->response;
+
+    		$this->response = $this->soapCall('scheduleNewTflyerCount', $this->username, $this->password, $this->unitID, $this->searchCriteria);
+			return $this->validateResponse('schedule_new_tflyer_count');
+
+		}
+
 		
 
 
