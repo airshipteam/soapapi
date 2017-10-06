@@ -500,6 +500,21 @@
 			'error' => 'broadcast.schedule_new_tflyer_count'
 		);
 
+		/**
+		 * Validation for schedule new tflyer count response
+		 *
+		 * @var array
+		 */
+		
+		protected $cancel_scheduled_sms_response = array(
+			'rules' => array(
+				'equalto'=>100
+				),  
+			'error' => 'broadcast.cancel_scheduled_sms'
+		);
+
+		
+
 		
 
 	

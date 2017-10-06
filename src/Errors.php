@@ -227,6 +227,12 @@ return array(
 			'error_msg' => 'There was a problem getting your count',
 			'error_customer' => 'An error has occured'
 			),
+		'cancel_scheduled_sms' => array(
+			'error_num' => 260,
+			'error_msg' => 'There was a problem cancelling your broadcast',
+			'error_customer' => 'An error has occured'
+		),
+
 	),
 
 	/*
