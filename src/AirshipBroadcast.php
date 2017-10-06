@@ -15,6 +15,7 @@
 		public  $searchCriteria = [];
 		public  $scheduleDateTime; //datetime
 		public  $limit          = []; //integer
+		public  $broadcastID; // integer
 
 		public function __construct()
 			{
@@ -181,8 +182,18 @@
 
 		}
 
-		
 
+		public function cancelScheduledSMS()
+		{
+			if($this->prepareInput('cancel_scheduled_sms') !== true)
+		    	return $this->response;
+
+    		$this->response = $this->soapCall('cancelScheduledSMS', $this->username, $this->password, $this->unitID, $this->broadcastID);
+			return $this->validateResponse('cancel_scheduled_sms');
+
+		}
+
+	
 
 	}
 
