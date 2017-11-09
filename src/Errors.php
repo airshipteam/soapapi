@@ -416,6 +416,8 @@ return array(
 
 	),
 
+	
+
 	/*
 	|--------------------------------------------------------------------------
 	| UNIQUE CODE API
@@ -504,6 +506,26 @@ return array(
 			'error_msg' => 'An error has occured retrieving last interacted unit',
 			'error_customer' => 'Server error'
 		)
+
+	),
+
+
+	/*
+	|--------------------------------------------------------------------------
+	| UnitManager API
+	|--------------------------------------------------------------------------
+	|
+	| Errors that can be returned when trying to access the Airship Admin API
+ 	|
+	*/
+
+	'unitmanager' => array(
+
+		'get_unit_bespoke_map_error' => array(
+			'error_num' => 1300,
+			'error_msg' => 'There was an error retrieving the unit map',
+			'error_customer' => 'There was an error retrieving the unit map'
+			)
 
 	),
 );

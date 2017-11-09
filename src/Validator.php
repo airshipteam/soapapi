@@ -811,6 +811,27 @@
 		);
 
 
+		/*
+		|--------------------------------------------------------------------------
+		| UnitManager responses
+		|--------------------------------------------------------------------------
+		|
+		|
+	 	|
+		*/
+
+		/**
+		 * Validation for create contact response
+		 *
+		 * @var array
+		 */
+		protected $get_unit_bespoke_map_response = array(
+			'rules' => array(
+				'isobject' => true
+			),
+			'error' => 'unitmanager.get_unit_bespoke_map_error'
+		);
+
 
 		
 		/*
