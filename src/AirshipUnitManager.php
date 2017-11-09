@@ -62,7 +62,7 @@
 		    	return $this->response;
 			
 			//Make The Call
-    		$this->response = $this->soapCall('get_unit_bespoke_map', $this->username, $this->password, $unit_id);
+    		$this->response = $this->soapCall('getUnitBespokeMap', $this->username, $this->password, $unit_id);
 			return $this->validateResponse('get_unit_bespoke_map');
 		    				
 		}
