@@ -525,7 +525,13 @@ return array(
 			'error_num' => 1300,
 			'error_msg' => 'There was an error retrieving the unit map',
 			'error_customer' => 'There was an error retrieving the unit map'
-			)
+			),
+
+		'get_unit_error' => array(
+			'error_num' => 1310,
+			'error_msg' => 'There was an error retrieving the unit',
+			'error_customer' => 'There was an error retrieving the unit'
+			),
 
 	),
 );

@@ -67,6 +67,29 @@
 		    				
 		}
 
+		/*
+		* 	GET SYTSEM AUTH
+		*
+		*	@description 		A wrapper function for Airship's GET SYSTEM AUTH SOAP API
+		*
+		*	@param 	string   	username
+		*	@param 	array 		password
+		*
+		*	@return int 		mixed
+		*/
+		
+		public function getUnit($unit_id)
+		{
+
+			if($this->prepareInput('get_unit') !== true)
+		    	return $this->response;
+			
+			//Make The Call
+    		$this->response = $this->soapCall('getUnit', $this->username, $this->password, $unit_id);
+			return $this->validateResponse('get_unit');
+		    				
+		}
+
 
 	}
 

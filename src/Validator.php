@@ -833,6 +833,14 @@
 		);
 
 
+		protected $get_unit_response = array(
+			'rules' => array(
+				'isobject' => true
+			),
+			'error' => 'unitmanager.get_unit_error'
+		);
+
+
 		
 		/*
 		|--------------------------------------------------------------------------
