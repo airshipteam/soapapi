@@ -16,6 +16,9 @@
 		public  $scheduleDateTime; //datetime
 		public  $limit          = []; //integer
 		public  $broadcastID; // integer
+		public  $callListName;
+		public  $callListReference;
+		public  $callListExpiryDateTime;
 
 		public function __construct()
 			{
@@ -193,6 +196,17 @@
 
 		}
 
+
+		public function createNewCallListBroadcast()
+		{
+
+			if($this->prepareInput('create_new_call_list_broadcast') !== true)
+		    	return $this->response;
+
+    		$this->response = $this->soapCall('createNewCallListBroadcast', $this->username, $this->password, $this->unitID, $this->callListName, $this->callListReference, $this->callListExpiryDateTime, $this->recipients, $this->scheduleDateTime);
+			return $this->validateResponse('create_new_call_list_broadcast');
+
+		}
 	
 
 	}

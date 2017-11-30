@@ -232,6 +232,11 @@ return array(
 			'error_msg' => 'There was a problem cancelling your broadcast',
 			'error_customer' => 'An error has occured'
 		),
+		'create_new_call_list_broadcast_error' => array(
+			'error_num' => 270,
+			'error_msg' => 'There an error scheduling your call list',
+			'error_customer' => 'An error has occured'
+		)
 
 	),
 

@@ -513,6 +513,23 @@
 			'error' => 'broadcast.cancel_scheduled_sms'
 		);
 
+		/**
+		 * Validation for create new call list response
+		 *
+		 * @var array
+		 */
+		
+		protected $create_new_call_list_broadcast_response = array(
+			'rules' => array(
+				'isarray'=>true,
+				'arraycontent'=>true
+				),  
+			'error' => 'broadcast.create_new_call_list_broadcast_error'
+		);
+
+
+		
+
 		
 
 		
