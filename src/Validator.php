@@ -521,8 +521,7 @@
 		
 		protected $create_new_call_list_broadcast_response = array(
 			'rules' => array(
-				'isarray'=>true,
-				'arraycontent'=>true
+				'isobject'=>true
 				),  
 			'error' => 'broadcast.create_new_call_list_broadcast_error'
 		);
