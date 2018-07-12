@@ -5,6 +5,7 @@
 		public  $contact   = array();          // Array
 		public  $groups    = array();          // Array
 		public  $udfs      = array();          // Array
+		public  $consents      = array();          // Array
 		public  $wsdl;             // Alphanumeric
 		protected $contactWrite  = array();          // Array
 		
@@ -86,7 +87,7 @@
 		    	return $this->response;
 			
 			//Make The Call
-    		$this->response = $this->soapCall('createContact', $this->username, $this->password, $this->contactWrite, $this->groups, $this->udfs);
+    		$this->response = $this->soapCall('createContact', $this->username, $this->password, $this->contactWrite, $this->groups, $this->udfs, $this->consents);
 			return $this->validateResponse('create_contact');
 		    				
 		}
@@ -110,7 +111,7 @@
 		    if($this->prepareInput('update_contact') !== true)
 		    	return $this->response;
 		    
-    		$this->response = $this->soapCall('updateContact', $this->username, $this->password, $this->contactWrite, $this->groups, $this->udfs);
+    		$this->response = $this->soapCall('updateContact', $this->username, $this->password, $this->contactWrite, $this->groups, $this->udfs, $this->consents);
 			return $this->validateResponse('update_contact');
 
 		}
