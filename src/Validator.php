@@ -1296,5 +1296,100 @@
 			return true;
 
 		}
+
+		/*
+		|--------------------------------------------------------------------------
+		| EPOS responses
+		|--------------------------------------------------------------------------
+		|
+		| 
+	 	|
+		*/
+		/**
+		 * Validation for create purchase history response
+		 *
+		 * @var array
+		 */
+		protected $create_purchase_history_response = array(
+			'rules' => array(
+				'numeric'=>true,
+				'min'=>1
+			), 
+			'error' => 'epos.create_purchase_history_error'
+		);
+
+		/**
+		 * Validation for update purchase history response
+		 *
+		 * @var array
+		 */
+		protected $update_purchase_history_response = array(
+			'rules' => array(
+				'numeric'=>true,
+				'min'=>1
+			), 
+			'error' => 'epos.update_purchase_history_error'
+		);
+
+		/**
+		 * Validation for delete purchase history response
+		 *
+		 * @var array
+		 */
+		protected $delete_purchase_history_response = array(
+			'rules' => array(
+				'numeric'=>true,
+				'min'=>1
+			), 
+			'error' => 'epos.delete_purchase_history_error'
+		);
+
+		/**
+		 * Validation for get purchase history response
+		 *
+		 * @var array
+		 */
+		protected $get_purchase_history_response = array(
+			'rules' => array(
+				'isarray'=>true
+			), 
+			'error' => 'epos.get_purchase_history_error'
+		);
+
+		/**
+		 * Validation for get purchase history contact response
+		 *
+		 * @var array
+		 */
+		protected $get_purchase_history_contact_response = array(
+			'rules' => array(
+				'isarray'=>true
+			), 
+			'error' => 'epos.get_purchase_history_contact_error'
+		);
+
+		/**
+		 * Validation for get purchase history unit response
+		 *
+		 * @var array
+		 */
+		protected $get_purchase_history_unit_response = array(
+			'rules' => array(
+				'isarray'=>true
+			), 
+			'error' => 'epos.get_purchase_history_unit_error'
+		);
+
+		/**
+		 * Validation for get purchase history unit response
+		 *
+		 * @var array
+		 */
+		protected $get_purchase_history_reference_response = array(
+			'rules' => array(
+				'isarray'=>true
+			), 
+			'error' => 'epos.get_purchase_history_reference_error'
+		);
 	}
 }
