@@ -569,7 +569,7 @@ return array(
 			'error_customer' => 'There was a problem deleting your purchase history'
 			),
 
-		'get_purchase_history_error' => array(
+		'get_purchase_history_purchase_error' => array(
 			'error_num' => 1430,
 			'error_msg' => 'There was a problem to get your purchase history',
 			'error_customer' => 'There was a problem to get your purchase history'

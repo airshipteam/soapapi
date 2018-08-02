@@ -1349,11 +1349,11 @@
 		 *
 		 * @var array
 		 */
-		protected $get_purchase_history_response = array(
+		protected $get_purchase_history_purchase_response = array(
 			'rules' => array(
 				'isarray'=>true
 			), 
-			'error' => 'epos.get_purchase_history_error'
+			'error' => 'epos.get_purchase_history_purchase_error'
 		);
 
 		/**

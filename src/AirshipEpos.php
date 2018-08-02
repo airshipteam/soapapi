@@ -120,7 +120,7 @@
 		}
 
 		/*
-		* 	GET PURCHASE HISTORY
+		* 	GET PURCHASE HISTORY PURCHASE
 		*
 		*	@description 		A wrapper function for Airship's get purchase history SOAP API
 		*
@@ -129,14 +129,14 @@
 		*	@return object 		PurchaseHistoryObject
 		*/
 		
-		public function getPurchaseHistory()
+		public function getPurchaseHistoryPurchase()
 		{
 
-			if($this->prepareInput('get_purchase_history') !== true)
+			if($this->prepareInput('get_purchase_history_purchase') !== true)
 		    	return $this->response;
 
-    		$this->response = $this->soapCall('getPurchaseHistory', $this->username, $this->password, $this->purchase_history_id);
-			return $this->validateResponse('get_purchase_history');
+    		$this->response = $this->soapCall('getPurchaseHistoryPurchase', $this->username, $this->password, $this->purchase_history_id);
+			return $this->validateResponse('get_purchase_history_purchase');
 		    				
 		}
 
