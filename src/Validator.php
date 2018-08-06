@@ -971,6 +971,7 @@
 		 * @var array
 		 */
 		protected $create_contact_fields = array(
+			'uid',
 			'title',
 			'gender',
 			'firstname',
@@ -1001,6 +1002,7 @@
 		 * @var array
 		 */
 		protected $contact_validation_fields = array(
+			'uid',
 			'title',
 			'gender',
 			'firstname',
@@ -1032,6 +1034,7 @@
 		 */
 		protected $update_contact_fields = array(
 			'contactid',
+			'uid',
 			'title',
 			'gender',
 			'firstname',
