@@ -539,6 +539,61 @@ return array(
 			),
 
 	),
+
+	/*
+	|--------------------------------------------------------------------------
+	| EPOS API
+	|--------------------------------------------------------------------------
+	|
+	| Errors that can be returned when trying to access the Airship EPOS API
+ 	|
+	*/
+
+	'epos' => array(
+
+		'create_purchase_history_error' => array(
+			'error_num' => 1400,
+			'error_msg' => 'There was a problem creating your purchase history',
+			'error_customer' => 'There was a problem creating your purchase history'
+			),
+
+		'update_purchase_history_error' => array(
+			'error_num' => 1410,
+			'error_msg' => 'There was a problem updating your purchase history',
+			'error_customer' => 'There was a problem updating your purchase history'
+			),
+
+		'delete_purchase_history_error' => array(
+			'error_num' => 1420,
+			'error_msg' => 'There was a problem deleting your purchase history',
+			'error_customer' => 'There was a problem deleting your purchase history'
+			),
+
+		'get_purchase_history_purchase_error' => array(
+			'error_num' => 1430,
+			'error_msg' => 'There was a problem to get your purchase history',
+			'error_customer' => 'There was a problem to get your purchase history'
+			),
+
+		'get_purchase_history_contact_error' => array(
+			'error_num' => 1440,
+			'error_msg' => 'There was a problem to get your purchase history contact',
+			'error_customer' => 'There was a problem to get your purchase history contact'
+			),
+
+		'get_purchase_history_unit_error' => array(
+			'error_num' => 1450,
+			'error_msg' => 'There was a problem to get your purchase history unit',
+			'error_customer' => 'There was a problem to get your purchase history unit'
+			),
+
+		'get_purchase_history_referece_error' => array(
+			'error_num' => 1460,
+			'error_msg' => 'There was a problem to get your purchase history referece',
+			'error_customer' => 'There was a problem to get your purchase history referece'
+			),
+
+	),
 );
 
 
