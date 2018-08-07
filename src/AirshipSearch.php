@@ -67,7 +67,7 @@
 		}
 
 
-		public function searchContactMobile($udfnameid,$udfvalue,$myResultOptions = [])
+		public function searchContactMobile($mobilenumber)
 		{
 
 			if($this->prepareInput('search_contact_mobile') !== true)
