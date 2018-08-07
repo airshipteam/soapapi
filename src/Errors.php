@@ -490,9 +490,17 @@ return array(
 			'error_num' => 1100,
 			'error_msg' => 'There was a problem searching the contact UDF',
 			'error_customer' => 'Server error'
-		)
+		),
+		'search_contact_mobile_response' => array(
+			'error_num' => 1110,
+			'error_msg' => 'There was a problem searching the contact Mobile',
+			'error_customer' => 'Server error'
+		),
 
 	),
+
+
+
 
 
 	/*

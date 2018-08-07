@@ -954,6 +954,16 @@
 		);
 
 
+		protected $search_contact_mobile_response = array(
+
+			'rules' => array(
+				'isobject' => true,
+			),
+			'error' => 'search.search_contact_mobile_response'
+
+		);
+
+
 
 
 

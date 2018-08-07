@@ -67,6 +67,19 @@
 		}
 
 
+		public function searchContactMobile($udfnameid,$udfvalue,$myResultOptions = [])
+		{
+
+			if($this->prepareInput('search_contact_mobile') !== true)
+		    	return $this->response;
+			
+			//Make The Calldd
+    		$this->response = $this->soapCall('searchContactMobile', $this->username, $this->password,$mobilenumber);
+			return $this->validateResponse('search_contact_mobile');
+		    				
+		}
+
+
 		/*
 		* 	Search contact UDF Empty
 		*
