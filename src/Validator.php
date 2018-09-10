@@ -1404,5 +1404,19 @@
 			), 
 			'error' => 'epos.get_purchase_history_reference_error'
 		);
+
+
+		/**
+		 * Validation for get contact consent
+		 *
+		 * @var array
+		 */
+		protected $get_contact_consent_response = array(
+	        'rules' => array(
+	            'isarray' => true,
+	        ),
+	        'error' => 'contact.get_contact_consent'
+    	);
+
 	}
 }

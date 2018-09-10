@@ -509,6 +509,17 @@
 
 		}
 
+		/**
+		 * Get contact consent
+		 * @param $contactId
+		 * @return \stdClass
+         */
+		public function getContactConsent( $contact_id )
+	    {
+	        $this->response = $this->soapCall( 'getContactConsent', $this->username, $this->password, $contact_id );
+	        return $this->validateResponse( 'get_contact_consent' );
+	    }
+
 
 
 	}
