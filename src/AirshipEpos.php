@@ -64,12 +64,11 @@
 		
 		public function createPurchaseHistory()
 		{
-
 			if($this->prepareInput('create_purchase_history') !== true)
 		    	return $this->response;
 
-    		$this->response = $this->soapCall('createPurchaseHistory', $this->username, $this->password, $this->purchase_history_transaction_lines, $this->purchase_history_transaction_reference, $this->purchase_history_contact_id, $this->purchase_history_unit_id, $this->purchase_history_transaction_timestamp);
-			return $this->validateResponse('create_purchase_history');
+    		$this->response = $this->soapCall('createPurchaseHistory', $this->username, $this->password,  $this->purchase_history_transaction_reference, $this->purchase_history_contact_id, $this->purchase_history_unit_id, $this->purchase_history_transaction_timestamp, $this->purchase_history_transaction_lines);
+    		return $this->validateResponse('create_purchase_history');
 		    				
 		}
 
